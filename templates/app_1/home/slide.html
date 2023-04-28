@@ -1,0 +1,249 @@
+{% include 'app_1/base/linkstyles.html' %}
+{% load static %}
+
+<!--Today deals slides-->
+ <div id="productslides" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+    <div class="carousel-inner">
+      <a href="{% url 'today' %}" class="text-decoration-none">
+      <h1 class="fs-4 fw-bolder p-4 text-dark"style="">Today's deals<span 
+        class="ms-2"style="font-size:15px; color:#007185"> See all details</span></h1>
+      </a> 
+        <!--row-1-->
+        <a href="{% url 'today' %}" class="text-decoration-none">
+      
+        <div class="carousel-item active">
+          <div class="row">
+           {% for deal in image_group1 %}
+           <div class="col" >
+            {% if foorloop.first %}
+            {% if deal.type ==  'mobile' %}
+            <img src="{{deal.content_object.image.url}}" style="width: 170px;height:150px;" alt="">
+            
+            {% else %}
+            <img src="{{deal.content_object.image}}" style="max-width:170px;max-height: 150px;" alt="">
+            {% endif %}
+            {% else %} 
+            {% if deal.type == 'mobile' %}
+            <img src="{{deal.content_object.image.url}}"  class="ms-5" style="height:150px;max-width:170px;" alt="">
+            
+            {% else %}
+            <img src="{{deal.content_object.image}}"  class="ms-5" style="width:170px;height: 150px;";" alt="">
+            {% endif %}
+            {% endif %}
+
+               <p class="p-1 ms-5 "style="font-size:12px;color:#CC0C39;font-weight: 700;">
+               <span class="p-1 "style="color:#fff;background-color:#CC0C39">Up to {{deal.content_object.discount}}</span> Deal off the day</p>
+           
+             </div>
+           {% endfor %}
+          </div>
+         </div>
+           <!--row-1 end-->
+         
+         
+         <!--row-2-->
+         
+         <div  class="carousel-item">
+          <div class="row">
+           {% for image in image_group2 %}
+           <div class="col">
+            {% if foorloop.first %}
+            {% if image.type == 'mobile' %}
+            <img src="{{image.content_object.image.url}}" style="width:170px;height:150px;" alt="">
+            
+            {% else %}
+            <img src="{{image.content_object.image}}" style="width:170px;height:150px;" alt="">
+            {% endif %}
+            {% else %}
+            {% if image.type == 'mobile' %} 
+            <img src="{{image.content_object.image.url}}"  class="ms-5" style="height:150px;width:170px;" alt="">
+            
+            {% else %}
+            <img src="{{image.content_object.image}}"  class="ms-5" style="height:150px;width:170px;" alt="">
+            {% endif %}
+            {% endif %}
+
+            <p class="p-1 ms-5"style="font-size:12px;color:#CC0C39;font-weight: 700;">
+               <span class="p-1"style="color:#fff;background-color:#CC0C39">Up to {{image.content_object.discount}}</span> Deal off the day</p>
+        
+           </div>
+           {% endfor %}
+          </div>
+         </div>
+          <!--row-2 end-->
+         
+         
+         <!--row-3-->
+         <div  class="carousel-item">
+           <div class="row">
+            {% for image in image_group3 %}
+            <div class="col">
+              {% if foorloop.first %}
+              {% if image.type == 'mobile' %}
+              <img src="{{image.content_object.image.url}}" style="width:170px;height:150px;" alt="">
+              
+              {% else %}
+              <img src="{{image.content_object.image}}" style="width:170px;height:150px;" alt="">
+              {% endif %}
+              {% else %} 
+              {% if image.type == 'mobile' %}
+              <img src="{{image.content_object.image.url}}"  class="ms-5" style="height:150px;width:170px;" alt="">
+              
+              {% else %}
+              <img src="{{image.content_object.image}}"  class="ms-5" style="height:150px;width:170px;" alt="">
+              {% endif %}
+              {% endif %}
+    
+              <p class="p-1 ms-5"style="font-size:12px;color:#CC0C39;font-weight: 700;">
+               <span class="p-1"style="color:#fff;background-color:#CC0C39">Up to {{image.content_object.discount}}</span> Deal off the day</p>
+        
+            </div>
+            {% endfor %}
+           </div>
+          
+         
+          </div>
+   <!--row-3 end-->
+        
+    
+    
+    
+    
+    
+    
+    
+      </div>
+    <!--carousel inner end -->       
+      </a>   
+      
+    <button class="carousel-control-prev" type="button" data-bs-target="#productslides" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon p-4" 
+       style="background-color:#999999;
+       margin-right: 7rem;"
+      aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productslides" data-bs-slide="next">
+      <span class="carousel-control-next-icon p-4" 
+      style="background-color:#999999;
+       margin-left: 7rem;"
+      aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>   
+ 
+
+
+
+
+
+<!--clothes-->
+  <!--slide 2-->
+
+ 
+<!--trendy home decor-->
+<div class="background mt-1" style="background-color:#EAEDED;">
+  <span class="text-muted">.</span>
+</div>
+<!--start of 2nd slide-->
+<div id="productslides-2" class="carousel slide mt-2 " data-bs-touch="false" data-bs-interval="false">
+<div class="carousel-inner">
+<a href="{% url  'fashion' %}" style="text-decoration: none;">
+  <h1 class="fw-bolder fs-4 p-2 ms-4 text-dark">Trendy home devor<span 
+    style="font-size:15px;color:#007185;" class="ms-2 mt-1">See more results</span></h1>
+</a>
+<!--row-1-->
+<a href="{% url 'fashion' %}"class="text-decoration-none">
+  
+<div class="carousel-item active">
+  <div class="row">
+   {% for deal in image_group4 %}
+   <div class="col">
+    {% if foorloop.first %}
+    <img src="{{deal.content_object.image}}" style="width:170px;height:150px;" alt="">
+    {% else %} 
+    <img src="{{deal.content_object.image}}"  class="ms-5" style="height:170px;width:150px;" alt="">
+    
+    {% endif %}
+
+       <p class="p-1 ms-5 "style="font-size:12px;color:#CC0C39;font-weight: 700;">
+       <span class="p-1 "style="color:#fff;background-color:#CC0C39">Up to {{deal.content_object.discount}}</span> Deal off the day</p>
+   
+     </div>
+   {% endfor %}
+  </div>
+ </div>
+   <!--row-1 end-->
+ 
+ 
+ <!--row-2-->
+ 
+ <div  class="carousel-item">
+  <div class="row">
+   {% for image in image_group5 %}
+   <div class="col">
+    {% if foorloop.first %}
+    <img src="{{image.content_object.image}}" style="width:170px;height:150px;" alt="">
+    {% else %} 
+    <img src="{{image.content_object.image}}"  class="ms-5" style="height:170px;width:150px;" alt="">
+    
+    {% endif %}
+
+    <p class="p-1 ms-5"style="font-size:12px;color:#CC0C39;font-weight: 700;">
+       <span class="p-1"style="color:#fff;background-color:#CC0C39">Up to {{image.content_object.discount}}</span> Deal off the day</p>
+
+   </div>
+   {% endfor %}
+  </div>
+ </div>
+  <!--row-2 end-->
+ 
+ 
+ <!--row-3-->
+ <div  class="carousel-item">
+   <div class="row">
+    {% for image in image_group6 %}
+    <div class="col">
+      {% if foorloop.first %}
+      <img src="{{image.content_object.image}}" style="width:170px;height:150px;" alt="">
+      {% else %} 
+      <img src="{{image.content_object.image}}"  class="ms-5" style="height:170px;width:150px;" alt="">
+      
+      {% endif %}
+
+      <p class="p-1 ms-5"style="font-size:12px;color:#CC0C39;font-weight: 700;">
+       <span class="p-1"style="color:#fff;background-color:#CC0C39">Up to {{image.content_object.discount}}</span> Deal off the day</p>
+
+    </div>
+    {% endfor %}
+   </div>
+  
+ 
+  </div>
+<!--row-3 end-->
+
+
+
+
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#productslides-2" data-bs-slide="prev">
+<span class="carousel-control-prev-icon p-4" 
+style="background-color:#999999;
+ margin-right: 7rem;"
+aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#productslides-2" data-bs-slide="next">
+<span class="carousel-control-next-icon p-4"
+style="background-color:#999999;
+ margin-left: 5rem;" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+
+
+
+
+
+
+

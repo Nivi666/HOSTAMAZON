@@ -1,0 +1,640 @@
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: amazon
+-- ------------------------------------------------------
+-- Server version	8.0.31
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `app_1_browsing`
+--
+
+DROP TABLE IF EXISTS `app_1_browsing`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_browsing` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `img` varchar(100) NOT NULL,
+  `object_id` int unsigned NOT NULL,
+  `content_type_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `app_1_browsing_content_type_id_eb138ba4_fk_django_co` (`content_type_id`),
+  KEY `app_1_browsing_user_id_908f40b7_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `app_1_browsing_content_type_id_eb138ba4_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
+  CONSTRAINT `app_1_browsing_user_id_908f40b7_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `app_1_browsing_chk_1` CHECK ((`object_id` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_browsing`
+--
+
+LOCK TABLES `app_1_browsing` WRITE;
+/*!40000 ALTER TABLE `app_1_browsing` DISABLE KEYS */;
+INSERT INTO `app_1_browsing` VALUES (19,'pics/812YsUxpyfL._AC_UY327_FMwebp_QL65__WOdOG49.webp',27,9,22),(20,'pics/810KHyQ4WcL._AC_UY327_FMwebp_QL65__U0d8O6n.webp',28,9,22),(21,'pics/81UT07JsBqL._AC_UY327_FMwebp_QL65__ZaGS8V5.webp',30,9,22),(22,'pics/611mRs-imxL._AC_UY327_FMwebp_QL65__cNedW2k.webp',33,9,22),(23,'pics/81t6Av5DvXL._AC_UY327_FMwebp_QL65__kkoGEze.webp',31,9,22),(24,'pics/81IPrkMDqVL._AC_UY327_FMwebp_QL65__ixWymLq.webp',42,9,22),(25,'pics/81LrmorQeQL._AC_UY327_FMwebp_QL65_.webp',39,9,22),(26,'pics/817vyrOUqmL._AC_UY327_FMwebp_QL65_.webp',36,9,22),(27,'pics/71KCwNV6MuL._AC_UY327_FMwebp_QL65__bUQzZez.webp',29,9,22),(28,'pics/41yx-OTfNwL._SX300_SY300_QL70_FMwebp_.webp',44,9,22),(29,'pics/71kVEmAMyEL._AC_UY327_FMwebp_QL65__p7BFmN4.webp',32,9,22),(30,'pics/81HJ4pkOsiL._AC_UY327_FMwebp_QL65__VJWXiBD.webp',34,9,22),(31,'pics/71geVdy6-OS._AC_UY327_FMwebp_QL65__iJXXABn.webp',35,9,22),(32,'pics/619m8rLBQSL._AC_UY327_FMwebp_QL65_.webp',38,9,22),(33,'pics/81I3w4J6yjL._SX679__vVgY6vl.jpg',43,9,22),(34,'pics/91p5LGitZL._AC_UY327_FMwebp_QL65__PMx77qd.webp',46,9,22),(35,'pics/81I3w4J6yjL._SX679_.jpg',37,9,22);
+/*!40000 ALTER TABLE `app_1_browsing` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_cart`
+--
+
+DROP TABLE IF EXISTS `app_1_cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_cart` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `image` varchar(800) NOT NULL,
+  `head` varchar(400) NOT NULL,
+  `quantity` int NOT NULL,
+  `size` varchar(100) NOT NULL,
+  `int_price` int NOT NULL,
+  `str_price` varchar(20) NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `app_1_cart_user_id_c5b82b19_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `app_1_cart_user_id_c5b82b19_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_cart`
+--
+
+LOCK TABLES `app_1_cart` WRITE;
+/*!40000 ALTER TABLE `app_1_cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `app_1_cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_cart_redirect`
+--
+
+DROP TABLE IF EXISTS `app_1_cart_redirect`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_cart_redirect` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `object_id` int unsigned NOT NULL,
+  `content_type_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `app_1_cart_redirect_content_type_id_f24a09db_fk_django_co` (`content_type_id`),
+  KEY `app_1_cart_redirect_user_id_b21f1651_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `app_1_cart_redirect_content_type_id_f24a09db_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
+  CONSTRAINT `app_1_cart_redirect_user_id_b21f1651_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `app_1_cart_redirect_chk_1` CHECK ((`object_id` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_cart_redirect`
+--
+
+LOCK TABLES `app_1_cart_redirect` WRITE;
+/*!40000 ALTER TABLE `app_1_cart_redirect` DISABLE KEYS */;
+INSERT INTO `app_1_cart_redirect` VALUES (1,27,9,22),(2,28,9,22),(3,29,9,22),(4,30,9,22),(5,31,9,22),(6,32,9,22),(7,33,9,22),(8,34,9,22),(9,35,9,22),(10,36,9,22),(11,37,9,22),(12,38,9,22),(13,39,9,22),(14,40,9,22),(15,41,9,22),(16,42,9,22),(17,43,9,22),(18,44,9,22),(19,45,9,22),(20,46,9,22);
+/*!40000 ALTER TABLE `app_1_cart_redirect` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_headset`
+--
+
+DROP TABLE IF EXISTS `app_1_headset`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_headset` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `image` varchar(1000) NOT NULL,
+  `headset_head` varchar(200) NOT NULL,
+  `headset_discount_price` varchar(10) NOT NULL,
+  `headset_orginal_price` varchar(10) NOT NULL,
+  `headset_discount` varchar(10) NOT NULL,
+  `headset_integer_dicount` int NOT NULL,
+  `headset_integer_orginal` int NOT NULL,
+  `headset_users` varchar(30) NOT NULL,
+  `headset_color` varchar(100) NOT NULL,
+  `headset_brand` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_headset`
+--
+
+LOCK TABLES `app_1_headset` WRITE;
+/*!40000 ALTER TABLE `app_1_headset` DISABLE KEYS */;
+INSERT INTO `app_1_headset` VALUES (1,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/g/b/k/-original-imaghhtnpntexb8k.jpeg?q=70','Boult Audio AirBass GearPods with 32H Playtime Bluetoot...','₹1,199','₹5,999','80% off',1199,5999,'(1,24,828)','Black, True Wireless','Boult'),(2,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/m/a/5/-original-imagg33vvpyve8uq.jpeg?q=70','Boult Audio ProBass Curve Neckband Bluetooth Headset','₹899','₹3,499','74% off',899,3499,'(3,98,891)','Black, Grey, In the Ear','Boult'),(3,'https://rukminim1.flixcart.com/image/612/612/l0sgyvk0/headphone/e/w/c/buds-z2-oneplus-original-imagcg5gfpcg5ndv.jpeg?q=70','OnePlus Bullets Wireless Z2 with Fast Charge, 30 Hrs Ba...','₹1,999','₹2,299','13% off',1999,2299,'(4,01,374)','Magico Black, In the Ear','OnePlus'),(4,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/p/r/z/enco-buds-2-oppo-original-imagh9frfp7gxdb3.jpeg?q=70','OPPO Enco Buds 2 with 28 hours Battery life & Deep Nois...','₹1,799','₹3,999','55% off',1799,3999,'(39,454)','Midnight, True Wireless','OPPO'),(5,'https://rukminim1.flixcart.com/image/612/612/l4ei1e80/headphone/b/j/w/bullets-wireless-z2-oneplus-original-imagfaww7ga6nshz.jpeg?q=70','OnePlus Bullets Wireless Z2 Bluetooth Headset','₹1,999','₹2,299','13% off',1999,2299,'(4,01,374)','Acoustic Red, In the Ear','OnePlus'),(6,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/g/h/i/nb140-evolve-24-hours-playtime-deep-bass-made-in-india-original-imagmhqmr3hts9k6.jpeg?q=70','Aroma NB140 Evolve 24 Hours* Playtime | Deep Bass | Mad...','₹479','₹1,999','76% off',479,1999,'(43)','Black, True Wireless','Aroma'),(7,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/h/d/6/nb119-titanium-48-hours-playtime-bluetooth-neckband-aroma-original-imaghrcbugpcnzeb.jpeg?q=70','Aroma NB119 Titanium - 48 Hours Playtime Bluetooth Neck...','₹499','₹2,499','80% off',499,2499,'(1,30,880)','Green, In the Ear','Aroma'),(8,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/i/w/l/nb119b-badshah-60-hours-playing-time-fast-charging-bluetooth-original-imaghf8vdhga5xee.jpeg?q=70','Aroma NB119B Badshah - 40 Hours Playtime Bluetooth Neck...','₹381','₹1,499','74% off',381,1499,'(1,94,519)','Black, In the Ear','Aroma'),(9,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/v/b/h/cr-hf-151-in-ear-wired-earphones-handsfree-super-crp-original-imagkkfxgzx6fgjw.jpeg?q=70','Super CRP CR HF-151 IN-EAR WIRED EARPHONES - HANDSFREE ...','₹134','₹499','73% off',134,499,'(1,665)','Silver, In the Ear','Super'),(10,'https://rukminim1.flixcart.com/image/612/612/kj0bp8w0-0/headphone/l/j/0/bassheads-103-black-boat-original-imafyz3wqtqfzzwd.jpeg?q=70','boAt Bassheads 103 Black Wired Headset','₹499','₹1,290','61% off',499,1290,'(5,76,354)','Black, In the Ear','boAt'),(11,'https://rukminim1.flixcart.com/image/612/612/keq058w0-0/headphone/1/l/g/bassheads-242-boat-original-imafvcfg7zepvqps.jpeg?q=70','boAt Bassheads 242 Wired Headset','₹599','₹1,490','59% off',599,1490,'(5,47,012)','Red, In the Ear','boAt'),(12,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/g/g/m/-original-imaghsm3gupvh9wg.jpeg?q=70','Boult Audio Audio Airbass X50 with Quad Mic ENC, 40H Pl...','₹1,499','₹4,999','70% off',1499,4999,'(11,786)','Black, True Wireless','Boult'),(13,'https://rukminim1.flixcart.com/image/612/612/k51cpe80pkrrdj/headphone-refurbished/c/t/8/c-bassheads-100-boat-original-imafn4qttzkvzeyq.jpeg?q=70','boAt BassHeads 100 Wired Headset','₹399','₹999','60% off',399,999,'(12,90,315)','Furious Red, In the Ear','boAt'),(14,'https://rukminim1.flixcart.com/image/612/612/j612c280/headphone/headphone/h/h/h/sony-mdr-ex14ap-original-imaewh89w4czx5nm.jpeg?q=70','SONY EX14AP Wired Headset','₹549','₹1,290','57% off',549,1290,'(1,43,027)','Black, In the Ear','SONY'),(15,'https://rukminim1.flixcart.com/image/612/612/jh0vb0w0/headphone/t/7/6/sony-mdr-zx110-a-original-imaf553gdwgxbetq.jpeg?q=70','SONY ZX110A Wired without Mic Headset','₹549','₹1,390','60% off',549,1390,'(1,79,424)','White, On the Ear','SONY'),(16,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/d/7/k/-original-imagg33vyn2nyger.jpeg?q=70','Boult Audio Maverick with Quad Mic ENC, 45ms Low Latenc...','₹1,799','₹4,499','60% off',1799,4499,'(3,949)','Black, True Wireless','Boult'),(17,'https://rukminim1.flixcart.com/image/612/612/keaaavk0-0/headphone/d/p/f/stardust-cosmic-byte-original-imafvy34hgj55j6f.jpeg?q=70','Cosmic Byte Stardust Wired Gaming Headset','₹649','₹1,149','43% off',649,1149,'(18,650)','Blue, On the Ear','Cosmic'),(18,'https://rukminim1.flixcart.com/image/612/612/l0sgyvk0/headphone/m/b/c/buds-z2-oneplus-original-imagcg5stg9fzes6.jpeg?q=70','OnePlus Bullets Wireless Z2 Bluetooth Headset','₹1,999','₹2,299','13% off',1999,2299,'(4,01,374)','Beam Blue, In the Ear','OnePlus'),(19,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/j/t/c/-original-imaghbdup9jbrdzh.jpeg?q=70','realme Techlife Buds T100 with up to 28 Hours Playback ...','₹1,499','₹2,999','50% off',1499,2999,'(30,026)','Black, True Wireless','realme'),(20,'https://rukminim1.flixcart.com/image/612/612/l31x2fk0/headphone/m/5/v/-original-image9ehhvpt8vzt.jpeg?q=70','boAt Rockerz 255 Pro+ with ASAP Charge and upto 40 Hour...','₹1,299','₹3,990','67% off',1299,3990,'(5,51,417)','Teal Green, In the Ear','boAt'),(21,'https://rukminim1.flixcart.com/image/612/612/l31x2fk0/headphone/0/z/e/-original-image9egyqndhqhb.jpeg?q=70','boAt Rockerz 255 Pro+ with ASAP Charge and upto 40 Hour...','₹1,299','₹3,990','67% off',1299,3990,'(5,51,417)','Navy Blue, In the Ear','boAt'),(22,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/h/c/i/nb120h-crazy-15-hours-playtime-bluetooth-neckband-aroma-original-imaggsn6t4ung4hh.jpeg?q=70','Aroma NB120H Crazy - 15 Hours Playtime Bluetooth Neckba...','₹296','₹899','67% off',296,899,'(33,469)','Black, In the Ear','Aroma'),(23,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/i/w/l/nb119b-badshah-60-hours-playing-time-fast-charging-bluetooth-original-imaghf8vdhga5xee.jpeg?q=70','Aroma NB119B Badshah - 40 Hours Playtime Bluetooth Neck...','₹381','₹1,499','74% off',381,1499,'(1,94,519)','Black, In the Ear','Aroma'),(24,'https://rukminim1.flixcart.com/image/612/612/kuof5ow0/headphone/g/x/n/nb119-titanium-48-hours-bluetooth-neckband-aroma-original-imag7qvc7tw4yfwe.jpeg?q=70','Aroma NB119 Titanium - 48 Hours Playtime Bluetooth Neck...','₹499','₹2,499','80% off',499,2499,'(1,30,880)','Blue, In the Ear','Aroma'),(25,'https://rukminim1.flixcart.com/image/612/612/l1zc6fk0/headphone/t/j/l/-original-imagdffhsbfz743n.jpeg?q=70','OPPO Enco M32 Bluetooth Headset','₹1,599','₹2,999','46% off',1599,2999,'(49,468)','Black, In the Ear','OPPO'),(26,'https://rukminim1.flixcart.com/image/612/612/kmf7ki80/headphone/t/7/c/bassheads-104-boat-original-imagfbvxd5t9fvmt.jpeg?q=70','boAt Bassheads 104 Wired Headset','₹449','₹999','55% off',449,999,'(48,987)','Black, In the Ear','boAt'),(27,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/m/a/5/-original-imagg33vvpyve8uq.jpeg?q=70','Boult Audio ProBass Curve Neckband Bluetooth Headset','₹899','₹3,499','74% off',899,3499,'(3,98,891)','Black, Grey, In the Ear','Boult'),(28,'https://rukminim1.flixcart.com/image/612/612/kll7bm80/headphone/w/a/n/deep-bass-hd-sound-wired-earphones-with-mic-tangle-free-cable-original-imagyzm3gtr7bctb.jpeg?q=70','AUDIOEX Deep Bass HD sound Wired Earphones with Mic ,Ta...','₹159','₹499','68% off',159,499,'(207)','Silver, In the Ear','AUDIOEX'),(29,'https://rukminim1.flixcart.com/image/612/612/kmccosw0/headphone/u/g/s/rockerz-450-pro-boat-original-imagf9j54dayugqg.jpeg?q=70','boAt Rockerz 450 Pro with Upto 70 Hours Playback Blueto...','₹1,999','₹3,990','49% off',1999,3990,'(44,559)','Luscious Black, On the Ear','boAt'),(30,'https://rukminim1.flixcart.com/image/612/612/k7285u80/headphone/g/n/m/boat-bassheads-172-original-imafpdq2nf68rggt.jpeg?q=70','boAt BassHeads 172 Wired Headset','₹499','₹1,299','61% off',499,1299,'(1,32,501)','Raging Red, In the Ear','boAt'),(31,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/3/z/i/-original-imagg33vgs8zzr3j.jpeg?q=70','Boult Audio ProBass Fcharge with 40 hrs Playtime, ENC, ...','₹1,199','₹4,999','76% off',1199,4999,'(45,500)','Black, In the Ear','Boult'),(32,'https://rukminim1.flixcart.com/image/612/612/jsm3vrk0/smart-headphone/k/j/g/ns6-s6-bluetooth-neckband-headset-with-sports-running-headphone-original-imaemjzdsungh2yw.jpeg?q=70','APPLE EarPods with 3.5mm Headphone Plug Wired Headset','₹1,699','₹2,000','15% off',1699,2000,'(13,997)','White, In the Ear','APPLE'),(33,'https://rukminim1.flixcart.com/image/612/612/kxaq7ww0/headphone/b/s/x/gaming-headphones-with-adjustable-mic-deep-bass-matlek-original-imag9s5kputhy6uj.jpeg?q=70','Matlek Gaming Headphones With Adjustable Mic | Deep Bas...','₹599','₹1,490','59% off',599,1490,'(2,026)','Blue, On the Ear','Matlek'),(34,'https://rukminim1.flixcart.com/image/612/612/jh6l2fk0/headphone/c/a/g/sony-mdr-zx310ap-original-imaf59ebtsdeaypz.jpeg?q=70','SONY 310AP Wired Headset','₹949','₹2,190','56% off',949,2190,'(2,58,770)','Blue, On the Ear','SONY'),(35,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/z/v/y/-original-imagmuggusa94g3u.jpeg?q=70','Boult Audio AirBass Z40 with ZEN ENC Mic, 60H Playtime,...','₹1,499','₹4,999','70% off',1499,4999,'(3,845)','Blue, In the Ear','Boult'),(36,'https://rukminim1.flixcart.com/image/612/612/l31x2fk0/headphone/a/s/h/-original-image9ehehz8amg2.jpeg?q=70','boAt Rockerz 255 Pro+ with ASAP Charge and upto 40 Hour...','₹1,299','₹3,990','67% off',1299,3990,'(5,51,417)','Active Black, In the Ear','boAt'),(37,'https://rukminim1.flixcart.com/image/612/612/kpr8k280/headphone/v/n/9/bbd-l-21-wireless-bluetooth-headphone-waterproof-ipx5-blue-seed-original-imag3x8yv7fg9af9.jpeg?q=70','FD1 S_S L21 Wireless bluetooth headphone Waterproof Ste...','₹498','₹1,262','60% off',498,1262,'(25,237)','Black, True Wireless','FD'),(38,'https://rukminim1.flixcart.com/image/612/612/l572ufk0/headphone/l/s/o/-original-imagfxg3e4fegjh8.jpeg?q=70','boAt Airdopes 131 PRO with 11mm Drivers,45Hrs Playback,...','₹1,299','₹2,990','56% off',1299,2990,'(75,208)','Active Black, Dark Grey, In the Ear','boAt'),(39,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/e/a/8/nb119b-badshah-60-hours-playing-time-fast-charging-bluetooth-original-imaghqf2zbuekqzq.jpeg?q=70','Aroma NB119B Badshah 60 Hours Playing Time Fast Chargin...','₹431','₹2,499','82% off',431,2499,'(1,94,519)','Green, In the Ear','Aroma'),(40,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/o/i/6/fire-500v2-neckband-hi-bass-wireless-bluetooth-headphone-original-imagms6vdyq7hfty.jpeg?q=70','TECHFIRE Fire 500v2 Neckband hi-bass Wireless Bluetooth...','₹445','₹3,850','88% off',445,3850,'(1,55,294)','Blue, In the Ear','TECHFIRE'),(41,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/i/w/l/nb119b-badshah-60-hours-playing-time-fast-charging-bluetooth-original-imaghf8vdhga5xee.jpeg?q=70','Aroma NB119B Badshah 60 Hours Playing Time Fast Chargin...','₹431','₹2,499','82% off',431,2499,'(1,94,519)','Black, Silver, In the Ear','Aroma'),(42,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/p/r/6/-original-imagg8mrdrwgz77v.jpeg?q=70','boAt Airdopes 161 with ASAP Charge, 10mm Drivers and 17...','₹1,399','₹2,490','43% off',1399,2490,'(2,25,906)','Pebble Black, True Wireless','boAt'),(43,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/g/g/m/-original-imaghsm3gupvh9wg.jpeg?q=70','Boult Audio Audio Airbass X50 with Quad Mic ENC, 40H Pl...','₹1,499','₹4,999','70% off',1499,4999,'(11,786)','Black, True Wireless','Boult'),(44,'https://rukminim1.flixcart.com/image/612/612/kdj4xow0-0/headphone/t/c/r/gp-321-champ-earphone-ubon-original-imafuf7pppfqtbs5.jpeg?q=70','Ubon GP-321 Champ Earphone Wired Headset','₹179','₹249','28% off',179,249,'(7,149)','Black, In the Ear','Ubon'),(45,'https://rukminim1.flixcart.com/image/612/612/klo27bk0/headphone/d/9/o/tws-l21-true-wireless-earbuds-airpod-buds-bluetooth-5-0-headset-original-imagyqumaju2bweg.jpeg?q=70','SHOPLINE L21 Bluetooth Earphone Wireless Headset (Black...','₹499','₹1,999','75% off',499,1999,'(235)','Black, True Wireless','SHOPLINE'),(46,'https://rukminim1.flixcart.com/image/612/612/k45x0nk0/headphone/stereo-dynamic-earphones/2/8/4/boat-bassheads-100-original-imafn4qtbtwnky36.jpeg?q=70','boAt BassHeads 100 Wired Headset','₹399','₹999','60% off',399,999,'(12,90,315)','White, In the Ear','boAt'),(47,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/m/9/0/-original-imagg33usfucs9nd.jpeg?q=70','Boult Audio ProBass EQCharge with ZEN Mode ENC, 32hrs P...','₹999','₹4,499','77% off',999,4499,'(36,018)','Black, In the Ear','Boult'),(48,'https://rukminim1.flixcart.com/image/612/612/k6l2vm80/headphone/h/z/z/samsung-hands-free-ehs61asfwe-gh59-11849c-3-5-mm-jack-original-imafzzuwhy6smvmg.jpeg?q=70','SAMSUNG Hands-Free EHS61ASFWE (GH59-11849C) 3.5 mm jack...','₹289','₹499','42% off',289,499,'(7,910)','White, In the Ear','SAMSUNG'),(49,'https://rukminim1.flixcart.com/image/612/612/krntoy80/headphone/x/7/z/dual-driver-mi-original-imag5efchxhu4qjc.jpeg?q=70','Mi Dual Driver Earphone, 10+8 mm Driver, Magnetic Earbu...','₹699','₹999','30% off',699,999,'(73,205)','Black, In the Ear','Mi'),(50,'https://rukminim1.flixcart.com/image/612/612/jz05rww0/headphone/h/e/u/hyperx-cloud-stinger-original-imaf8xp3yb9yuurv.jpeg?q=70','HyperX Cloud Stinger Wired Gaming Headset','₹2,449','₹4,990','50% off',2449,4990,'(313)','Black, On the Ear','HyperX'),(51,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/u/c/u/-original-imagg33vzvudvhky.jpeg?q=70','Boult Audio ProBass EQCharge with ZEN Mode ENC, 32hrs P...','₹999','₹4,499','77% off',999,4499,'(36,018)','Red, In the Ear','Boult'),(52,'https://rukminim1.flixcart.com/image/612/612/jh6l2fk0/headphone/v/t/7/sony-mdr-zx310apbce-original-imaf59ebhygmdhgv.jpeg?q=70','SONY 310AP Wired Headset','₹949','₹2,190','56% off',949,2190,'(2,58,770)','Black, On the Ear','SONY'),(53,'https://rukminim1.flixcart.com/image/612/612/l29c9e80/headphone/h/h/5/nord-buds-oneplus-original-imagdmxba5hjgzxd.jpeg?q=70','OnePlus Nord Buds Bluetooth Headset','₹2,799','₹2,999','6% off',2799,2999,'(60,883)','Black Slate, True Wireless','OnePlus'),(54,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/y/b/z/-original-imagjtcgr7xktbfw.jpeg?q=70','boAt Airdopes 100 with 50 Hours Playback, Quad Mics ENx...','₹1,399','₹4,490','68% off',1399,4490,'(7,087)','Opal Black, In the Ear','boAt'),(55,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/3/y/9/nb120-tehalka-40-hours-playing-time-dual-pairing-bluetooth-original-imaghqm3ebzz2wau.jpeg?q=70','Aroma NB120 Tehalka 40 Hours Playing Time Dual Pairing ...','₹369','₹1,499','75% off',369,1499,'(1,22,413)','Black, Silver, In the Ear','Aroma'),(56,'https://rukminim1.flixcart.com/image/612/612/kxf0jgw0/headphone/w/u/z/fire-500v2-neckband-hi-bass-wireless-bluetooth-headphone-original-imag9vezehqqgvx5.jpeg?q=70','TECHFIRE Fire 500v2 Neckband hi-bass Wireless Bluetooth...','₹439','₹2,999','85% off',439,2999,'(1,55,294)','Green, In the Ear','TECHFIRE'),(57,'https://rukminim1.flixcart.com/image/612/612/ksdjma80/headphone/o/f/c/airdopes-131-airdopes-138-boat-original-imag5yz96jehyqrg.jpeg?q=70','boAt Airdopes 131 with upto 60 Hours and ASAP Charge Bl...','₹1,299','₹2,990','56% off',1299,2990,'(12,41,143)','Active Black, True Wireless','boAt'),(58,'https://rukminim1.flixcart.com/image/612/612/xif0q/headphone/o/2/m/-original-imagmhr682pdbxej.jpeg?q=70','boAt Rockerz Apex with Spatial Bionic Sound, Beast Mode...','₹1,499','₹3,990','62% off',1499,3990,'(54)','Stellar Black, In the Ear','boAt'),(59,'https://rukminim1.flixcart.com/image/612/612/knan98w0/headphone/t/o/j/platinum-series-neckband-low-price-bluetooth-neckband-techfire-original-imag2y9ud7wrgycb.jpeg?q=70','TECHFIRE Platinum Series Neckband - Low Price Bluetooth...','₹485','₹2,850','82% off',485,2850,'(24,494)','Black, In the Ear','TECHFIRE');
+/*!40000 ALTER TABLE `app_1_headset` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_mobile`
+--
+
+DROP TABLE IF EXISTS `app_1_mobile`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_mobile` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `image` varchar(100) NOT NULL,
+  `head` longtext NOT NULL,
+  `integer_orginal_price` int NOT NULL,
+  `colors` int NOT NULL,
+  `integer_disocount_price` int DEFAULT NULL,
+  `rating_img` varchar(100) NOT NULL,
+  `day` varchar(10) NOT NULL,
+  `Advertise` tinyint(1) NOT NULL,
+  `date` int NOT NULL,
+  `users` int NOT NULL,
+  `discount` varchar(10) NOT NULL,
+  `discount_price` varchar(10) NOT NULL,
+  `mobile_image` varchar(500) NOT NULL,
+  `orginal_price` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_mobile`
+--
+
+LOCK TABLES `app_1_mobile` WRITE;
+/*!40000 ALTER TABLE `app_1_mobile` DISABLE KEYS */;
+INSERT INTO `app_1_mobile` VALUES (30,'pics/812YsUxpyfL._AC_UY327_FMwebp_QL65__WOdOG49.webp','Samsung Galaxy M13 5G (Midnight Blue, 4GB, 64GB Storage) | 5000mAh Battery | Upto 8GB RAM with RAM Plus',16999,29,11999,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_juk4SgU.jpg','Friday',0,15,4053,'16,999','11,999','https://m.media-amazon.com/images/I/81t6Av5DvXL._AC_UY327_FMwebp_QL65_.jpg','1'),(31,'pics/810KHyQ4WcL._AC_UY327_FMwebp_QL65__U0d8O6n.webp','Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery\r\nBrand: Redmi',8499,24,6499,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_pvCdpmv.jpg','Sunday',1,15,2090,'8,499','6,499','https://m.media-amazon.com/images/I/810KHyQ4WcL._AC_UY327_FMwebp_QL65_.jpg','1'),(32,'pics/71KCwNV6MuL._AC_UY327_FMwebp_QL65__bUQzZez.webp','OPPO A31 (Mystery Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers',15990,22,12490,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_WN819o0.jpg','Tomorrow',1,9,58875,'15,990','12,490','https://m.media-amazon.com/images/I/71KCwNV6MuL._AC_UY327_FMwebp_QL65_.jpg','1'),(33,'pics/81UT07JsBqL._AC_UY327_FMwebp_QL65__ZaGS8V5.webp','Redmi A1 (Light Green, 2GB RAM 32GB ROM) | Segment Best AI Dual Cam | 5000mAh Battery | Leather Texture Design | Android 12',8999,28,6499,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_WSphwUw.jpg','Tomorrow',1,9,9217,'8,999','6,499','https://m.media-amazon.com/images/I/81UmTnrBDSL._AC_UY327_FMwebp_QL65_.jpg','1'),(34,'pics/81t6Av5DvXL._AC_UY327_FMwebp_QL65__kkoGEze.webp','Samsung Galaxy M04 Light Green, 4GB RAM, 64GB Storage | Upto 8GB RAM with RAM Plus | MediaTek Helio P35 | 5000 mAh Battery',11999,25,8999,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_iMno64J.jpg','Friday',1,12,3145,'11,999','8,999','https://m.media-amazon.com/images/I/814ePfNubRL._AC_UY327_FMwebp_QL65_.jpg','1'),(35,'pics/71kVEmAMyEL._AC_UY327_FMwebp_QL65__p7BFmN4.webp','Redmi 10A Sport (Slate Grey, 6GB RAM, 128GB Storage) | 2 Ghz Octa Cor Helio G25 | 5000 mAh Battery | Finger Print Sensor | Upto 8GB RAM with RAM Booster',13999,25,10499,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_m0nmpFN.jpg','Tomorrow',1,9,1159,'13,999','10,999','https://m.media-amazon.com/images/I/71t7mcs1VoL._AC_UY327_FMwebp_QL65_.jpg','1'),(36,'pics/611mRs-imxL._AC_UY327_FMwebp_QL65__cNedW2k.webp','Apple iPhone 14 128GB (Product) RED\r\n4.5 out of 5 stars 425\r\n₹72,499 ₹79,900 (9% off)',79990,9,72499,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_P4i0V8E.jpg','Friday',0,16,2346,'72499','79990','https://m.media-amazon.com/images/I/611mRs-imxL._AC_UY327_FMwebp_QL65_.jpg','1'),(37,'pics/81HJ4pkOsiL._AC_UY327_FMwebp_QL65__VJWXiBD.webp','realme narzo 50i (Carbon Black, 2GB RAM+32GB Storage) Octa Core Processor | 6.5\" inch Large Display\r\n4.0 out of 5 stars 31,775\r\nLimited time deal\r\n₹7,499 ₹7,999 (6% off)\r\nGet it by Tomorrow, February 9\r\nFREE Delivery by Amazon',7999,6,7499,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_asCXkjR.jpg','Sunday',0,18,31775,'7,999','7,499','https://m.media-amazon.com/images/I/81g0X076+WL._AC_UY327_FMwebp_QL65_.jpg','1'),(38,'pics/71geVdy6-OS._AC_UY327_FMwebp_QL65__iJXXABn.webp','OPPO A74 5G (Fluid Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers\r\n4.2 out of 5 stars 33,572\r\nLimited time deal\r\n₹15,490 ₹20,990 (26% off)\r\nGet it by Tomorrow, February 9\r\nFREE Delivery by Amazon',20990,26,15490,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_60DrRJP.jpg','Tomorrow',0,9,2367,'20,990','15,490','https://m.media-amazon.com/images/I/71geVdy6-OS._AC_UY327_FMwebp_QL65_.jpg','1'),(39,'pics/817vyrOUqmL._AC_UY327_FMwebp_QL65_.webp','Redmi 11 Prime 5G (Chrome Silver, 4GB RAM 64GB ROM) | Prime Design | MTK Dimensity 700 | 50 MP Dual Cam | 5000mAh | 7 Band 5G',15999,13,13999,'pics/1000_F_532407880_lEnsjHgZh970gQ0UYA2dGY29UmXVoorP.jpg','Wednesday',1,16,3214,'15,999','13,999','https://m.media-amazon.com/images/I/817vyrOUqmL._AC_UY327_FMwebp_QL65_.jpg','1'),(40,'pics/81I3w4J6yjL._SX679_.jpg','Samsung Galaxy M33 5G (Mystique Green, 6GB, 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately',24999,32,16999,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_IoJVQ1u.jpg','Saturday',0,15,5436,'24999','16999','https://m.media-amazon.com/images/I/81I3w4J6yjL._AC_UY327_FMwebp_QL65_.jpg','1'),(41,'pics/619m8rLBQSL._AC_UY327_FMwebp_QL65_.webp','Apple iPhone 13 Pro Max (256GB) - Gold\r\n4.6 out of 5 stars 1,547\r\n₹1,27,900 ₹1,39,900 (9% off)\r\nSave extra with No Cost EMISave extra with No Cost EMI\r\nFREE Delivery by Amazon',139900,9,127900,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_l8GqXbk.jpg','Friday',0,13,2356,'1,39,900','1,27,900','https://m.media-amazon.com/images/I/71yzJoE7WlL._AC_UY327_FMwebp_QL65_.jpg','1'),(42,'pics/81LrmorQeQL._AC_UY327_FMwebp_QL65_.webp','Oppo A78 5G (Glowing Black, 8GB RAM, 128 Storage) | 5000 mAh Battery with 33W SUPERVOOC Charger| 50MP AI Camera | 90Hz Refresh Rate | with No Cost EMI/Additional Exchange Offers',21999,14,18999,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_sfmnFNS.jpg','Tuesday',0,17,5436,'21,999','18,999','image','1'),(43,'pics/81vkmw6NgxL._AC_UY327_FMwebp_QL65_.webp','Realme narzo 50i Prime (Mint Green 3GB RAM+32GB Storage) Octa-core Processor | 5000 mAh Battery',8999,11,7999,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_AD37l7u.jpg','Sunday',1,15,2865,'8,999','7,999','image','1'),(44,'pics/61XO4bORHUL._AC_UY327_FMwebp_QL65__D67J9Ju.webp','Apple iPhone 14 Plus 256GB (Product) RED',99990,9,90999,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_cK5TK8J.jpg','Sunday',1,14,2456,'99,990','90,999','image','1'),(45,'pics/81IPrkMDqVL._AC_UY327_FMwebp_QL65__ixWymLq.webp','realme narzo 50A Prime (Flash Black, 4GB RAM+128GB Storage) FHD+ Display | 50MP AI Triple Camera (No Charger Variant)92\r\nLimited time deal\r\n₹12,499 ₹14,499 (14% off)\r\nGet it by Tomorrow, February 9\r\nFREE Delivery by Amazon',14999,14,12499,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_s7zjq57.jpg','Wednesday',1,16,3452,'14,999','12,499','image','1'),(46,'pics/81I3w4J6yjL._SX679__vVgY6vl.jpg','Samsung Galaxy M33 5G (Mystique Green, 6GB, 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately',24999,32,16999,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_TuZPXWb.jpg','Tuesday',1,16,23841,'24,999','16,999','image','1'),(47,'pics/41yx-OTfNwL._SX300_SY300_QL70_FMwebp_.webp','Oppo A78 5G (Glowing Blue, 8GB RAM, 128 Storage) | 5000 mAh Battery with 33W SUPERVOOC Charger| 50MP AI Camera | 90Hz Refresh Rate | with No Cost EMI/Additional Exchange Offers',21999,14,18999,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_4jNNuUN.jpg','Saturday',1,18,1086,'21,999','18,999','image','1'),(48,'pics/61XO4bORHUL._AC_UY327_FMwebp_QL65__AxCXN2B.webp','Apple iPhone 14 Pro 256GB Space Black',145900,5,139900,'pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_F7ex4tK.jpg','Saturday',0,10,3456,'1,45,900','1,39,900','image','1'),(49,'pics/91p5LGitZL._AC_UY327_FMwebp_QL65__PMx77qd.webp','realme narzo 50 5G (Hyper Blue, 4GB RAM+128GB Storage) Dimensity 810 5G Processor | 48MP Ultra HD Camera\r\n4.2 out of 5 stars 3,030\r\n₹16,999 ₹18,999 (11% off)\r\nGet it by Tomorrow, February 9\r\nFREE Delivery by Amazon',18999,16999,11,'pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_AUH97SQ.jpg','Sunday',1,16,1065,'18,999','16,999','image','1');
+/*!40000 ALTER TABLE `app_1_mobile` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_mobile_depth`
+--
+
+DROP TABLE IF EXISTS `app_1_mobile_depth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_mobile_depth` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `brand` varchar(20) NOT NULL,
+  `model_name` varchar(20) NOT NULL,
+  `retailer` varchar(100) NOT NULL,
+  `size` varchar(10) NOT NULL,
+  `mobile_id` bigint NOT NULL,
+  `Battery` varchar(50) NOT NULL,
+  `Camera_description` varchar(50) NOT NULL,
+  `os` varchar(50) NOT NULL,
+  `screen_size` varchar(50) NOT NULL,
+  `screen_type` varchar(50) NOT NULL,
+  `storage` varchar(50) NOT NULL,
+  `Ram` varchar(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `date` int NOT NULL,
+  `day` varchar(10) NOT NULL,
+  `discount` int NOT NULL,
+  `discount_price` varchar(10) NOT NULL,
+  `head` longtext NOT NULL DEFAULT (_utf8mb3'head'),
+  `int_discount_price` int NOT NULL,
+  `int_orginal_price` int DEFAULT NULL,
+  `orginal_price` varchar(10) NOT NULL,
+  `rating_img` varchar(100) NOT NULL,
+  `users` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `app_1_mobile_depth_mobile_id_bb2b9041_fk_app_1_mobile_id` (`mobile_id`),
+  CONSTRAINT `app_1_mobile_depth_mobile_id_bb2b9041_fk_app_1_mobile_id` FOREIGN KEY (`mobile_id`) REFERENCES `app_1_mobile` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_mobile_depth`
+--
+
+LOCK TABLES `app_1_mobile_depth` WRITE;
+/*!40000 ALTER TABLE `app_1_mobile_depth` DISABLE KEYS */;
+INSERT INTO `app_1_mobile_depth` VALUES (27,'Samsung','Samsung Galaxy M13','Appario Retail Private Ltd','4GB 64GB',30,'5000mah','Quad Camera (108MP+8MP+2MP+2MP) | 32MP Front Camer','Android 12, OneU 4.1','6.7-inch','FULL HD+','64Gb','4GB','pics/812YsUxpyfL._AC_UY327_FMwebp_QL65__WOdOG49.webp',15,'Friday',29,'11,999','Samsung Galaxy M13 5G (Midnight Blue, 4GB, 64GB Storage) | 5000mAh Battery | Upto 8GB RAM with RAM Plus',11999,16999,'16,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_juk4SgU.jpg',4053),(28,'Redmi','Redmi 9A','Darshita Etel','2GB 32GB',31,'5000mah','Rear Camera (23 MP) | 15 MP Front Camera','MIUI 13','6.7-inch','FULL HD+','32GB','2GB','pics/810KHyQ4WcL._AC_UY327_FMwebp_QL65__U0d8O6n.webp',15,'Sunday',24,'6,499','Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery',6499,8499,'8,499','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_pvCdpmv.jpg',2090),(29,'OPPO','OPPO A31','MAHAKAAL MOBILES.','6GB 128GB',32,'4800mah','Rear Camera (23 MP) | 15 MP Front Camera','Android 13.0','6.8-inch','FULL HD+','128GB','6GB','pics/71KCwNV6MuL._AC_UY327_FMwebp_QL65__bUQzZez.webp',9,'Tomorrow',22,'12,490','OPPO A31 (Mystery Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers',12490,15990,'15,990','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_WN819o0.jpg',58875),(30,'Redmi','A1','MAHAKAAL MOBILES.','2GB 32GB',33,'5000mah','Rear Camera (23MP) | 10MP Front Camera','MIUI 12','6.5 inch','FULL HD+','32GB','2GB','pics/81UT07JsBqL._AC_UY327_FMwebp_QL65__ZaGS8V5.webp',9,'Tomorrow',28,'6,499','Redmi A1 (Light Green, 2GB RAM 32GB ROM) | Segment Best AI Dual Cam | 5000mAh Battery | Leather Texture Design | Android 12',6499,8999,'8,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_WSphwUw.jpg',9217),(31,'Samsung','Samsung Galaxy M03','MAHAKAAL MOBILES.','4GB 64GB',34,'5000mah','Rear Camera (23MP) | 10MP Front Camera','12','6.7-inch','AMOLED','64GB','4GB','pics/81t6Av5DvXL._AC_UY327_FMwebp_QL65__kkoGEze.webp',12,'Friday',25,'8,999','Samsung Galaxy M04 Light Green, 4GB RAM, 64GB Storage | Upto 8GB RAM with RAM Plus | MediaTek Helio P35 | 5000 mAh Battery',8999,11999,'11,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_iMno64J.jpg',3145),(32,'Redmi','Redmi 10A','Appario Retail Private Ltd','6GB 128GB',35,'5000mah','Rear Camera (23MP) | 10MP Front Camera','MIUI 13','6.4 inch','mob','128GB','6GB','pics/71kVEmAMyEL._AC_UY327_FMwebp_QL65__p7BFmN4.webp',9,'Tomorrow',25,'10,999','Redmi 10A Sport (Slate Grey, 6GB RAM, 128GB Storage) | 2 Ghz Octa Cor Helio G25 | 5000 mAh Battery | Finger Print Sensor | Upto 8GB RAM with RAM Booster',10499,13999,'13,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_m0nmpFN.jpg',1159),(33,'Apple','iPhone 14','Appario Retail Private Ltd','128GB',36,'5000Mah','Quad Rear Camera (64 MP + 8 MP + 2 MP + 2 MP) | 20','IOS','6.4 inch','AMOLED','128GB','6GB','pics/611mRs-imxL._AC_UY327_FMwebp_QL65__cNedW2k.webp',16,'Friday',9,'79990','Apple iPhone 14 128GB (Product) RED',72499,79990,'72499','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_P4i0V8E.jpg',2346),(34,'Realme','Narzo 50i','Darshita Etel','2GB 32GB',37,'5800mah','Rear Camera (29 MP) | 18 MP Front Camera','MIUI 12','6.5 inch','FULL HD+','32GB','2GB','pics/81HJ4pkOsiL._AC_UY327_FMwebp_QL65__VJWXiBD.webp',18,'Sunday',6,'7,499','realme narzo 50i (Carbon Black, 2GB RAM+32GB Storage) Octa Core Processor | 6.5\" inch Large Display',7499,7999,'7,999','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_asCXkjR.jpg',31775),(35,'OPPO','OPPO A74','MAHAKAAL MOBILES.','6GB 128GB',38,'5200mah','Rear Camera (33MP) | 18MP Front Camera','Android 13.0','6.7 inch','Hd+','8GB','4GB','pics/71geVdy6-OS._AC_UY327_FMwebp_QL65__iJXXABn.webp',9,'Tomorrow',26,'15,490','OPPO A74 5G (Fluid Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers',15490,20990,'20,990','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_60DrRJP.jpg',2367),(36,'Redmi','Redmi 11 PRIME','Darshita Etel','4GB 64GB',39,'5060mah','Quad Camera (108MP+8MP+2MP+2MP) | 32MP Front','MIUI 14','6.8-inch','FULL HD+','64GB','4GB','pics/817vyrOUqmL._AC_UY327_FMwebp_QL65_.webp',16,'Wednesday',13,'13,999','Redmi 11 Prime 5G (Chrome Silver, 4GB RAM 64GB ROM) | Prime Design | MTK Dimensity 700 | 50 MP Dual Cam | 5000mAh | 7 Band 5G',13999,15999,'15,999','pics/1000_F_532407880_lEnsjHgZh970gQ0UYA2dGY29UmXVoorP.jpg',3214),(37,'Samsung','Samsung M33','Darshita Etel','6GB 128GB',40,'6000mah','Rear Camera (23MP) | 15MP Front Camera','Android 13, OneU 4.1','6.5 inch','AMOLED','128GB','6GB','pics/81I3w4J6yjL._SX679_.jpg',15,'Saturday',32,'16999','Samsung Galaxy M33 5G (Mystique Green, 6GB, 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately',16999,24999,'24999','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_IoJVQ1u.jpg',5436),(38,'Apple','iPhone 13 Pro MAX','Darshita Etel','8GB 256GB',41,'4500MAH','Quad Camera (108MP+8MP+2MP+2MP) | 32MP Front Camer','IOS','6.7 inch','AMOLED','256GB','8GB','pics/619m8rLBQSL._AC_UY327_FMwebp_QL65_.webp',13,'Friday',9,'1,27,900','Apple iPhone 13 Pro Max (256GB) - Gold',127900,139900,'1,39,900','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_l8GqXbk.jpg',2356),(39,'OPPO','A78','MAHAKAAL MOBILES.','8GB 128GB',42,'5000mah','Rear Camera (37MP) | 10MP Front Camera','Android 13','6.5 inch','FULL HD+','128GB','8GB','pics/81LrmorQeQL._AC_UY327_FMwebp_QL65_.webp',17,'Tuesday',14,'18,999','Oppo A78 5G (Glowing Black, 8GB RAM, 128 Storage) | 5000 mAh Battery with 33W SUPERVOOC Charger| 50MP AI Camera | 90Hz Refresh Rate | with No Cost EMI/Additional Exchange Offers',18999,21999,'21,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_sfmnFNS.jpg',5436),(40,'Realme','Realme narzo','Darshita Etel','3GB 32GB',43,'5000mah','Rear Camera (23MP) | 10MP Front Camera','MIUI 14','6.7 inch','Hd+','32GB','3GB','pics/81vkmw6NgxL._AC_UY327_FMwebp_QL65_.webp',15,'Sunday',11,'7,999','Realme narzo 50i Prime (Mint Green 3GB RAM+32GB Storage) Octa-core Processor | 5000 mAh Battery',7999,8999,'8,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_AD37l7u.jpg',2865),(41,'Apple','iphone 14 plus','Darshita Etel','8GB 256GB',44,'5000mah','Rear Camera (23 MP) | 15 MP Front Camera','IOS','6.4 inch','AMOLED','256GB','8GB','pics/61XO4bORHUL._AC_UY327_FMwebp_QL65__D67J9Ju.webp',14,'Sunday',9,'90,999','Apple iPhone 14 Plus 256GB (Product) RED',90999,99990,'99,990','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_cK5TK8J.jpg',2456),(42,'Redmi','Narzo 50A','MAHAKAAL MOBILES.','4GB 128GB',45,'4700mah','50MP camera','MIUI 14','6.5 inch','FULL HD+','128GB','4GB','pics/81IPrkMDqVL._AC_UY327_FMwebp_QL65__ixWymLq.webp',16,'Wednesday',14,'12,499','realme narzo 50A Prime (Flash Black, 4GB RAM+128GB Storage) FHD+ Display | 50MP AI Triple Camera',12499,14999,'14,999','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_s7zjq57.jpg',3452),(43,'Samsung','Samsung M33','Darshita Etel','6GB 128GB',46,'6000mah','Rear Camera (84MP) | 60MP Front Camera','Android 14, OneU 4.1','6.7 inch','AMOLED','128GB','6GB','pics/81I3w4J6yjL._SX679__vVgY6vl.jpg',16,'Tuesday',32,'16,999','Samsung Galaxy M33 5G (Mystique Green, 6GB, 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately',16999,24999,'24,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_TuZPXWb.jpg',23841),(44,'OPPO','A78','Darshita Etel','8GB 128GB',47,'5000mah','Quad Camera (108MP+8MP+2MP+2MP) | 32MP Front Camer','Android 12, OneU 4.1','6.5 inch','AMOLED','128GB','8GB','pics/41yx-OTfNwL._SX300_SY300_QL70_FMwebp_.webp',18,'Saturday',14,'18,999','Oppo A78 5G (Glowing Blue, 8GB RAM, 128 Storage) | 5000 mAh Battery with 33W SUPERVOOC Charger| 50MP AI Camera | 90Hz Refresh Rate | with No Cost EMI/Additional Exchange Offers',18999,21999,'21,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_4jNNuUN.jpg',1086),(45,'Apple','iPhone 13 Pro','Darshita Etel','256GB',48,'4200mah','Rear Camera (45 MP) | 35 MP Front Camera','IOS','6.7-inch','FULL HD+','256GB','6GB','pics/61XO4bORHUL._AC_UY327_FMwebp_QL65__AxCXN2B.webp',10,'Saturday',5,'1,39,900','Apple iPhone 14 Pro 256GB Space Black',139900,145900,'1,45,900','pics/1000_F_467973594_OSgimOYGDDiM6UBgv61bKiRH8PzlH0cI_F7ex4tK.jpg',3456),(46,'Realme','Narzo 50 5G','MAHAKAAL MOBILES.','4GB 128GB',49,'5200mah','Quad Camera','MIUI 14','6.53 inches','FULL HD+','128GB','4GB','pics/91p5LGitZL._AC_UY327_FMwebp_QL65__PMx77qd.webp',16,'Sunday',16999,'16,999','realme narzo 50 5G (Hyper Blue, 4GB RAM+128GB Storage) Dimensity  810  5G Processor | 48MP Ultra',11,18999,'18,999','pics/1000_F_532407942_Fma76SotoFXJFwxBVqkiL0NEExYdNo0t_AUH97SQ.jpg',1065);
+/*!40000 ALTER TABLE `app_1_mobile_depth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_shirts`
+--
+
+DROP TABLE IF EXISTS `app_1_shirts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_shirts` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `image` varchar(200) NOT NULL,
+  `shirt_head` varchar(200) NOT NULL,
+  `shirt_discount_price` varchar(10) NOT NULL,
+  `shirt_orginal_price` varchar(10) NOT NULL,
+  `shirt_discount` varchar(10) NOT NULL,
+  `shirt_integer_dicount` int NOT NULL,
+  `shirt_integer_orginal` int NOT NULL,
+  `shirt_model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_shirts`
+--
+
+LOCK TABLES `app_1_shirts` WRITE;
+/*!40000 ALTER TABLE `app_1_shirts` DISABLE KEYS */;
+INSERT INTO `app_1_shirts` VALUES (1,'https://rukminim1.flixcart.com/image/612/612/kzd147k0/shirt/o/6/i/m-khsh000535-ketch-original-imagbe4ftrmtw2mg.jpeg?q=70','Men Slim Fit Checkered Casual Shirt','₹389','₹999','61% off',389,999,'KETCH'),(2,'https://rukminim1.flixcart.com/image/612/612/l0cr4i80/shirt/z/2/u/s-sh-68-getchi-original-imagc5xphwqw6fgj.jpeg?q=70','Men Regular Fit Solid Spread Collar Formal Shirt','₹449','₹899','50% off',449,899,'GETCHI'),(3,'https://rukminim1.flixcart.com/image/612/612/kxdl3m80/shirt/a/7/a/l-ts-shirt1083-tanip-original-imag9ugfzkdhprzn.jpeg?q=70','Men Slim Fit Solid Spread Collar Casual Shirt','₹399','₹1,399','71% off',399,1399,'Tanip'),(4,'https://rukminim1.flixcart.com/image/612/612/kflftzk0-0/shirt/9/7/d/s-hlsh011408-highlander-original-imafwyf39jx3kfcc.jpeg?q=70','Men Slim Fit Solid Cut Away Collar Casual Shirt','₹493','₹1,299','62% off',493,1299,'HIGHLANDER'),(5,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/5/f/u/s-p1-sht-hood-geographical-plus91-original-imag4dvycrmpz22p-bb.jpeg?q=70','Men Slim Fit Graphic Print Hood Collar Casual Shirt','₹379','₹1,499','74% off',379,1499,'Plus91'),(6,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/p/d/k/xl-bss-try-this-original-imafvvae4ghhy5pd-bb.jpeg?q=70','Men Slim Fit Color Block Spread Collar Casual Shirt','₹319','₹999','68% off',319,999,'Try This'),(7,'https://rukminim1.flixcart.com/image/612/612/l4oi4cw0/shirt/a/3/9/xl-4000-combraided-original-imagfgzguwfuryw9.jpeg?q=70','Men Regular Fit Striped Casual Shirt','₹299','₹1,499','80% off',299,1499,'COMBRAIDED'),(8,'https://rukminim1.flixcart.com/image/612/612/kvlaaa80/shirt/y/y/n/l-khsh000333-ketch-original-imag8gmyytdxzeng.jpeg?q=70','Men Slim Fit Checkered Casual Shirt','₹385','₹899','57% off',385,899,'KETCH'),(9,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/m/o/w/m-kcsh-110-bk-fubar-original-imagk3dnujyctse8.jpeg?q=70','Men Slim Fit Solid Mandarin Collar Casual Shirt','₹399','₹999','60% off',399,999,'FUBAR'),(10,'https://rukminim1.flixcart.com/image/612/612/kovsvbk0/shirt/b/q/t/s-ts-shirt1029-tanip-original-imag38a3fen3wmv7.jpeg?q=70','Men Slim Fit Checkered Spread Collar Casual Shirt','₹399','₹1,399','71% off',399,1399,'Tanip'),(11,'https://rukminim1.flixcart.com/image/612/612/k6fd47k0/shirt/9/f/5/xl-c415-tealblue-dennis-lingo-original-imafzvvrxzt8tpar.jpeg?q=70','Men Slim Fit Checkered Slim Collar Casual Shirt','₹499','₹2,499','80% off',499,2499,'Dennis Lingo'),(12,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/e/h/8/2xl-collor-2-aidan-paul-original-imagc3gunm3daexn-bb.jpeg?q=70','Men Regular Fit Solid Cut Away Collar Casual Shirt','₹471','₹1,999','76% off',471,1999,'AIDAN PAUL'),(13,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/m/z/e/l-ts-shirt1028-tanip-original-imag377shbjqn8cp-bb.jpeg?q=70','Men Slim Fit Checkered Spread Collar Casual Shirt','₹399','₹1,399','71% off',399,1399,'Tanip'),(14,'https://rukminim1.flixcart.com/image/612/612/kxz0pe80/shirt/1/0/e/m-st325mn-majestic-man-original-imagab8fqy2qshj5.jpeg?q=70','Men Slim Fit Checkered Casual Shirt','₹449','₹1,499','70% off',449,1499,'Majestic Man'),(15,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/h/g/v/l-fo-shrt-499-cmnt-5th-anfold-original-imafkhgxzg9dfmwk-bb.jpeg?q=70','Men Slim Fit Solid Formal Shirt','₹449','₹1,199','62% off',449,1199,'5TH ANFOLD'),(16,'https://rukminim1.flixcart.com/image/612/612/l0y6qa80/shirt/k/m/h/l-st128gy-majestic-man-original-imagcmz4qnhrskz3.jpeg?q=70','Men Slim Fit Solid Spread Collar Casual Shirt','₹449','₹1,499','70% off',449,1499,'Majestic Man'),(17,'https://rukminim1.flixcart.com/image/612/612/l3os4280/shirt/f/8/x/xl-men-slim-fit-printed-spread-collar-casual-shirt-icome-original-imageqvkcjrvgmyb.jpeg?q=70','Men Regular Fit Printed Cut Away Collar Casual Shirt','₹399','₹799','50% off',399,799,'icome'),(18,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/1/k/m/xxl-sh-white-line-u-turn-original-imagf4x64qkg9wzk-bb.jpeg?q=70','Men Slim Fit Striped Spread Collar Casual Shirt','₹389','₹1,899','79% off',389,1899,'U TURN'),(19,'https://rukminim1.flixcart.com/image/612/612/l30hmkw0/shirt/t/k/f/l-check1195-tanip-original-image85ed7ezb29q.jpeg?q=70','Men Slim Fit Checkered Spread Collar Casual Shirt','₹279','₹1,399','80% off',279,1399,'Tanip'),(20,'https://rukminim1.flixcart.com/image/612/612/kfoapow0-0/shirt/o/u/a/s-hlsh009608-highlander-original-imafw2gpbs5rcgzm.jpeg?q=70','Men Slim Fit Solid Casual Shirt','₹571','₹1,299','56% off',571,1299,'HIGHLANDER'),(21,'https://rukminim1.flixcart.com/image/612/612/l1jmc280/shirt/i/x/p/xl-st2-vebnor-original-imagd2ym7cbtqrjw.jpeg?q=70','Men Regular Fit Solid Spread Collar Casual Shirt','₹339','₹1,849','81% off',339,1849,'VeBNoR'),(22,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/t/k/p/l-tblshirtful-sh29-tripr-original-imagdwffvyshhxgq-bb.jpeg?q=70','Men Regular Fit Printed Spread Collar Casual Shirt','₹359','₹1,999','82% off',359,1999,'TRIPR'),(23,'https://rukminim1.flixcart.com/image/612/612/ktd9mkw0/shirt/m/q/x/xxl-frml-st2-vebnor-original-imag6qduuh3efv3w.jpeg?q=70','Men Regular Fit Solid Button Down Collar Formal Shirt','₹339','₹1,849','81% off',339,1849,'VeBNoR'),(24,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/u/j/9/m-khsh000938-ketch-original-imagg9n7nchfb48x.jpeg?q=70','Men Slim Fit Printed Cut Away Collar Casual Shirt','₹537','₹1,249','57% off',537,1249,'KETCH'),(25,'https://rukminim1.flixcart.com/image/612/612/kst9gnk0/shirt/r/s/t/xxl-frml-st2-vebnor-original-imag6at4hgjrvyun.jpeg?q=70','Men Regular Fit Solid Button Down Collar Formal Shirt','₹339','₹1,849','81% off',339,1849,'VeBNoR'),(26,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/n/7/a/s-st2-vebnor-original-imagyhynxeezqumw-bb.jpeg?q=70','Men Regular Fit Solid Spread Collar Casual Shirt','₹339','₹1,849','81% off',339,1849,'VeBNoR'),(27,'https://rukminim1.flixcart.com/image/612/612/ku4ezrk0/shirt/l/f/v/s-frml-st2-vebnor-original-imag7bdy3puffdpz.jpeg?q=70','Men Regular Fit Solid Button Down Collar Formal Shirt','₹339','₹1,849','81% off',339,1849,'VeBNoR'),(28,'https://rukminim1.flixcart.com/image/612/612/knqd3m80/shirt/0/s/1/l-hlsh012469-highlander-original-imag2ckdsxfajgde.jpeg?q=70','Men Slim Fit Printed Cut Away Collar Casual Shirt','₹538','₹1,099','51% off',538,1099,'HIGHLANDER'),(29,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/v/g/j/m-bchk-yellow-base-41-original-imag7fbukh8k5ffv-bb.jpeg?q=70','Men Slim Fit Checkered Spread Collar Casual Shirt','₹299','₹1,599','81% off',299,1599,'BASE 41'),(30,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/4/0/a/5xl-pk19sh09r-surhi-original-imaft953scfuvus8.jpeg?q=70','Men Slim Fit Checkered Casual Shirt','₹299','₹1,999','85% off',299,1999,'Surhi'),(31,'https://rukminim1.flixcart.com/image/612/612/knhsgi80/shirt/2/v/n/xl-sksh-bb110-xl-ye-3-fubar-original-imag263ywfdmxgxa.jpeg?q=70','Men Slim Fit Solid Mandarin Collar Casual Shirt','₹399','₹1,098','63% off',399,1098,'FUBAR'),(32,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/k/z/v/xl-hlsh014001-highlander-original-imagjscyptxzhrcm.jpeg?q=70','Men Slim Fit Striped Cut Away Collar Casual Shirt','₹643','₹2,249','71% off',643,2249,'HIGHLANDER'),(33,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/u/j/f/xxl-shirt-01-blue-moonvelly-original-imaghjgpvhze4vas.jpeg?q=70','Men Slim Fit Solid Button Down Collar Formal Shirt','₹359','₹2,099','82% off',359,2099,'MOONVELLY'),(34,'https://rukminim1.flixcart.com/image/612/612/l1pc3gw0/shirt/c/i/t/l-st2-vebnor-original-imagd7b7aeybhxvs.jpeg?q=70','Men Regular Fit Solid Spread Collar Casual Shirt','₹339','₹1,849','81% off',339,1849,'VeBNoR'),(35,'https://rukminim1.flixcart.com/image/612/612/kfoapow0-0/shirt/c/f/d/m-hlsh008838-highlander-original-imafw2ggvyuzf5g6.jpeg?q=70','Men Slim Fit Solid Tie up Collar Casual Shirt','₹499','₹999','50% off',499,999,'HIGHLANDER'),(36,'https://rukminim1.flixcart.com/image/612/612/knqd3m80/shirt/s/r/r/xl-hlsh012595-highlander-original-imag2ckd3fpmvzhh.jpeg?q=70','Men Slim Fit Printed Cut Away Collar Casual Shirt','₹516','₹1,099','53% off',516,1099,'HIGHLANDER'),(37,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/o/t/z/xl-kcsh-110-pp-3-fubar-original-imafzzs3jx6nhjep-bb.jpeg?q=70','Men Slim Fit Solid Mandarin Collar Casual Shirt','₹399','₹1,098','63% off',399,1098,'FUBAR'),(38,'https://rukminim1.flixcart.com/image/612/612/kxdl3m80/shirt/o/e/h/l-ts-shirt1084-tanip-original-imag9ugfbemk7mx3.jpeg?q=70','Men Slim Fit Solid Spread Collar Casual Shirt','₹329','₹1,399','76% off',329,1399,'Tanip'),(39,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/o/d/v/l-hm-shirt26-hanumntra-original-imafuqy3q4rzffx7-bb.jpeg?q=70','Men Regular Fit Printed Spread Collar Casual Shirt','₹399','₹1,899','78% off',399,1899,'HANUMNTRA'),(40,'https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/z/p/v/l-hlsh013887-highlander-original-imaggkzwggyzquta.jpeg?q=70','Men Slim Fit Printed Cut Away Collar Casual Shirt','₹701','₹1,949','64% off',701,1949,'HIGHLANDER');
+/*!40000 ALTER TABLE `app_1_shirts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_tv`
+--
+
+DROP TABLE IF EXISTS `app_1_tv`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_tv` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `image` varchar(400) NOT NULL,
+  `tv_head` varchar(200) NOT NULL,
+  `tv_discount_price` varchar(10) NOT NULL,
+  `tv_orginal_price` varchar(10) NOT NULL,
+  `tv_discount` varchar(10) NOT NULL,
+  `tv_integer_dicount` int NOT NULL,
+  `tv_integer_orginal` int NOT NULL,
+  `tv_users` varchar(30) NOT NULL,
+  `tv_warranty` varchar(500) NOT NULL,
+  `tv_screen` varchar(100) NOT NULL,
+  `tv_os` varchar(100) DEFAULT NULL,
+  `tv_brand` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_tv`
+--
+
+LOCK TABLES `app_1_tv` WRITE;
+/*!40000 ALTER TABLE `app_1_tv` DISABLE KEYS */;
+INSERT INTO `app_1_tv` VALUES (1,'https://rukminim1.flixcart.com/image/312/312/l2ghgnk0/television/u/a/c/l32m7-5ain-mi-original-imagdsdwqf6bkmkz.jpeg?q=70','Mi 5A 80 cm (32 inch) HD Ready LED Smart Android TV with Dolby Audio (2022 Model)','₹13,999','₹24,999','44% off',13999,24999,'3,39,452 Ratings ','1 Year Warranty on Product and 2 Years Warranty on Panel. OEM warranty activation starts from the date of delivery.','HD Ready 1366 x 768 Pixels','','Mi'),(2,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/h/a/r/-original-imaghgphdj9fsvzt.jpeg?q=70','realme 80 cm (32 inch) HD Ready LED Smart Android TV','₹13,999','₹17,999','22% off',13999,17999,'2,43,300 Ratings ','1 Year Domestic Warranty, 2 Years on Panel','HD Ready 1366 x 768 Pixels','','realme'),(3,'https://rukminim1.flixcart.com/image/312/312/l51d30w0/television/1/k/j/-original-imagfsyu8nrz5gzg.jpeg?q=70','Thomson Alpha 80 cm (32 inch) HD Ready LED Smart Linux TV with 30 W Sound Output & Bezel-Less Design','₹8,499','₹14,999','43% off',8499,14999,'9,875 Ratings ','1 Year Warranty on Product and 6 Months on Accessories','HD Ready 1366 x 768 Pixels','','Thomson'),(4,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/h/v/p/-original-imagmmnzsnvrdypn.jpeg?q=70','Yuwa 30w In-built Soundbar 80 cm (32 inch) HD Ready LED Smart Android TV 2023 Edition with Voice Assis...','₹8,589','₹21,990','60% off',8589,21990,'6089 Ratings','1 Year Standard Manufacturer Warranty From Yuwa','HD Ready 1366 x 768 Pixels','','Yuwa'),(5,'https://rukminim1.flixcart.com/image/312/312/l0fm07k0/television/7/x/9/-original-imagc8fnpx39evgc.jpeg?q=70','LG 80 cm (32 inch) HD Ready LED Smart WebOS TV','₹13,990','₹21,990','36% off',13990,21990,'51,461 Ratings ','1 Year LG India Comprehensive Warranty and additional 1 year Warranty is applicable on Panel/Module from the date of purchase.','HD Ready 1366 x 768 Pixels','','LG'),(6,'https://rukminim1.flixcart.com/image/312/312/kph8h3k0/television/k/9/h/40y1-40fa1a00-oneplus-original-imag3p45tdgyvpqa.jpeg?q=70','OnePlus Y1 100 cm (40 inch) Full HD LED Smart Android TV with Dolby Audio','₹20,899','₹27,999','25% off',20899,27999,'1,44,190 Ratings ','1 Year Warranty on Product and 1 Year Additional Warranty for Panel','Full HD 1920 x 1080 Pixels','','OnePlus'),(7,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/m/n/p/-original-imagkzctc2gkvfgf.jpeg?q=70','SAMSUNG 80 cm (32 Inch) HD Ready LED Smart Tizen TV with 2022 Model','₹13,490','₹18,900','28% off',13490,18900,'78,779 Ratings ','1 Year Comprehensive Warranty on Product and 1 Year Additional on Panel','HD Ready 1366 x 768 Pixels','','SAMSUNG'),(8,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/x/r/b/32s2b-cloud-lite-skytron-original-imagkydygthq2vbm.jpeg?q=70','SKYTRON 80 cm (32 inch) HD Ready LED Smart Android Based TV with 20W Thunder Speaker Soundbar and Clou...','₹7,890','₹19,999','60% off',7890,19999,'7 Ratings ','1 Year Standard Manufacturer Warranty','HD Ready 1366 X 768 Pixels','','SKYTRON'),(9,'https://rukminim1.flixcart.com/image/312/312/l2ghgnk0/television/b/h/f/l40m7-eain-mi-original-imagdsdw9gkhscmb.jpeg?q=70','Mi 5A 100 cm (40 inch) Full HD LED Smart Android TV with Dolby Audio (2022 Model)','₹21,999','₹29,999','26% off',21999,29999,'3,39,452 Ratings ','1 Year Warranty on Product and 2 Years Warranty on Panel. OEM warranty activation starts from the date of delivery.','Full HD 1920 x 1080 Pixels','','Mi'),(10,'https://rukminim1.flixcart.com/image/312/312/kzfvzww0/television/e/b/b/32hd2a00-32-y1s-oneplus-original-imagbgcewfqywgk7.jpeg?q=70','OnePlus Y1S 80 cm (32 inch) HD Ready LED Smart Android TV with Android 11 and Bezel-Less Frame','₹15,999','₹21,999','27% off',15999,21999,'1,44,190 Ratings ','1 Year Comprehensive Warranty and Additional 1 Year on Panel Provided By the Manufacturer From Date of Purchase','HD Ready 1366 x 768 Pixels','','OnePlus'),(11,'https://rukminim1.flixcart.com/image/312/312/kzfvzww0/television/g/4/k/43fd2a00-43-y1s-oneplus-original-imagbgc44gerfphz.jpeg?q=70','OnePlus Y1S 108 cm (43 inch) Full HD LED Smart Android TV with Android 11 and Bezel-Less Frame','₹24,999','₹31,999','21% off',24999,31999,'1,44,190 Ratings ','1 Year Comprehensive Warranty and Additional 1 Year on Panel Provided By the Manufacturer From Date of Purchase','Full HD 1920 x 1080 Pixels','','OnePlus'),(12,'https://rukminim1.flixcart.com/image/312/312/ktyp8cw0/television/1/1/i/dy-ld50u3s-dy-ld50u3s-dyanora-original-imag76pz74ujvsfd.jpeg?q=70','Dyanora 127 cm (50 inch) Ultra HD (4K) LED Smart Android Based TV with Noise Reduction, Android 9.0, G...','₹24,999','₹40,999','39% off',24999,40999,'2,756 Ratings ','1 Year Manufacturer Warranty from the Date of Purchase','Ultra HD (4K) 3840 x 2160 Pixels','','Dyanora'),(13,'https://rukminim1.flixcart.com/image/312/312/kqidx8w0/television/m/1/v/32ha0a00-oneplus-original-imag4gy8yezxdhen.jpeg?q=70','OnePlus Y1 80 cm (32 inch) HD Ready LED Smart Android TV with Dolby Audio','₹14,990','₹19,999','25% off',14990,19999,'1,44,190 Ratings ','1 Year Comprehensive Warranty and Additional 1 Year on Panel Provided By the Manufacturer From Date of Purchase','HD Ready 1366 x 768 Pixels','','OnePlus'),(14,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/n/k/q/-original-imaghu25za2hq7dy.jpeg?q=70','iFFALCON by TCL F53 79.97 cm (32 inch) HD Ready LED Smart Android TV with Android 11','₹9,499','₹26,990','64% off',9499,26990,'2,931 Ratings ','1 Year Warranty on Product','HD Ready 1366 x 768 Pixels','','iFFALCON'),(15,'https://rukminim1.flixcart.com/image/312/312/l572ufk0/television/e/f/g/32y1-32y1-infinix-original-imagfxczrxjjwxvf.jpeg?q=70','Infinix Y1 80 cm (32 inch) HD Ready LED Smart Linux TV with Wall Mount','₹8,549','₹16,999','49% off',8549,16999,'14,778 Ratings ','1 Year Domestic Warranty','HD Ready 1366 x 768 Pixels','','Infinix'),(16,'https://rukminim1.flixcart.com/image/312/312/kulk9zk0/television/a/k/g/rmv2101-realme-original-imag7zh4etze62zy.jpeg?q=70','realme NEO 80 cm (32 inch) HD Ready LED Smart Linux TV','₹11,999','₹21,999','45% off',11999,21999,'36,319 Ratings ','1 Year Warranty on Product and 2 Years Warranty on the Display Panel','HD Ready 1366 x 768 Pixels','','realme'),(17,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/5/c/k/-original-imaggsnkne4n5mvh.jpeg?q=70','Mi X Series 108 cm (43 inch) Ultra HD (4K) LED Smart Android TV with Dolby Vision and 30W Dolby Audio ...','₹28,999','₹42,999','32% off',28999,42999,'6,290 Ratings ','1 Year Warranty on Product and 2 Years Warranty on Panel. OEM warranty activation starts from the date of delivery.','Ultra HD (4K) 3840 x 2160 Pixels','','Mi'),(18,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/2/3/k/-original-imagkcdaszup3fac.jpeg?q=70','acer I Series 80 cm (32 inch) HD Ready LED Smart Android TV with Android 11, 1.5GB RAM (2022 Model)','₹11,499','₹19,990','42% off',11499,19990,'2,206 Ratings ','1 Year Warranty','HD Ready 1366 x 768 Pixels','','acer'),(19,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/r/n/x/55ud2a00-55-y1s-pro-oneplus-original-imagk9wcydhe7pbv.jpeg?q=70','OnePlus Y1S Pro 138 cm (55 inch) Ultra HD (4K) LED Smart Android TV','₹39,999','₹49,999','20% off',39999,49999,'338 Ratings ','1 Year Comprehensive Warranty on Product and Additional 1 Year Warranty on Panel Provided by the Manufacturer from the Date of Purchase','Ultra HD (4K) 3840 x 2160 Pixels','','OnePlus'),(20,'https://rukminim1.flixcart.com/image/312/312/l3uhvgw0/television/x/q/x/-original-imageuxkcg2fbdkg.jpeg?q=70','realme 100.3 cm (40 inch) Full HD LED Smart Android TV with Android 11 - 2022 Model','₹19,399','₹31,999','39% off',19399,31999,'2,43,300 Ratings ','1 Year Domestic Warranty on Product and 2 Years on Panel','Full HD 1920 x 1080 Pixels','','realme'),(21,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/i/w/y/-original-imaghu25revgpk2y.jpeg?q=70','iFFALCON by TCL F53 100 cm (40 inch) Full HD LED Smart Android TV with Android 11','₹14,999','₹36,990','59% off',14999,36990,'2,931 Ratings ','1 Year Warranty on Product','Full HD 1920 x 1080 Pixels','','iFFALCON'),(22,'https://rukminim1.flixcart.com/image/312/312/l3uhvgw0/television/g/c/c/-original-imageuxkfxhruvfx.jpeg?q=70','realme 108 cm (43 inch) Full HD LED Smart Android TV with Android 11 - 2022 Model','₹22,999','₹35,999','36% off',22999,35999,'2,43,300 Ratings ','1 Year Domestic Warranty on Product and 2 Years on Panel','Full HD 1920 x 1080 Pixels','','realme'),(23,'https://rukminim1.flixcart.com/image/312/312/l3nco7k0/television/s/q/m/-original-imageq5eptqwxcv8.jpeg?q=70','SAMSUNG Crystal 4K 108 cm (43 inch) Ultra HD (4K) LED Smart Tizen TV','₹29,691','₹52,900','43% off',29691,52900,'12,745 Ratings ','1 Year Comprehensive Warranty on Product and 1 Year Additional on Panel','Ultra HD (4K) 3840 x 2160 Pixels','','SAMSUNG'),(24,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/c/4/u/-original-imagkcdag59gr4dj.jpeg?q=70','acer I Series 109 cm (43 inch) Ultra HD (4K) LED Smart Android TV with Android 11, 30W Dolby Audio, ME...','₹23,999','₹34,990','31% off',23999,34990,'2,206 Ratings ','2 Years Warranty','Ultra HD (4K) 3840 x 2160 Pixels','','acer'),(25,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/1/a/6/-original-imagjpyect5t8gu8.jpeg?q=70','Vu GloLED 108 cm (43 inch) Ultra HD (4K) LED Smart Google TV with DJ Subwoofer 84W','₹27,990','₹40,000','30% off',27990,40000,'7,898 Ratings ','1 Year Domestic Warranty from Vu','Ultra HD (4K) 3840 x 2160 Pixels','','Vu'),(26,'https://rukminim1.flixcart.com/image/312/312/l47cu4w0/television/9/0/f/-original-imagf5qummst7t94.jpeg?q=70','SAMSUNG Crystal 4K Neo Series 108 cm (43 inch) Ultra HD (4K) LED Smart Tizen TV with (Black) (2022 Mod...','₹30,069','₹47,900','37% off',30069,47900,'17,160 Ratings ','1 Year Comprehensive Warranty on Product and 1 Year Additional on Panel','Ultra HD (4K) Crystal 4K FE UHD (3840 x 2160) Pixels','','SAMSUNG'),(27,'https://rukminim1.flixcart.com/image/312/312/ku2zjww0/television/w/c/z/43path4545bl-43path4545bl-thomson-original-imag7a88xjj5y2dv.jpeg?q=70','Thomson 9R PRO 108 cm (43 inch) Ultra HD (4K) LED Smart Android TV','₹19,499','₹33,999','42% off',19499,33999,'17,164 Ratings ','1 Year Warranty on Product and 6 Months on Accessories','Ultra HD (4K) 3840 x 2160 Pixels','','Thomson'),(28,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/h/v/p/-original-imagmmnzsnvrdypn.jpeg?q=70','Yuwa 30w In-built Soundbar 80 cm (32 inch) HD Ready LED Smart Android TV 2023 Edition with Voice Assis...','₹8,589','₹21,990','60% off',8589,21990,'6089 Ratings','1 Year Standard Manufacturer Warranty From Yuwa','HD Ready 1366 x 768 Pixels','','Yuwa'),(29,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/x/l/n/-original-imaggz6zrhhg8ht2.jpeg?q=70','TOSHIBA V35KP 108 cm (43 inch) Full HD LED Smart Android TV with DTS Virtual X (2022 Model)','₹21,999','₹34,990','37% off',21999,34990,'1,410 Ratings ','2 Years Comprehensive Warranty','Full HD 1920 x 1080 Pixels','','TOSHIBA'),(30,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/k/i/b/-original-imaggsnk8gwmeg3h.jpeg?q=70','Mi X Series 138 cm (55 inch) Ultra HD (4K) LED Smart Android TV with Dolby Vision & 30W Dolby Audio (2...','₹39,999','₹54,999','27% off',39999,54999,'6,290 Ratings ','1 Year Warranty on Product and 2 Years Warranty on Panel. OEM warranty activation starts from the date of delivery.','Ultra HD (4K) 3840 x 2160 Pixels','','Mi'),(31,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/l/d/q/-original-imaggsnkparsege3.jpeg?q=70','Mi X Series 125 cm (50 inch) Ultra HD (4K) LED Smart Android TV with Dolby Vision & 30W Dolby Audio (2...','₹34,999','₹44,999','22% off',34999,44999,'6,290 Ratings ','1 Year Warranty on Product and 2 Years Warranty on Panel. OEM warranty activation starts from the date of delivery.','Ultra HD (4K) 3840 x 2160 Pixels','','Mi'),(32,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/i/v/k/fl-y-32s-fl-yuwa-original-imagm3wn8kuhawye.jpeg?q=70','Yuwa Bezel Less/Frameless 80 cm (32 inch) HD Ready LED Smart Android TV 2023 Edition with Voice Assist...','₹8,439','₹20,999','59% off',8439,20999,'6089 Ratings','1 Year Standard Manufacturer Warranty From Yuwa','HD Ready 1366 x 768 Pixels','','Yuwa'),(33,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/m/n/k/-original-imagkcd9czhrkzrm.jpeg?q=70','acer I Series 139 cm (55 inch) Ultra HD (4K) LED Smart Android TV with Android 11, 30W Dolby Audio, ME...','₹32,399','₹47,990','32% off',32399,47990,'2,206 Ratings ','2 Years Warranty','Ultra HD (4K) 3840 x 2160 Pixels','','acer'),(34,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/n/h/y/-original-imagg24zpbk2h7tx.jpeg?q=70','LG UQ7500 108 cm (43 inch) Ultra HD (4K) LED Smart WebOS TV 2022 Edition','₹31,990','₹49,990','36% off',31990,49990,'12,085 Ratings ','1 Year LG India Comprehensive Warranty and additional 1 year Warranty is applicable on Panel/Module from the date of purchase.','Ultra HD (4K) 3840 x 2160 Pixels','','LG'),(35,'https://rukminim1.flixcart.com/image/312/312/l2f20sw0/television/k/s/l/l43m7-eain-mi-original-imagdrtndgnrymr9.jpeg?q=70','Mi 5A 108 cm (43 inch) Full HD LED Smart Android TV with Dolby Audio (2022 Model)','₹24,999','₹35,999','30% off',24999,35999,'3,39,452 Ratings ','1 Year Warranty on Product and 2 Years Warranty on Panel. OEM warranty activation starts from the date of delivery.','Full HD 1920 x 1080 Pixels','','Mi'),(36,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/x/r/b/32s2b-cloud-lite-skytron-original-imagkydygthq2vbm.jpeg?q=70','SKYTRON 80 cm (32 inch) HD Ready LED Smart Android Based TV with 20W Thunder Speaker Soundbar and Clou...','₹7,890','₹19,999','60% off',7890,19999,'7 Ratings ','1 Year Standard Manufacturer Warranty','HD Ready 1366 X 768 Pixels','','SKYTRON'),(37,'https://rukminim1.flixcart.com/image/312/312/kbs9k7k0/television/c/j/3/samsung-ua32t4340akxxl-original-imaft25qdysfsq7k.jpeg?q=70','SAMSUNG 80 cm (32 inch) HD Ready LED Smart Tizen TV','₹13,490','₹22,900','41% off',13490,22900,'78,779 Ratings ','1 Year Comprehensive Warranty on Product and 1 Year Additional on Panel','HD Ready 1366 x 768 Pixels','','SAMSUNG'),(38,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/v/c/4/-original-imaghzmnzdfzqkgt.jpeg?q=70','Vu GloLED 139 cm (55 inch) Ultra HD (4K) LED Smart Google TV with DJ Subwoofer 104W','₹37,999','₹65,000','41% off',37999,65000,'7,898 Ratings ','1 Year Domestic Warranty','Ultra HD (4K) 3840 x 2160 Pixels','','Vu'),(39,'https://rukminim1.flixcart.com/image/312/312/kiyw9e80-0/television/p/0/w/32path0011-thomson-original-imafynyvsmeuwtzr.jpeg?q=70','Thomson 9A Series 80 cm (32 inch) HD Ready LED Smart Android TV','₹9,499','₹14,499','34% off',9499,14499,'93,171 Ratings ','1 Year Warranty on Product & 6 Months on Accessories','HD Ready 1366 x 768 Pixels','','Thomson'),(40,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/e/d/x/dy-ld50u2s-w1-dyanora-original-imaghtzfq4jzseqn.jpeg?q=70','Dyanora 127 cm (50 inch) Ultra HD (4K) LED Smart WebOS TV','₹24,499','₹43,999','44% off',24499,43999,'2,756 Ratings ','1 Year Manufacturer Warranty from the Date of Purchase.','Ultra HD (4K) 3840 x 2160 Pixels','','Dyanora'),(41,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/z/g/9/55ut-webos-vu-original-imaggtsd2bz7gggh.jpeg?q=70','Vu 138 cm (55 inch) Ultra HD (4K) LED Smart WebOS TV','₹29,990','₹65,000','53% off',29990,65000,'25,970 Ratings ','1 Year Domestic Warranty from Vu','Ultra HD (4K) 3840 x 2160 Pixels','','Vu'),(42,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/g/d/y/50x3-infinix-original-imaggfzdbstsqsgy.jpeg?q=70','Infinix X3 126 cm (50 inch) Ultra HD (4K) LED Smart Android TV','₹24,999','₹39,999','37% off',24999,39999,'587 Ratings ','1 Year Domestic Warranty','Ultra HD (4K) 3840 x 2160 Pixels','','Infinix'),(43,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/z/y/b/-original-imaghzme4zjgmvpe.jpeg?q=70','Vu GloLED 126 cm (50 inch) Ultra HD (4K) LED Smart Google TV with DJ Subwoofer 104W','₹32,999','₹55,000','40% off',32999,55000,'7,898 Ratings ','1 Year Domestic Warranty','Ultra HD (4K) 3840 x 2160 Pixels','','Vu'),(44,'https://rukminim1.flixcart.com/image/312/312/ktyp8cw0/television/1/1/i/dy-ld50u3s-dy-ld50u3s-dyanora-original-imag76pz74ujvsfd.jpeg?q=70','Dyanora 127 cm (50 inch) Ultra HD (4K) LED Smart Android Based TV with Noise Reduction, Android 9.0, G...','₹24,999','₹40,999','39% off',24999,40999,'2,756 Ratings ','1 Year Manufacturer Warranty from the Date of Purchase','Ultra HD (4K) 3840 x 2160 Pixels','','Dyanora'),(45,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/5/9/p/ar32ar2841hdsb-ar32ar2841hdsb-acer-original-imaghvqna3hzabye.jpeg?q=70','acer S Series 80 cm (32 inch) HD Ready LED Smart Android TV with 40W Soundbar, 1.5GB RAM','₹12,499','₹22,990','45% off',12499,22990,'39 Ratings ','1 Year warranty on Product','HD Ready 1366 × 768 Pixels','','acer'),(46,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/n/f/q/-original-imagkjvehybezb4e.jpeg?q=70','iFFALCON by TCL U62 108 cm (43 inch) Ultra HD (4K) LED Smart Google TV','₹21,999','₹49,990','55% off',21999,49990,'841 Ratings ','1 Year Warranty on Product','Ultra HD (4K) 3840 x 2160 Pixels','','iFFALCON'),(47,'https://rukminim1.flixcart.com/image/312/312/xif0q/television/q/8/z/-original-imagk7sj2wsrecyj.jpeg?q=70','Hisense A6H 126 cm (50 inch) Ultra HD (4K) LED Smart Google TV with Hands Free Voice Control, Dolby Vi...','₹32,999','₹54,990','39% off',32999,54990,'260 Ratings ','2 Years Warranty on Product and Panel','Ultra HD (4K) 3840 x 2160 Pixels','','Hisense'),(48,'https://rukminim1.flixcart.com/image/312/312/kuwzssw0/television/b/1/v/u-series-55-u1s-55uc1a00-oneplus-original-imag7xtnzgaaxqrg.jpeg?q=70','OnePlus U1S 139 cm (55 inch) Ultra HD (4K) LED Smart Android TV with Far field and Dolby Audio','₹42,999','₹59,999','28% off',42999,59999,'14,573 Ratings ','1 year warranty on product and 1 year warranty on panel','Ultra HD (4K) 3840 x 2160 Pixels','','OnePlus');
+/*!40000 ALTER TABLE `app_1_tv` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_user_register`
+--
+
+DROP TABLE IF EXISTS `app_1_user_register`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_user_register` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_user_register`
+--
+
+LOCK TABLES `app_1_user_register` WRITE;
+/*!40000 ALTER TABLE `app_1_user_register` DISABLE KEYS */;
+INSERT INTO `app_1_user_register` VALUES (1,'Nivash','9876543210','nivi@gmail.com','1234567'),(2,'Rakesh','1234567890','raki@gmail.com','0987654'),(3,'Arun','9876543210','arun12@gmail.com','arun123'),(4,'charlie','5678901234','charlie@gmail.com','charlie123'),(5,'Parthiban','9367914988','parth123@gmail.com','parthi1966'),(6,'kunalika','0987654321','kunalika@gmail.com','12345677');
+/*!40000 ALTER TABLE `app_1_user_register` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `app_1_usermodel`
+--
+
+DROP TABLE IF EXISTS `app_1_usermodel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `app_1_usermodel` (
+  `user_ptr_id` int NOT NULL,
+  `mobile` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`user_ptr_id`),
+  CONSTRAINT `app_1_usermodel_user_ptr_id_40b7dd31_fk_auth_user_id` FOREIGN KEY (`user_ptr_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_1_usermodel`
+--
+
+LOCK TABLES `app_1_usermodel` WRITE;
+/*!40000 ALTER TABLE `app_1_usermodel` DISABLE KEYS */;
+INSERT INTO `app_1_usermodel` VALUES (25,'2345678910'),(27,'3456789012'),(29,'9547809043'),(30,'9150757768'),(32,'9547809044'),(33,'9876504321'),(34,'1234509876'),(35,'9942761863'),(37,'9942761863');
+/*!40000 ALTER TABLE `app_1_usermodel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_group`
+--
+
+DROP TABLE IF EXISTS `auth_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_group` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group`
+--
+
+LOCK TABLES `auth_group` WRITE;
+/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_group_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_group_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_group_permissions` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `group_id` int NOT NULL,
+  `permission_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),
+  KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group_permissions`
+--
+
+LOCK TABLES `auth_group_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_permission`
+--
+
+DROP TABLE IF EXISTS `auth_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_permission` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `content_type_id` int NOT NULL,
+  `codename` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
+  CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_permission`
+--
+
+LOCK TABLES `auth_permission` WRITE;
+/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add mobile',7,'add_mobile'),(26,'Can change mobile',7,'change_mobile'),(27,'Can delete mobile',7,'delete_mobile'),(28,'Can view mobile',7,'view_mobile'),(29,'Can add user_ register',8,'add_user_register'),(30,'Can change user_ register',8,'change_user_register'),(31,'Can delete user_ register',8,'delete_user_register'),(32,'Can view user_ register',8,'view_user_register'),(33,'Can add mobile_depth',9,'add_mobile_depth'),(34,'Can change mobile_depth',9,'change_mobile_depth'),(35,'Can delete mobile_depth',9,'delete_mobile_depth'),(36,'Can view mobile_depth',9,'view_mobile_depth'),(37,'Can add profile',10,'add_profile'),(38,'Can change profile',10,'change_profile'),(39,'Can delete profile',10,'delete_profile'),(40,'Can view profile',10,'view_profile'),(41,'Can add user',11,'add_user'),(42,'Can change user',11,'change_user'),(43,'Can delete user',11,'delete_user'),(44,'Can view user',11,'view_user'),(45,'Can add user',12,'add_usermodel'),(46,'Can change user',12,'change_usermodel'),(47,'Can delete user',12,'delete_usermodel'),(48,'Can view user',12,'view_usermodel'),(49,'Can add browsing',13,'add_browsing'),(50,'Can change browsing',13,'change_browsing'),(51,'Can delete browsing',13,'delete_browsing'),(52,'Can view browsing',13,'view_browsing'),(53,'Can add laptop',14,'add_laptop'),(54,'Can change laptop',14,'change_laptop'),(55,'Can delete laptop',14,'delete_laptop'),(56,'Can view laptop',14,'view_laptop'),(57,'Can add headset',15,'add_headset'),(58,'Can change headset',15,'change_headset'),(59,'Can delete headset',15,'delete_headset'),(60,'Can view headset',15,'view_headset'),(61,'Can add tv',16,'add_tv'),(62,'Can change tv',16,'change_tv'),(63,'Can delete tv',16,'delete_tv'),(64,'Can view tv',16,'view_tv'),(65,'Can add shirts',17,'add_shirts'),(66,'Can change shirts',17,'change_shirts'),(67,'Can delete shirts',17,'delete_shirts'),(68,'Can view shirts',17,'view_shirts'),(69,'Can add cart',18,'add_cart'),(70,'Can change cart',18,'change_cart'),(71,'Can delete cart',18,'delete_cart'),(72,'Can view cart',18,'view_cart'),(73,'Can add laptop1',19,'add_laptop1'),(74,'Can change laptop1',19,'change_laptop1'),(75,'Can delete laptop1',19,'delete_laptop1'),(76,'Can view laptop1',19,'view_laptop1'),(77,'Can add mobile1',20,'add_mobile1'),(78,'Can change mobile1',20,'change_mobile1'),(79,'Can delete mobile1',20,'delete_mobile1'),(80,'Can view mobile1',20,'view_mobile1'),(81,'Can add comment',21,'add_comment'),(82,'Can change comment',21,'change_comment'),(83,'Can delete comment',21,'delete_comment'),(84,'Can view comment',21,'view_comment'),(85,'Can add cart_redirect',22,'add_cart_redirect'),(86,'Can change cart_redirect',22,'change_cart_redirect'),(87,'Can delete cart_redirect',22,'delete_cart_redirect'),(88,'Can view cart_redirect',22,'view_cart_redirect');
+/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user`
+--
+
+DROP TABLE IF EXISTS `auth_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$390000$1muQuFFhSxRuYViUcXnPsi$ImCjyOtlFm35yehlyZQV7bQ7E8tHhmq2HQ3XGSVEpAw=','2023-02-17 17:25:57.964435',1,'nivi','','','',1,1,'2023-02-03 14:20:21.381365'),(21,'pbkdf2_sha256$390000$v1dId1pU1RVHtgPriTXRvF$lFLD5kZ2elkZFDeU1l/5Uf1r32aN5oNpNUZZHO1djjI=',NULL,0,'Nivash','','','nivash@gmail.com',0,1,'2023-02-12 15:40:16.997092'),(22,'pbkdf2_sha256$390000$otjj6N6qL6WxtvOpfiadcQ$vG756d+ilSaP3Bb15X3QZpwcDI38kN0Kghc85QFZxA0=','2023-02-19 14:31:50.642606',1,'Rakesh','','','raki@gmail.com',1,1,'2023-02-12 15:48:07.000000'),(23,'pbkdf2_sha256$390000$nUK74bBdKeMAzUki2SYuWf$htLb4HESbeQ27guH3VsyV8FzaQc6+cMhHbVofUAccPo=',NULL,0,'charlie','','','charlie@gmail.com',0,1,'2023-02-12 15:50:58.638406'),(25,'pbkdf2_sha256$390000$H472mqPoJ0alEHMaAUBueT$o9WEqQsQbXun7ZVSUaZLMji/Ja9zW4L8yTtBpBEoNmg=',NULL,0,'Arun','','','arun123@gmail.com',0,1,'2023-02-12 16:11:56.923409'),(27,'pbkdf2_sha256$390000$rSyjHvNjls5jwVzYmhAoUW$RFOPCfMD3slBOaie1/YCnO50GVJ4OXzkvEcVYvomdIo=',NULL,0,'Amazon','','','ama@gmail.com',0,1,'2023-02-12 16:16:40.149866'),(29,'pbkdf2_sha256$390000$V8z5hAAX4gXnyd9URg4zTj$ngPvRVhOOs5KqaWIz8rY1+vE+sHVOwy0Br83qgtdg3I=',NULL,0,'Gay3','','','gaya123@gmail.com',0,1,'2023-02-12 16:17:38.677403'),(30,'pbkdf2_sha256$390000$XPQZj0HRXedg6NrREIlmrT$2KIUmhicne4S60JN/di0UpLDy9xPKEkVOu0CX8D6QYQ=',NULL,0,'Bharathi','','','bharathi123@gmail.com',0,1,'2023-02-12 16:21:34.169036'),(32,'pbkdf2_sha256$390000$6c2Ddb91VyIJi5iwvTs0H3$3+ijFGr56vNtRi3MKKW64KiMTTK1JwRul67peS1c0C0=',NULL,0,'Prasan','','','prasan@gmail.com',0,1,'2023-02-12 16:24:37.404226'),(33,'pbkdf2_sha256$390000$90XQkHzRNAh5eNGlHtNxzP$jwUhhvR/5g+BOqZCV0TMLUUTWXT83NGVF19MlOXw4UE=',NULL,0,'love','','','love@gmail.com',0,1,'2023-02-12 16:27:37.724367'),(34,'pbkdf2_sha256$390000$7LcmjPVlFSH2uBXgjiHKrJ$QZAdEZ3+CYKYgaXo03BlJevCwVIQKUluaYyvgveF5y8=',NULL,0,'Leela','','','leela@gmail.com',0,1,'2023-02-12 16:33:49.042620'),(35,'pbkdf2_sha256$390000$H0DkamQBNdd6RqILRNRfTr$T7bz3HWl10zW32LATDz1QY1vIfkI85uypRXhjLnVdDc=',NULL,0,'Natraj','','','natraj@gmail.com',0,1,'2023-02-12 16:40:07.261655'),(37,'pbkdf2_sha256$390000$eZkhr6XdtrqrKS3WmBsdN9$m720SdHDFSKDEjdQBU4vLs7+pQFlpQHfwHGz41h+ivw=',NULL,0,'nat','','','natraj@gmail.com',0,1,'2023-02-12 16:40:39.113546');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_groups`
+--
+
+DROP TABLE IF EXISTS `auth_user_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_user_groups` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `group_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
+  KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`),
+  CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_groups`
+--
+
+LOCK TABLES `auth_user_groups` WRITE;
+/*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_user_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_user_user_permissions` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `permission_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
+  KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_user_permissions`
+--
+
+LOCK TABLES `auth_user_user_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+DROP TABLE IF EXISTS `django_admin_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_admin_log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `action_time` datetime(6) NOT NULL,
+  `object_id` longtext,
+  `object_repr` varchar(200) NOT NULL,
+  `action_flag` smallint unsigned NOT NULL,
+  `change_message` longtext NOT NULL,
+  `content_type_id` int DEFAULT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `django_admin_log_content_type_id_c4bce8eb_fk_django_co` (`content_type_id`),
+  KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
+  CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+LOCK TABLES `django_admin_log` WRITE;
+/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+INSERT INTO `django_admin_log` VALUES (1,'2023-02-03 14:56:45.648936','1','Mobile object (1)',1,'[{\"added\": {}}]',7,1),(2,'2023-02-03 15:08:10.987967','2','Mobile object (2)',1,'[{\"added\": {}}]',7,1),(3,'2023-02-03 15:14:01.790955','2','Mobile object (2)',2,'[]',7,1),(4,'2023-02-03 15:19:31.634290','3','Mobile object (3)',1,'[{\"added\": {}}]',7,1),(5,'2023-02-03 15:21:05.640655','4','Mobile object (4)',1,'[{\"added\": {}}]',7,1),(6,'2023-02-03 15:22:54.034013','5','Mobile object (5)',1,'[{\"added\": {}}]',7,1),(7,'2023-02-03 15:25:38.519308','6','Mobile object (6)',1,'[{\"added\": {}}]',7,1),(8,'2023-02-03 15:27:04.490834','7','Mobile object (7)',1,'[{\"added\": {}}]',7,1),(9,'2023-02-03 15:28:33.299814','8','Mobile object (8)',1,'[{\"added\": {}}]',7,1),(10,'2023-02-03 15:29:42.115061','9','Mobile object (9)',1,'[{\"added\": {}}]',7,1),(11,'2023-02-03 15:31:18.665015','10','Mobile object (10)',1,'[{\"added\": {}}]',7,1),(12,'2023-02-03 15:32:54.832207','11','Mobile object (11)',1,'[{\"added\": {}}]',7,1),(13,'2023-02-03 15:34:39.225774','12','Mobile object (12)',1,'[{\"added\": {}}]',7,1),(14,'2023-02-03 15:36:39.987818','13','Mobile object (13)',1,'[{\"added\": {}}]',7,1),(15,'2023-02-03 15:40:02.083705','14','Mobile object (14)',1,'[{\"added\": {}}]',7,1),(16,'2023-02-03 15:41:32.525646','15','Mobile object (15)',1,'[{\"added\": {}}]',7,1),(17,'2023-02-03 15:44:58.744641','16','Mobile object (16)',1,'[{\"added\": {}}]',7,1),(18,'2023-02-03 15:45:11.016997','15','Mobile object (15)',2,'[{\"changed\": {\"fields\": [\"M head\"]}}]',7,1),(19,'2023-02-03 15:45:33.610490','14','Mobile object (14)',2,'[{\"changed\": {\"fields\": [\"M head\"]}}]',7,1),(20,'2023-02-04 13:48:45.254294','2','Mobile object (2)',2,'[{\"changed\": {\"fields\": [\"Date\"]}}]',7,1),(21,'2023-02-05 05:22:51.067990','1','Mobile_depth object (1)',1,'[{\"added\": {}}]',9,1),(22,'2023-02-05 05:24:16.119806','1','Mobile_depth object (1)',2,'[{\"changed\": {\"fields\": [\"Model name\"]}}]',9,1),(23,'2023-02-05 05:25:32.504890','2','Mobile_depth object (2)',1,'[{\"added\": {}}]',9,1),(24,'2023-02-05 05:26:01.805809','3','Mobile_depth object (3)',1,'[{\"added\": {}}]',9,1),(25,'2023-02-05 05:27:15.593585','4','Mobile_depth object (4)',1,'[{\"added\": {}}]',9,1),(26,'2023-02-05 05:28:06.110147','5','Mobile_depth object (5)',1,'[{\"added\": {}}]',9,1),(27,'2023-02-05 05:28:48.546303','6','Mobile_depth object (6)',1,'[{\"added\": {}}]',9,1),(28,'2023-02-05 05:29:49.060073','7','Mobile_depth object (7)',1,'[{\"added\": {}}]',9,1),(29,'2023-02-05 05:30:23.444355','8','Mobile_depth object (8)',1,'[{\"added\": {}}]',9,1),(30,'2023-02-05 05:30:45.694818','9','Mobile_depth object (9)',1,'[{\"added\": {}}]',9,1),(31,'2023-02-05 05:31:29.265650','10','Mobile_depth object (10)',1,'[{\"added\": {}}]',9,1),(32,'2023-02-05 05:32:06.746205','11','Mobile_depth object (11)',1,'[{\"added\": {}}]',9,1),(33,'2023-02-05 05:33:27.629967','12','Mobile_depth object (12)',1,'[{\"added\": {}}]',9,1),(34,'2023-02-05 05:34:00.213369','13','Mobile_depth object (13)',1,'[{\"added\": {}}]',9,1),(35,'2023-02-05 05:34:54.238582','14','Mobile_depth object (14)',1,'[{\"added\": {}}]',9,1),(36,'2023-02-05 05:35:34.581500','15','Mobile_depth object (15)',1,'[{\"added\": {}}]',9,1),(37,'2023-02-05 05:36:11.904745','16','Mobile_depth object (16)',1,'[{\"added\": {}}]',9,1),(38,'2023-02-05 05:39:26.441706','17','realme narzo 50 (Speed Blue, 4GB RAM+64GB Storage) 120Hz Full HD+ Display | 50MP AI Triple Camera | Helio G96 Powerful Gaming Processor\r\n4.2 out of 5 stars 13,901\r\n₹12,499 ₹15,999 (22% off)\r\nGet it by',1,'[{\"added\": {}}]',7,1),(39,'2023-02-05 05:40:16.403360','17','realme narzo 50 (Speed Blue, 4GB RAM+64GB Storage) 120Hz Full HD+ Display | 50MP AI Triple Camera |',2,'[{\"changed\": {\"fields\": [\"M head\"]}}]',7,1),(40,'2023-02-05 05:42:47.497230','18','MI Poco M2 Pro (Green and Greener, 4GB RAM, 64GB Storage)',1,'[{\"added\": {}}]',7,1),(41,'2023-02-05 05:44:38.708415','19','Samsung Galaxy M32 Prime Edition (Light Blue, 6GB RAM, 128GB)',1,'[{\"added\": {}}]',7,1),(42,'2023-02-05 05:45:25.539461','17','Mobile_depth object (17)',1,'[{\"added\": {}}]',9,1),(43,'2023-02-05 05:46:06.429415','18','Mobile_depth object (18)',1,'[{\"added\": {}}]',9,1),(44,'2023-02-05 05:46:30.139571','19','Mobile_depth object (19)',1,'[{\"added\": {}}]',9,1),(45,'2023-02-05 06:01:22.993675','19','Samsung Galaxy M32 Prime Edition (Light Blue, 6GB RAM, 128GB)',2,'[{\"changed\": {\"fields\": [\"Price\", \"Discount\"]}}]',7,1),(46,'2023-02-05 06:02:14.575782','17','realme narzo 50 (Speed Blue, 4GB RAM+64GB Storage) 120Hz Full HD+ Display | 50MP AI Triple Camera |',2,'[{\"changed\": {\"fields\": [\"Price\", \"Discount\"]}}]',7,1),(47,'2023-02-05 06:02:54.253569','18','MI Poco M2 Pro (Green and Greener, 4GB RAM, 64GB Storage)',2,'[{\"changed\": {\"fields\": [\"Price\", \"Discount\"]}}]',7,1),(48,'2023-02-05 06:14:00.795437','1','Samsung Galaxy S23 Ultra 5G (Cream, 12GB, 1TB Storage)',2,'[{\"changed\": {\"fields\": [\"Date\"]}}]',7,1),(49,'2023-02-06 06:33:52.790205','20','Oppo A77s (Starry Black, 8GB RAM, 128 Storage) with No Cost EMI/Additional Exchange Offers',1,'[{\"added\": {}}]',7,1),(50,'2023-02-06 06:36:37.411870','20','Mobile_depth object (20)',1,'[{\"added\": {}}]',9,1),(51,'2023-02-06 06:40:34.491886','21','Oppo F21s Pro 5G (Starlight Black, 8GB RAM, 128 Storage) with No Cost EMI/Additional Exchange Offers',1,'[{\"added\": {}}]',7,1),(52,'2023-02-06 06:42:13.850031','21','Mobile_depth object (21)',1,'[{\"added\": {}}]',9,1),(53,'2023-02-06 06:45:44.526588','22','realme narzo 50A Prime (Flash Black, 4GB RAM+128GB Storage) FHD+ Display | 50MP AI Triple Camera (No Charger Variant)\r\n4.0 out of 5 stars 7,777\r\nLimited time deal\r\n₹12,499 ₹14,499 (14% off)\r\nGet it by',1,'[{\"added\": {}}]',7,1),(54,'2023-02-06 06:48:33.509813','23','realme narzo 50 5G (Hyper Blue, 4GB RAM+128GB Storage) Dimensity 810 5G Processor | 48MP Ultra HD Camera\r\n4.2 out of 5 stars 3,020\r\n₹16,999 ₹18,999 (11% off)\r\nGet it by Tomorrow, February 7\r\nFREE Deli',1,'[{\"added\": {}}]',7,1),(55,'2023-02-06 06:54:56.283331','24','Apple iPhone 14 Pro 256GB Space Black',1,'[{\"added\": {}}]',7,1),(56,'2023-02-06 06:59:25.360210','25','Apple iPhone 14 Plus 128GB Midnight',1,'[{\"added\": {}}]',7,1),(57,'2023-02-06 07:22:59.274288','22','Mobile_depth object (22)',1,'[{\"added\": {}}]',9,1),(58,'2023-02-06 07:38:59.747845','23','Mobile_depth object (23)',1,'[{\"added\": {}}]',9,1),(59,'2023-02-06 18:04:38.084514','1','Mobile_depth object (1)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Storage\", \"Os\"]}}]',9,1),(60,'2023-02-06 18:06:17.957155','1','Mobile_depth object (1)',2,'[{\"changed\": {\"fields\": [\"Ram\", \"Storage\"]}}]',9,1),(61,'2023-02-06 18:06:40.255471','1','Mobile_depth object (1)',2,'[]',9,1),(62,'2023-02-06 18:08:38.548169','2','Mobile_depth object (2)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(63,'2023-02-06 18:10:53.351135','3','Mobile_depth object (3)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(64,'2023-02-06 18:13:50.495175','4','Mobile_depth object (4)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(65,'2023-02-06 18:15:33.047932','5','Mobile_depth object (5)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(66,'2023-02-06 18:16:45.048268','6','Mobile_depth object (6)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(67,'2023-02-06 18:18:19.084072','7','Mobile_depth object (7)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(68,'2023-02-06 18:19:36.588992','8','Mobile_depth object (8)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(69,'2023-02-06 18:20:44.045398','9','Mobile_depth object (9)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(70,'2023-02-06 18:21:36.124530','10','Mobile_depth object (10)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\"]}}]',9,1),(71,'2023-02-06 18:22:56.746587','11','Mobile_depth object (11)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(72,'2023-02-06 18:26:49.067033','12','Mobile_depth object (12)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(73,'2023-02-06 18:27:42.193302','13','Mobile_depth object (13)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(74,'2023-02-06 18:29:04.063809','14','Mobile_depth object (14)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(75,'2023-02-06 18:29:58.306414','15','Mobile_depth object (15)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(76,'2023-02-06 18:32:25.047422','16','Mobile_depth object (16)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(77,'2023-02-06 18:33:41.112000','17','Mobile_depth object (17)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(78,'2023-02-06 18:34:26.449958','18','Mobile_depth object (18)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(79,'2023-02-06 18:35:49.724190','19','Mobile_depth object (19)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(80,'2023-02-06 18:37:16.969550','20','Mobile_depth object (20)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(81,'2023-02-06 18:38:32.937710','21','Mobile_depth object (21)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(82,'2023-02-06 18:39:51.769182','22','Mobile_depth object (22)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(83,'2023-02-06 18:41:08.864819','23','Mobile_depth object (23)',2,'[{\"changed\": {\"fields\": [\"Screen size\", \"Camera description\", \"Screen type\", \"Battery\", \"Ram\", \"Storage\", \"Os\"]}}]',9,1),(84,'2023-02-07 18:20:38.024464','6','Xiaomi Redmi 10 Power (Sporty Orange, 8GB RAM, 128GB Storage)',2,'[{\"changed\": {\"fields\": [\"M image\"]}}]',7,1),(85,'2023-02-07 18:22:41.179886','5','Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery',2,'[{\"changed\": {\"fields\": [\"M image\"]}}]',7,1),(86,'2023-02-07 18:35:12.173705','2','Mobile_depth object (2)',2,'[{\"changed\": {\"fields\": [\"Mobile\"]}}]',9,1),(87,'2023-02-07 18:40:37.519498','24','Mobile_depth object (24)',1,'[{\"added\": {}}]',9,1),(88,'2023-02-07 18:42:09.260557','25','Mobile_depth object (25)',1,'[{\"added\": {}}]',9,1),(89,'2023-02-08 09:25:47.969954','2','OPPO A74 5G (Fantastic Purple,6GB RAM,128GB Storage) with No Cost EMI/Additional Exchange Offers',2,'[{\"changed\": {\"fields\": [\"M image\", \"M head\", \"O price\", \"D percent\", \"D price\", \"Day\", \"Advertise\", \"Date\", \"Price\", \"Discount\"]}}]',7,1),(90,'2023-02-08 09:29:53.462966','3','Samsung Galaxy M13 (Aqua Green, 4GB, 64GB Storage) | 6000mAh Battery | Upto 8GB RAM with RAM Plus',2,'[{\"changed\": {\"fields\": [\"M head\", \"O price\", \"D percent\", \"D price\", \"Day\", \"T colors\", \"Date\", \"Price\", \"Discount\"]}}]',7,1),(91,'2023-02-08 09:30:18.205928','3','Samsung Galaxy M13 (Aqua Green, 4GB, 64GB Storage) | 6000mAh Battery | Upto 8GB RAM with RAM Plus',2,'[{\"changed\": {\"fields\": [\"M image\"]}}]',7,1),(92,'2023-02-08 10:26:18.270190','29','Samsung Galaxy M13 5G (Midnight Blue, 4GB, 64GB Storage) | 5000mAh Battery | Upto 8GB RAM with RAM Plus',1,'[{\"added\": {}}]',7,1),(93,'2023-02-08 10:27:37.607330','26','Mobile_depth object (26)',1,'[{\"added\": {}}]',9,1),(94,'2023-02-08 10:33:44.663899','30','Samsung Galaxy M13 5G (Midnight Blue, 4GB, 64GB Storage) | 5000mAh Battery | Upto 8GB RAM with RAM Plus',1,'[{\"added\": {}}]',7,1),(95,'2023-02-08 10:34:36.261856','27','Mobile_depth object (27)',1,'[{\"added\": {}}]',9,1),(96,'2023-02-08 13:06:45.156246','31','Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery\r\nBrand: Redmi',1,'[{\"added\": {}}]',7,1),(97,'2023-02-08 13:08:00.557308','28','Mobile_depth object (28)',1,'[{\"added\": {}}]',9,1),(98,'2023-02-08 13:11:08.003128','32','OPPO A31 (Mystery Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers',1,'[{\"added\": {}}]',7,1),(99,'2023-02-08 13:13:08.227026','29','Mobile_depth object (29)',1,'[{\"added\": {}}]',9,1),(100,'2023-02-08 13:24:28.256394','33','Redmi A1 (Light Green, 2GB RAM 32GB ROM) | Segment Best AI Dual Cam | 5000mAh Battery | Leather Texture Design | Android 12\r\n4.0 out of 5 stars 9,217\r\n₹6,499 ₹8,999 (28% off)\r\nGet it by Tomorrow, Febr',1,'[{\"added\": {}}]',7,1),(101,'2023-02-08 13:26:40.210575','34','Samsung Galaxy M04 Light Green, 4GB RAM, 64GB Storage | Upto 8GB RAM with RAM Plus | MediaTek Helio P35 | 5000 mAh Battery',1,'[{\"added\": {}}]',7,1),(102,'2023-02-08 13:29:08.949679','35','Redmi 10A Sport (Slate Grey, 6GB RAM, 128GB Storage) | 2 Ghz Octa Cor Helio G25 | 5000 mAh Battery | Finger Print Sensor | Upto 8GB RAM with RAM Booster',1,'[{\"added\": {}}]',7,1),(103,'2023-02-08 13:33:17.358399','30','Mobile_depth object (30)',1,'[{\"added\": {}}]',9,1),(104,'2023-02-08 13:34:35.131988','33','Redmi A1 (Light Green, 2GB RAM 32GB ROM) | Segment Best AI Dual Cam | 5000mAh Battery | Leather Texture Design | Android 12',2,'[{\"changed\": {\"fields\": [\"M head\"]}}]',7,1),(105,'2023-02-08 13:36:54.072145','31','Mobile_depth object (31)',1,'[{\"added\": {}}]',9,1),(106,'2023-02-08 13:42:39.890759','32','Mobile_depth object (32)',1,'[{\"added\": {}}]',9,1),(107,'2023-02-08 13:55:14.622011','36','Apple iPhone 14 128GB (Product) RED\r\n4.5 out of 5 stars 425\r\n₹72,499 ₹79,900 (9% off)',1,'[{\"added\": {}}]',7,1),(108,'2023-02-08 13:57:09.358448','37','realme narzo 50i (Carbon Black, 2GB RAM+32GB Storage) Octa Core Processor | 6.5\" inch Large Display\r\n4.0 out of 5 stars 31,775\r\nLimited time deal\r\n₹7,499 ₹7,999 (6% off)\r\nGet it by Tomorrow, February ',1,'[{\"added\": {}}]',7,1),(109,'2023-02-08 13:59:32.704563','38','OPPO A74 5G (Fluid Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers\r\n4.2 out of 5 stars 33,572\r\nLimited time deal\r\n₹15,490 ₹20,990 (26% off)\r\nGet it by Tomorrow, February 9\r\n',1,'[{\"added\": {}}]',7,1),(110,'2023-02-08 14:02:59.749770','33','Mobile_depth object (33)',1,'[{\"added\": {}}]',9,1),(111,'2023-02-08 14:04:14.186452','34','Mobile_depth object (34)',1,'[{\"added\": {}}]',9,1),(112,'2023-02-08 14:05:49.898327','35','Mobile_depth object (35)',1,'[{\"added\": {}}]',9,1),(113,'2023-02-08 14:08:11.125203','39','Redmi 11 Prime 5G (Chrome Silver, 4GB RAM 64GB ROM) | Prime Design | MTK Dimensity 700 | 50 MP Dual Cam | 5000mAh | 7 Band 5G',1,'[{\"added\": {}}]',7,1),(114,'2023-02-08 14:10:06.062938','36','Mobile_depth object (36)',1,'[{\"added\": {}}]',9,1),(115,'2023-02-08 14:13:23.699845','40','Samsung Galaxy M33 5G (Mystique Green, 6GB, 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately',1,'[{\"added\": {}}]',7,1),(116,'2023-02-08 14:15:51.823228','41','Apple iPhone 13 Pro Max (256GB) - Gold\r\n4.6 out of 5 stars 1,547\r\n₹1,27,900 ₹1,39,900 (9% off)\r\nSave extra with No Cost EMISave extra with No Cost EMI\r\nFREE Delivery by Amazon',1,'[{\"added\": {}}]',7,1),(117,'2023-02-08 14:20:07.382072','42','Oppo A78 5G (Glowing Black, 8GB RAM, 128 Storage) | 5000 mAh Battery with 33W SUPERVOOC Charger| 50MP AI Camera | 90Hz Refresh Rate | with No Cost EMI/Additional Exchange Offers',1,'[{\"added\": {}}]',7,1),(118,'2023-02-08 14:22:03.764744','37','Mobile_depth object (37)',1,'[{\"added\": {}}]',9,1),(119,'2023-02-08 14:23:19.027201','38','Mobile_depth object (38)',1,'[{\"added\": {}}]',9,1),(120,'2023-02-08 14:24:39.398237','39','Mobile_depth object (39)',1,'[{\"added\": {}}]',9,1),(121,'2023-02-08 14:28:41.803004','43','Realme narzo 50i Prime (Mint Green 3GB RAM+32GB Storage) Octa-core Processor | 5000 mAh Battery',1,'[{\"added\": {}}]',7,1),(122,'2023-02-08 14:32:38.043774','44','Apple iPhone 14 Plus 256GB (Product) RED',1,'[{\"added\": {}}]',7,1),(123,'2023-02-08 14:35:02.876152','40','Mobile_depth object (40)',1,'[{\"added\": {}}]',9,1),(124,'2023-02-08 14:39:40.738635','41','Mobile_depth object (41)',1,'[{\"added\": {}}]',9,1),(125,'2023-02-08 14:47:54.149124','45','realme narzo 50A Prime (Flash Black, 4GB RAM+128GB Storage) FHD+ Display | 50MP AI Triple Camera (No Charger Variant)92\r\nLimited time deal\r\n₹12,499 ₹14,499 (14% off)\r\nGet it by Tomorrow, February 9\r\nF',1,'[{\"added\": {}}]',7,1),(126,'2023-02-08 14:50:45.549879','46','Samsung Galaxy M33 5G (Mystique Green, 6GB, 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately',1,'[{\"added\": {}}]',7,1),(127,'2023-02-08 14:53:18.796919','47','Oppo A78 5G (Glowing Blue, 8GB RAM, 128 Storage) | 5000 mAh Battery with 33W SUPERVOOC Charger| 50MP AI Camera | 90Hz Refresh Rate | with No Cost EMI/Additional Exchange Offers',1,'[{\"added\": {}}]',7,1),(128,'2023-02-08 14:55:34.976523','48','Apple iPhone 14 Pro 256GB Space Black',1,'[{\"added\": {}}]',7,1),(129,'2023-02-08 14:57:26.804310','49','realme narzo 50 5G (Hyper Blue, 4GB RAM+128GB Storage) Dimensity 810 5G Processor | 48MP Ultra HD Camera\r\n4.2 out of 5 stars 3,030\r\n₹16,999 ₹18,999 (11% off)\r\nGet it by Tomorrow, February 9\r\nFREE Deli',1,'[{\"added\": {}}]',7,1),(130,'2023-02-08 15:04:43.457688','42','Mobile_depth object (42)',1,'[{\"added\": {}}]',9,1),(131,'2023-02-08 15:06:12.566016','43','Mobile_depth object (43)',1,'[{\"added\": {}}]',9,1),(132,'2023-02-08 15:07:27.765037','44','Mobile_depth object (44)',1,'[{\"added\": {}}]',9,1),(133,'2023-02-08 15:09:03.667414','45','Mobile_depth object (45)',1,'[{\"added\": {}}]',9,1),(134,'2023-02-08 15:10:45.513367','46','Mobile_depth object (46)',1,'[{\"added\": {}}]',9,1),(135,'2023-02-12 06:31:30.493215','8','Amazon',3,'',4,1),(136,'2023-02-12 06:31:30.496215','7','Arun',3,'',4,1),(137,'2023-02-12 06:31:30.496215','6','Bharathi',3,'',4,1),(138,'2023-02-12 06:31:30.504921','5','charlie',3,'',4,1),(139,'2023-02-12 06:31:30.511580','15','Domnic',3,'',4,1),(140,'2023-02-12 06:31:30.511580','9','Gay3',3,'',4,1),(141,'2023-02-12 06:31:30.519013','12','Leela',3,'',4,1),(142,'2023-02-12 06:31:30.519013','13','love',3,'',4,1),(143,'2023-02-12 06:31:30.526005','11','Natraj',3,'',4,1),(144,'2023-02-12 06:31:30.529804','3','navaz',3,'',4,1),(145,'2023-02-12 06:31:30.533340','10','Prasan',3,'',4,1),(146,'2023-02-12 06:31:30.540171','14','Priyankha',3,'',4,1),(147,'2023-02-12 06:31:30.541101','4','rakesh',3,'',4,1),(148,'2023-02-12 06:31:30.545130','2','Srinivash',3,'',4,1),(149,'2023-02-12 14:53:59.251233','18','Aathi',3,'',4,1),(150,'2023-02-12 14:53:59.270478','16','Nivash',3,'',4,1),(151,'2023-02-17 04:06:25.275019','30','Samsung Galaxy M13 5G (Midnight Blue, 4GB, 64GB Storage) | 5000mAh Battery | Upto 8GB RAM with RAM Plus',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(152,'2023-02-17 04:07:14.218572','31','Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery\r\nBrand: Redmi',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(153,'2023-02-17 04:07:50.601737','32','OPPO A31 (Mystery Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(154,'2023-02-17 04:08:28.280138','33','Redmi A1 (Light Green, 2GB RAM 32GB ROM) | Segment Best AI Dual Cam | 5000mAh Battery | Leather Texture Design | Android 12',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(155,'2023-02-17 04:09:10.980580','34','Samsung Galaxy M04 Light Green, 4GB RAM, 64GB Storage | Upto 8GB RAM with RAM Plus | MediaTek Helio P35 | 5000 mAh Battery',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(156,'2023-02-17 04:09:23.203658','34','Samsung Galaxy M04 Light Green, 4GB RAM, 64GB Storage | Upto 8GB RAM with RAM Plus | MediaTek Helio P35 | 5000 mAh Battery',2,'[]',7,1),(157,'2023-02-17 04:10:00.654620','35','Redmi 10A Sport (Slate Grey, 6GB RAM, 128GB Storage) | 2 Ghz Octa Cor Helio G25 | 5000 mAh Battery | Finger Print Sensor | Upto 8GB RAM with RAM Booster',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(158,'2023-02-17 04:10:52.571932','36','Apple iPhone 14 128GB (Product) RED\r\n4.5 out of 5 stars 425\r\n₹72,499 ₹79,900 (9% off)',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(159,'2023-02-17 04:11:17.204373','37','realme narzo 50i (Carbon Black, 2GB RAM+32GB Storage) Octa Core Processor | 6.5\" inch Large Display\r\n4.0 out of 5 stars 31,775\r\nLimited time deal\r\n₹7,499 ₹7,999 (6% off)\r\nGet it by Tomorrow, February ',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(160,'2023-02-17 04:11:49.359632','38','OPPO A74 5G (Fluid Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers\r\n4.2 out of 5 stars 33,572\r\nLimited time deal\r\n₹15,490 ₹20,990 (26% off)\r\nGet it by Tomorrow, February 9\r\n',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(161,'2023-02-17 04:12:24.014300','39','Redmi 11 Prime 5G (Chrome Silver, 4GB RAM 64GB ROM) | Prime Design | MTK Dimensity 700 | 50 MP Dual Cam | 5000mAh | 7 Band 5G',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(162,'2023-02-17 04:12:55.405951','40','Samsung Galaxy M33 5G (Mystique Green, 6GB, 128GB Storage) | 6000mAh Battery | Upto 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(163,'2023-02-17 04:13:37.911592','41','Apple iPhone 13 Pro Max (256GB) - Gold\r\n4.6 out of 5 stars 1,547\r\n₹1,27,900 ₹1,39,900 (9% off)\r\nSave extra with No Cost EMISave extra with No Cost EMI\r\nFREE Delivery by Amazon',2,'[{\"changed\": {\"fields\": [\"Mobile image\"]}}]',7,1),(164,'2023-02-17 17:25:23.774849','22','Rakesh',2,'[{\"changed\": {\"fields\": [\"Staff status\"]}}]',4,1),(165,'2023-02-17 17:26:14.348418','22','Rakesh',2,'[{\"changed\": {\"fields\": [\"Superuser status\"]}}]',4,1),(166,'2023-02-17 17:28:22.495896','1','Laptop1 object (1)',1,'[{\"added\": {}}]',19,22),(167,'2023-02-17 17:28:36.866884','2','Laptop1 object (2)',1,'[{\"added\": {}}]',19,22),(168,'2023-02-17 17:29:03.183856','1','Mobile1 object (1)',1,'[{\"added\": {}}]',20,22),(169,'2023-02-17 17:29:12.452814','2','Mobile1 object (2)',1,'[{\"added\": {}}]',20,22),(170,'2023-02-17 17:29:21.411494','2','Laptop1 object (2)',2,'[{\"changed\": {\"fields\": [\"L title\"]}}]',19,22),(171,'2023-02-17 17:29:26.054210','1','Laptop1 object (1)',2,'[{\"changed\": {\"fields\": [\"L title\"]}}]',19,22),(172,'2023-02-18 04:24:56.029845','3','mi laptop',1,'[{\"added\": {}}]',19,22),(173,'2023-02-18 04:25:15.102802','4','lenovo',1,'[{\"added\": {}}]',19,22),(174,'2023-02-18 04:25:32.901090','3','apple',1,'[{\"added\": {}}]',20,22),(175,'2023-02-18 04:26:38.662275','4','Lenovo',1,'[{\"added\": {}}]',20,22),(176,'2023-02-18 04:26:48.966401','3','apple mobile',2,'[{\"changed\": {\"fields\": [\"Title\"]}}]',20,22),(177,'2023-02-18 04:26:53.733148','4','Lenovo mobile',2,'[{\"changed\": {\"fields\": [\"Title\"]}}]',20,22),(178,'2023-02-19 06:26:28.381172','28','Mobile_depth object (28)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22),(179,'2023-02-19 06:27:22.273666','33','Mobile_depth object (33)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22),(180,'2023-02-19 06:27:34.858646','34','Mobile_depth object (34)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22),(181,'2023-02-19 06:27:47.456326','35','Mobile_depth object (35)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22),(182,'2023-02-19 06:28:10.655009','38','Mobile_depth object (38)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22),(183,'2023-02-19 06:28:34.587837','42','Mobile_depth object (42)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22),(184,'2023-02-19 06:28:54.797031','46','Mobile_depth object (46)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22),(185,'2023-02-19 06:34:14.979945','46','Mobile_depth object (46)',2,'[{\"changed\": {\"fields\": [\"Head\"]}}]',9,22);
+/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_content_type`
+--
+
+DROP TABLE IF EXISTS `django_content_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_content_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_content_type`
+--
+
+LOCK TABLES `django_content_type` WRITE;
+/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(13,'app_1','browsing'),(18,'app_1','cart'),(22,'app_1','cart_redirect'),(21,'app_1','comment'),(15,'app_1','headset'),(14,'app_1','laptop'),(19,'app_1','laptop1'),(7,'app_1','mobile'),(9,'app_1','mobile_depth'),(20,'app_1','mobile1'),(10,'app_1','profile'),(17,'app_1','shirts'),(16,'app_1','tv'),(11,'app_1','user'),(8,'app_1','user_register'),(12,'app_1','usermodel'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(6,'sessions','session');
+/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_migrations`
+--
+
+DROP TABLE IF EXISTS `django_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_migrations` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `app` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `applied` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_migrations`
+--
+
+LOCK TABLES `django_migrations` WRITE;
+/*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2023-02-03 12:51:03.515439'),(2,'auth','0001_initial','2023-02-03 12:51:03.990170'),(3,'admin','0001_initial','2023-02-03 12:51:04.139782'),(4,'admin','0002_logentry_remove_auto_add','2023-02-03 12:51:04.154437'),(5,'admin','0003_logentry_add_action_flag_choices','2023-02-03 12:51:04.168885'),(7,'contenttypes','0002_remove_content_type_name','2023-02-03 12:51:04.377547'),(8,'auth','0002_alter_permission_name_max_length','2023-02-03 12:51:04.428848'),(9,'auth','0003_alter_user_email_max_length','2023-02-03 12:51:04.462757'),(10,'auth','0004_alter_user_username_opts','2023-02-03 12:51:04.474486'),(11,'auth','0005_alter_user_last_login_null','2023-02-03 12:51:04.522584'),(12,'auth','0006_require_contenttypes_0002','2023-02-03 12:51:04.527894'),(13,'auth','0007_alter_validators_add_error_messages','2023-02-03 12:51:04.538874'),(14,'auth','0008_alter_user_username_max_length','2023-02-03 12:51:04.591991'),(15,'auth','0009_alter_user_last_name_max_length','2023-02-03 12:51:04.644010'),(16,'auth','0010_alter_group_name_max_length','2023-02-03 12:51:04.671272'),(17,'auth','0011_update_proxy_permissions','2023-02-03 12:51:04.683196'),(18,'auth','0012_alter_user_first_name_max_length','2023-02-03 12:51:04.739155'),(19,'sessions','0001_initial','2023-02-03 12:51:04.780888');
+/*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime(6) NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_expire_date_a5c62663` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+INSERT INTO `django_session` VALUES ('485cq04r8ati7e2mylz5fla9l5ecyysz','.eJxlUttymzAU_BUNT-3EQyVAXPKG0zhOC2kSjztN645GgGwrAYkIeXJr_r0I0TqevEln9-zZc3lxCN3pLdl1TBFeOceO5zmTt8GClndMGKS6pWIj3VIKrXjhGoo7op2by4rV05F7ILCl3bbPpggXQcVKBH28xlGJsE_XQRCU6zgJwhiz9TpBVQULTEOUhBBHsQ9h5fu0KGJI_V5UFre90K-XldOYaivnGKwc2rYEuY0seM1IxVq9XTmTPt7eGTwIzXvNWV115j_kGuoAJgYsFBWV1bpmtG6Yzd8yOkbVEAWCqmcJMAT4DHyYP7VMgWm9YxMQnE3BdZofIS_uXwstFd2wj-Azb5jouH4CIEYQmLRLJUvWdVKBPyCI80uwrLWitl7Fu1LuhDY1UZgkgzepNlzQmrSKl8y6QfGkBw9zDvBwjyuqudgQ3mws1vKy-4QghGRGsO8FMEoCj8waGoULqeXsx5fZw-P0-_0dz-DF6enjTXUhoSbpcp5Eiyv3tt2MdemTFVzsxPC2Qc2sefMzqx8mjmCITYD3Nt_7Regf9q5VFI9D4E0_zzcNJKjF2RnXPzOXpCdkeeN7EZnlD6xoyVUWYkIu88couq9cE7LmhoMhgjaj0MV-meOomKb9WSgL5-k8_ZqmGci_Tc-z04VrSR1_HvPNzod9j0CpGBNkj4cu9gEX5ZZ1lnHSl1a0P9CeylvNpbDEqx2tgAUPpHR_YJYxW2YZmH8-svCUas3UOH7sQdjQ8eCvafPf2yhlT3G8i71b2Y1dni_PAQpWzuvrb-f1L24rO98:1pTdIq:znWiRHqPlz7cITuU6rWrcZyJqbXALcSsltUsNft452I','2023-03-05 06:36:04.679842'),('a6pimcapv7tt69ri14qo6x7mhf1k5orw','.eJxVjEEOwiAQRe_C2hAoDAWX7j0DmWFAqoYmpV0Z765NutDtf-_9l4i4rTVuPS9xYnEWwyBOvyNheuS2E75ju80yzW1dJpK7Ig_a5XXm_Lwc7t9BxV6_NWogyzlpZaDAmDQYLNbaVHywzkMuJWhmRYBOB6dg9EYpNgaJvEIj3h8G1DfH:1pTkjG:bmUw41C2BWB84hduvIZUDDVNkoREac_k_arXGB7WAkA','2023-03-05 14:31:50.653929'),('uiph63dp1t62mbcqhejrslf4bdqj6rga','.eJxVjjsOgzAMQO-SuYoS8iEwVd17BuQ4BtJCkPh0Qdy9QWJoR_s9P3lnDWxr32wLzU0MrGaS3X53HvBN6QThBambOE5pnaPnp8IvuvDnFGh4XO5foIelz9ctFKZ1CAodWWtBkxDCVNoEa5UOWpEELI0vLSAVzktZhGDRoyxJqApy9Myxemc0QhxyMsVPvHfnkJ8aszBOPg6USeVKa7QqpGDH8QUsXkku:1pONDE:_xXOryrubgVBNhQSZJAsHAOaObkdmRisZ46L4StxgJg','2023-02-18 18:24:32.632483');
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-02-20  0:42:57

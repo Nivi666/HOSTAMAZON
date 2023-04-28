@@ -1,0 +1,227 @@
+{% extends 'app_1/base/base.html' %}
+{% load static %}
+{% static "app_1/img" as baseUrl %}
+
+{% block title %}{{type}} page{% endblock %}
+{% block content %}
+{% include 'app_1/base/navbar.html' with count=counts %}
+ 
+<style>
+*{
+  box-sizing: border-box;
+ } 
+#head:hover{
+  color:#C45500;
+}
+.mobile-img{
+ background-size: cover;
+
+ background-blend-mode: multiply;
+ }
+</style>
+
+<nav class="navbar navbar-light bg-light 
+shadow p-3 mb-5 bg-body rounded" style="height:37px;">
+<span class="navbar-brand  " style="font-size:13px; font-weight: 600;
+position:relative;top:-15px;">1-24 of over 50000 results for <span style="color:blue" 
+        >"{{type}}"</span></span>
+<div class="dropdown">
+  <button class="btn shadow dropdown-toggle"
+  style="height:25px;position:relative;top:-15px;border-radius:15px;
+  margin-right:6rem;background-color:#E3E6E6; font-size:11px; font-weight: 500;"
+  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  Sort:by feautured
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item text-dark" id="high-price-products" style="font-size:11px; font-weight: 500;" href="{% url 'sort_high' %}">Price:high to Low</a></li>
+    <li><a class="dropdown-item text-dark" id="low-price-products" style="font-size:11px; font-weight: 500;" href="{% url 'sort_low' %}">Price:Low to High</a></li>
+  </ul>
+  
+</div>
+</nav>
+
+
+
+<!--fashion-->    
+{% if type == 'shirts' or type == 'womens_clothes' %}
+
+<div class="container" style="margin-left:10rem;">
+  <h5 style="font-size:23px; font-weight: 400;">RESULTS</h5>
+  {% for obj in objects %}
+    {% if forloop.first or forloop.counter0|divisibleby:3 %}
+      <div class="row">
+    {% endif %}
+    <div class="col  ">
+        <div class="card ms-5 " style="width: 17rem;border: none;">
+          <div class="img d-flex justify-content-center align-item-center" style="width:17rem;">
+            <a class="text-decoration-none" href="{% url 'productpage' %}?head={{obj.head}}&id={{obj.object_id}}""></a><img src="{{obj.image}}"  style="height:250px;background: none;" class="card-img-top me-3 img-fluid" alt="..."></a>
+            
+          </div>
+             <style>
+              #head-fashion:hover{
+                color:#C45500 !important;        
+              }
+             </style>
+            <div class="card-body me-3 text-center">
+              <a class="text-decoration-none" href="{% url 'productpage' %}?head={{obj.head}}&id={{obj.id}}">
+                <h5 class="card-title fw-bolder text-dark">{{obj.model}}</h5>
+                <p class="card-text fw-bold text-dark head" id="head-fashion" style="color: black;" onmouseover="this.style.color='red';" onmouseout="this.style.color='black';">{{obj.head}}</p>
+              </a>
+              
+              <p style="color: #007185;"class="text-start fw-bold"><img src="{{obj.rating_img.url}}" style="width:100px;" alt="">({{obj.users}})</p>
+              <p  class="text-dark">
+                ₹<span style="font-size: 29px; font-weight: 600;">{{obj.discount_price}}</span> <strike style="font-size: 13px; font-weight: 500;">₹{{obj.orginal_price}}</strike>
+              <span style="font-size: 15px;font-weight: 600;">({{obj.discount}})</span>
+              </p>
+              <p class="fw-bold">Free delivery with Amazon</p>
+            </div>
+          </div>
+    </div>
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:3 %}
+      </div>
+    {% endif %}
+    {% endfor %}
+    
+  </div>
+
+{% else %}
+<div class="container" style="margin-left:10rem;">
+        <h5 style="font-size:23px; font-weight: 400;">RESULTS</h5>
+                 
+                   <!--product-1-->
+                   {% for object in objects %}
+                   <div class="mobile-cards d-flex">
+                    
+                    <div class="mobile-card" 
+                    
+                    style="
+                     position: relative;
+                    
+                    width:280px;height:320px;">
+                     {% if  object.type == 'mobile' %}
+                     <a href="{% url 'productpage' %}?head={{object.head}}&id={{object.id}}">
+                      <div class="img"  ">
+                        <img src="{{object.image.url}}" 
+                      
+                        class="mobile-img"
+                        alt="mobile"  style="width:200px;height:240px; position:absolute;left:30px;">    
+                        </a>
+                        
+                      </div>
+                   {% else %}   
+                 
+                  <a href="{% url 'productpage' %}?head={{object.head}}&id={{object.id}}">
+                     <div class="img" > 
+                      <img src="{{object.image}}" 
+                      class="mobile-img"
+                      style="width:200px;height:190px;;position:absolute;left:30px;"
+                    > 
+                     
+                     </div>
+                     
+                  </a>
+                  {% endif %}
+                </div>
+                     <div class="mobile-card-2" 
+                     
+                     style="
+                     width:550px;height:250px;">
+                    <a href="{% url 'productpage' %}?head={{object.head}}&id={{object.id}}" class="text-decoration-none text-dark">
+                     <h5 class="ms-3 " id="head" >{{object.head}}</h5>
+                    </a>
+                   
+                     <img 
+                     src="{{object.rating_img.url}}" 
+                     class="mobile-img-2"
+                     alt="rating" style="width:100px;">
+                     <i class="fa-solid fa-chevron-down"
+                     style="color:#007185"></i>
+                     <span style="color:#007185; font-weight:500;">{{object.users}}
+                    </span>
+                    {% if object.Advertise %}
+                    <div><a href="#" class="btn btn-danger ms-3 p-1" style="width:150px; font-size: 14px;border-radius: 2px;background-color:#B12704;">Limited time deal</a></div>
+                    {% endif %} 
+                    <div class="price " style="position:relative;font-size:30px; margin-left: 1rem;">
+                      <span class="" style="width:10px;margin-bottom: 3rem;position: absolute; font-size:15px">₹</span>
+                      <span class="" style="margin-left:0.6rem;font-weight: 500;">{{object.discount_price}}</span>
+                     <strike style="font-size: 16px;" >₹{{object.orginal_price}}</strike>
+                     <span class="" style="width:10px; font-size:15px"></span>
+                      <span style="font-size:15px; font-weight: 600;">({{object.discount}}% off)</span>
+                      <p style="width:300px;font-size:15px;color:#3DA1CC; font-weight:700;">
+
+                        <span style="font-size:15px; color:#F5A356; width:50px;">✓
+                        </span>
+                        prime <span>
+                          <span class="text-dark">
+                          <span style="font-weight: 500;"> 
+                            Get it by</span> 
+                            {{object.day}},February {{object.date}} 
+                            <span class=" ms-2" style="font-weight: 500;">
+                              Free Delivery by Amazon</span>
+                          </span>
+
+                        </span>
+                      </p>
+                        <a href="#"  style="font-size:13px;color:#007185">+2 color/patterns</a>
+                      
+                     
+                  </div>                    
+                </div>
+                                   
+                   </div>
+           {% endfor %}
+         <!--container end-->
+        </div>
+{% endif %}
+       <!--mainend-->
+ 
+     
+           
+<!--page start-->
+   
+{% if type != 'mixed' %}  
+<div class=" p-4 d-flex justify-content-center">
+  <style>
+    .page:hover{
+      background-color: #F5F6F6;
+    }
+  
+  </style>
+  {% if type == 'mobile' %}
+  <div class="sub border border-2 text-center p-2" style="width:270px;border-radius: 10px;">
+  {% elif type == 'tv'%}
+  <div class="sub border border-2 text-center p-2" style="width:470px;border-radius: 10px;">
+   
+  {% else %}
+  <div class="sub border border-2 text-center p-2" style="width:550px;border-radius: 10px;">
+   {% endif %} 
+    {% if objects.has_previous %}
+  
+    <a href="?page={{ objects.previous_page_number }}" class="text-decoration-none text-dark p-2"><i class="fa-solid fa-angle-left"></i> Previous</a>
+    {% else %}
+    <span class="text-dark p-2"><i class="fa-solid fa-angle-left"></i> Previous</span>
+    
+    {% endif %}
+ 
+   {% for page_number in objects.paginator.page_range %}
+   {% if objects.number == page_number %}
+           <span class="fw-bold  border border-dark " style="padding:10px 20px;">{{page_number}}</span>        
+   {% else %}
+     <a href="?page={{ page_number }}" class="text-decoration-none text-dark  page" style="padding:10px 20px;">{{ page_number }}</a>
+     
+   {% endif %}
+ {% endfor %}
+
+  </div>
+    
+
+</div>
+<!--paginator -end -->
+{% endif %}
+      
+       <!--pageend-->
+    </div>
+
+{% endblock %}
+{% block javascript %}
+{% endblock javascript%}

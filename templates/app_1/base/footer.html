@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+                      <!--footer-->
+                      <div class="container">
+                        {% if not user.is_authenticated %}
+                        <div style="font-size:14px;" class="log-in text-center fw-bold">
+                          See personalized recommendations<br>
+                          <button class="btn w-25 fw-bold m-1"
+                          style="background-color:#FFD875"><a href="./signup.html" class="text-decoration-none text-black"
+                          >Sign in</button>
+                           <br><span style="font-size:14px;">New customer?<a href="./signin.html" class="text-decoration-none"
+                            style="font-size:.800rem;">Start here</a></span>
+                        </div>
+                        {% endif %}
+                      </div>
+    
+                   <!--main-footer-->
+                   <div class="footer " >
+                    <button type="button"class="btn p-2 "
+                    style="background-color:#485769; width:1400px; position: relative;right:57px;"><a href="#"class="link-light text-decoration-none">Back to top</a></button>
+                   </div>
+                    <div class="footer-main   text-light ps-5 " 
+                    style="width:1600px;background-color:#232F3E;padding:4rem;position: relative; right:57px;">
+                      <div class="container d-flex">
+                        <div class="list-1 p-3"
+                        >
+                          <h5>Get to known US</h5>
+                          <ul class="list-unstyled"
+                          >
+                            <li>About Us</li>
+                            <li>Careers</li>
+                            <li>Press Releases</li>
+                            <li>Amazon Science</li>
+                            
+                          </ul>
+                         </div>
+                         <div class="list-2 p-3 ms-5">
+                          <h5>Connect with Us</h5>
+                          <ul class="list-unstyled">
+                            <li>Faceebook</li>
+                            <li>Twitter</li>
+                            <li>Press Releases</li>
+                            <li>Instagrsam</li>
+                            
+                          </ul>
+                         </div>
+                         <div class="list-3 p-3 ms-5"
+                         >
+                          <h5>Make Money With with Us</h5>
+                          <ul class="list-unstyled">
+                            <li>Sell on Amazon</li>
+                            <li>Sell under Amazon Accelerator</li>
+                            <li>Protect and Build Your Brand</li>
+                            <li>Amazon Global Selling</li>
+                            <li>Become an Affliate</li>
+                            <li>Fulfilment by Amazon</li>
+                            <li>Advertise Your Products</li>
+                            
+                          </ul>
+                         </div>
+                         <div class="list-4 p-3 ms-5"
+                         >
+                          <h5>Let Us Help You</h5>
+                          <ul class="list-unstyled">
+                            <li>COVID-19 and Amazon</li>
+                            <li>Your Account</li>
+                            <li>Return Centre</li>
+                            <li>100% Purchase Protection</li>
+                            <li>Become an Affliate</li>
+                            <li>Fulfilment by Amazon</li>
+                            <li>Advertise Your Products</li>
+                            
+                          </ul>
+                         </div>
+                         
+                        </div>
+                        <hr>
+                        <div class="text-center"
+                        >
+                          <img src="{% static '"./img/amazon_PNG11.png" 
+                           style="width:100px;"
+                          alt="">
+                          <input type="number" 
+                      
+                          placeholder="English" 
+                          style=" margin-left:5rem;background:none;outline:none;border:1px solid  white">  
+                        </div>
+                        <div class="cities text-center">
+                           <li class="d-inline">Australia</li>
+                           <li class="d-inline">Brazil</li>
+                           <li class="d-inline">Canada</li>
+                           <li class="d-inline">China</li>
+                           <li class="d-inline">france</li>
+                           <li class="d-inline">Italy</li>
+                           <li class="d-inline">Japan</li>
+                           <li class="d-inline">Mexico</li>
+                           <li class="d-inline">Netherland</li>
+                           <li class="d-inline">Singapore</li>
+                           <li class="d-inline">Spain</li>
+                           <li class="d-inline">Turkey</li>
+                           <li class="d-inline">UAE</li>
+                           <li class="d-inline">Uk</li>
+                           <li class="d-inline">USA</li>
+                        </div>
+                        
+                    </div>
+ {% block footer %}                   
+ {% endblock %}   
+</body>
+</html>

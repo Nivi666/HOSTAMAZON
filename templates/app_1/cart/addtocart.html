@@ -1,0 +1,97 @@
+{% extends 'app_1/base/base.html' %}
+{% load static %}
+{% block stylesheet %}
+<style>
+    #hr{
+    display: block !important;
+    
+}
+
+</style>
+{% endblock %}
+{% block content %}
+{% include 'app_1/base/navbar.html' with count=counts %}
+ 
+<div class="main" style="background-color:#EAEDED;">
+
+<div class=" d-flex" >
+    <div style="width:900px; position: relative; top:10px; "
+    class="square square-lg border main-cart m-4 p-4 bg-light">
+        <h3>Shopping Cart</h3>
+        <svg width="100%" height="1">
+            <line x1="0" y1="0" x2="100%" y2="0" stroke="black" stroke-width="0.2"/>
+          </svg>
+        <p class="text-end p-0  " style="margin-right:50px;">Price</p>
+        <hr>
+        {% for cart in carts %}
+        <div class="min-content d-flex mt-4 p-1">
+            <div class="img" ">
+                <img style="width:200px;height: 200;" 
+            src="{{cart.image}}"  alt="">
+       
+            </div>
+            <div class="inside-content ms-3">
+            <a class="text-decoration-none" href="{% url 'cart_redirect' %}?cart_head={{cart.head}}"><h4 style="font-size:1.1rem;color:#111;font-weight: 600;width:400px;">{{cart.head}}</h4>
+            </a>                     
+            <p class="text-success p-0">In stock</p>
+                 <p style="font-size:.856rem;padding:0;">Eligible for  FREE Shipping</p>
+                 <p class="p-0" style="font-size:.856rem"><b>color</b>:Black</p>
+                 <p class="p-0" style="font-size:.856rem">Size:{{cart.size}}</p>
+                 <div class="details d-flex">
+                    <div class="dropdown">
+                        <button class="btn border dropdown-toggle ps-2" 
+                         style="padding:2px;"
+                        type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Qty: {{cart.quantity}}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="#">0</a></li>
+                          <li><a class="dropdown-item" href="#">1</a></li>
+                          <li><a class="dropdown-item" href="#">2</a></li>
+                        </ul>
+                      </div>
+                      <div class="vr ms-4 mt-1" style="height:21px;"></div>
+                      <a href="{% url 'cart_delete' %}?id={{cart.id}}" class="text-decoration-none ms-4" style="font-size:.850rem;color:#007185">Delete</a>
+                      <div class="vr ms-4 mt-1" style="height:21px;"></div>
+                      <a href="" class="text-decoration-none ms-4" style="font-size:.850rem;color:#007185">Save for later</a>
+                 </div>
+            </div>
+            <!--3 row-->
+            <div class="amount fw-bold  fs-5 text-left " style="margin-left: 8.2rem;">
+                 
+                ₹{{cart.str_price}}
+            </div>
+           
+        </div>
+        <svg width="100%" height="1">
+            <line x1="0" y1="0" x2="100%" y2="0" stroke="black" stroke-width="0.2"/>
+          </svg>
+        {% endfor %}
+        
+        <div class="subtotal  text-end text-black fw-bold fs-5 mt-4">
+            Subtotal({{total_items}} items):<span>₹{{total_amount}}.00</span>
+        </div>
+        <!--row-end-->
+         </div>
+         <div class="card cards-1 mt-4 " style="width: 20rem;height:13rem;">
+            <div class="card-body">
+             <p style="font-size:.889rem;"><span class="text-success">Your order is eligible for FREE Delivery</span> Select this option at checkout. Details</p>
+             <h5>Subtotal ({{total_items}} items):  <span class="fw-bold">₹{{total_amount}}.00</span></h5>
+             {% if total_items > 0 %}
+             <a type="button"  href="{% url 'buynow_cart' %}" class="ms-0 m-4 d-block p-1 text-decoration-none text-dark text-center" 
+             style="width:100%;
+             background-color:#F7CA00;border:none;
+             border-radius: 8px;;font-weight: 500;">Procced to Buy</a>
+           {% else %}
+           <button type="button"  class="ms-0 m-4 d-block p-1 text-decoration-none text-dark text-center" 
+           style="width:100%;
+           background-color:#F7CA00;border:none;
+           border-radius: 8px;;font-weight: 500;">Procced to Buy</button>
+          
+           {% endif %}  
+          </div>
+          </div>
+          
+
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% include 'app_1/base/linkstyles.html' %}
+{% load static %}
+
+<!--browsing history-->
+<hr class="hr">
+<div style="width:200px; ">
+
+</div>
+  <div class="browsing-history " style="margin-top: 2rem;;">
+ 
+<a href="{% url 'browsing_history' %}" class="text-decoration-none">
+  <p class="ms-3" style="font-size:25px;font-weight:700;color:#666666">Your browsing history <span style="color:#007185;font-size: 13px;font-weight: 500;">View or edit your browsing history</span></p>
+
+</a>
+<div class="total d-flex p-4">
+                {% for i in browsing %}
+                   
+                <div class="img" class="ms-1 " style="width:100px;height:100px; ">
+                   <a href="{% url 'browsing_redirect' i.id %}"><img src="{{i.img}}" style="max-width:100px;max-height:100%;" class="ms-4" alt="">     </a> 
+                   
+                </div>
+                {% endfor %}
+                 
+            </div>
+            
+            </div>
+               
+
+          </div>
+         
+      
+ <!--browsing history -->

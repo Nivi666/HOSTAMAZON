@@ -1,0 +1,24 @@
+hr{
+    display:none;
+}
+.mobile-img{
+        width:200px;
+        position:absolute;
+        left:30px;
+        top:0px;
+                      
+
+}
+.top-nav{
+    color:blue;
+}
+.mobile-img{
+ width:120px;
+
+}
+i.fa-solid.fa-indian-rupee-sign {
+    font-size: 1px;
+}
+#head:hover{
+    color:red;
+}

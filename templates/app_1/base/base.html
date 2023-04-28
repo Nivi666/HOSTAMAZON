@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+{% include 'app_1/base/linkstyles.html' %}
+<link rel="stylesheet" href="{% static '/custom.css' %}"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+ 
+{% block content %}
+
+{% endblock %}
+  
+  {% include 'app_1/base/footer.html' %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+  
+
+  <!--new-->
+  <!-- Required dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-eJGslBhOk+/lGm5Vdc1I8rU7lnuWhfMmnP6Yq3C8SK1eV5HskjQ2tpCqB3J/nxQQ+DJcSfCTqlX9JIMp+m4/yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-ox/1FpZtNnXtW/HcNFr93hebTprNQgC3q3Jh1S+dHsmSxEsrBdRllhEt8M4mz4hx4mghv5V5kW8c+bZVfWhuOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  {% block javascript %}
+  {% endblock javascript %}
+</body>
+</html>
+    
+</body>
+</html>

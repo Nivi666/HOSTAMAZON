@@ -1,0 +1,349 @@
+{% extends 'app_1/base/base.html' %}
+{% load static %}
+
+ {% block title %}Home{% endblock %}
+   
+{% block content %}
+{% include 'app_1/base/navbar.html' with count=counts %}
+ 
+    <!--main page start-->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+        
+            <img src="{% static '/slides/61fj0K8rtqL._SX3000_.jpg' %}" 
+            class="d-block w-100 " 
+            style="height:700px;"alt="...">
+          
+        </div>
+        <div class="carousel-item">
+          <a href="{% url 'fashion' %}">
+            <img 
+            src="{% static '/slides/610NTFOyhAL._SX3000_ (1).jpg' %}" 
+            class="d-block w-100"
+            style="height:700px;" alt="...">
+          
+          </a>
+          </div>
+        <div class="carousel-item">
+          <a href="{% url 'search' value='mobile' %}">
+            <img 
+          src="{% static '/slides/619rl+QqjwL._SX3000_.jpg' %}" 
+          style="height:700px;"
+          class="d-block w-100" alt="...">
+        
+          </a>
+          </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
+    <!--main page end-->
+
+
+          <!--cards-->
+          <div class="card-group">
+            <div class="card card-1 d-flex  " style="width: 18rem;height: 24.4rem;">
+              <!--normal-->
+              {% if browsing_object1 %}
+              <!--user browsing-->
+              <h3 class="p-3 fw-bolder fs-4" style="font-weight:600;">pick up your where you Left
+                off</h1>
+                {% else %}
+                <h3 class="p-3 fw-bolder fs-4" style="font-weight:600;">Upgrade Your home | <br>
+                  Amazon brands & More</h1>
+                  
+              {% endif %}  
+              <!--user browsing head end -->
+                <!--1 row -->
+                <div class="box d-flex">
+                <div class=" square square-lg" style="width:155px;height:120px;">
+                  {% if browsing_object1 %}
+                  <a href="{% url 'productpage' %}?head={{browsing_object1.content_object.head}}&id={{browsing_object1.object_id}}">
+                  <img src="{{browsing_object1.img}}" style="max-width: 100%;max-height: 100%;" class="w-h-100 ms-2" 
+                 alt="img"> 
+                </a>
+                 {% else %}
+                 
+                   <img src="{% static '/products/372X232_11._SY232_CB606110532_.jpg' %}" class=" ms-2" 
+                  style="width:120px;"
+                  alt="...">
+                  <p class="ms-3">up to 45% of| <br>
+                    smart led tvs</p>
+                  {% endif %}
+                  
+                </div>
+                <div class="square  square-lg"  style="width:130px;height:135px;">
+                   {% if browsing_object2 %}
+                   <a href="{% url 'productpage' %}?head={{browsing_object2.content_object.head}}&id={{browsing.object_id}}">
+                    <img src="{{browsing_object2.img}}"  
+                    style="max-width: 100%;height:100%;"
+                   
+                   alt="...">
+                   
+                    </a>
+                   {% else %}
+                  <img src="{% static '/products/372X232_AC_Fridge._SY232_CB620369430_.jpg' %}"  
+                  style="width:120px;" 
+                  class="w-h-100" 
+                  alt="...">
+                  <p class="ms-3">up to 45% off |<br>Appliances</p>
+                
+                  {% endif %}
+                  <a href="#" class="stretched-link"></a>
+ 
+                </div>
+                
+               </div>
+               <!--2nd row-->
+              
+        
+               <div class="box d-flex">
+                <div class=" square   square-lg " 
+                style="width:135px;height:130px;">
+                  {% if browsing_object3 %}
+                  <img src="{{browsing_object3.img}}" style="max-width: 100%;max-height: 100%;" class="ms-2" 
+                  
+                  alt="..."> 
+                  {% else %}
+                  <img src="{% static '/products/372X232_4._SY232_CB606110532_.jpg' %}" class="w-h-100 ms-2" 
+                  style="width:120px;"
+                    
+                                    
+                  alt="...">
+                  <p class="ms-3">up to 65% off|<br>
+                    furniture</p>
+                  {% endif %}
+                  <a href="#" class="stretched-link"></a>
+
+                </div>
+                <div class="  square   square-lg ms-4 "  style="width:135px;height:130px;">
+                  {% if browsing_object4 %}
+                  <img src="{{browsing_object4.img}}"  
+                  style="max-width: 100%;max-height: 100%;" 
+                  class="w-h-100"
+                  href="#">
+                  {% else %}
+                  <img src="{% static '/products/372X232_2._SY232_CB606110532_.jpg' %}"  
+                  style="width:120px;" 
+                  class="w-h-100"
+                  href="#">
+                  <p class="ms-3">up to 60% off |<br>Kitchen products</p>
+                
+                  {% endif %}
+                  <a href="#" class="stretched-link"></a>
+  
+                </div>
+                
+               </div>
+                {% if browsing_object1%}
+                {% else %}
+               <p class="text-primary ms-3">Shop now</a>
+                {% endif %}
+            </div>
+
+
+
+
+        
+          <!--card-2-->
+          <div class="card card-2 d-flex  " style="width:19rem; height:390px;">
+            {% if browsing_object1 %}
+            <h3 class="p-3 fw-bolder fs-4" style="font-weight:600;">Keep Shopping For</h1>
+            
+            {% else %}
+            <h3 class="p-3 fw-bolder fs-4" style="font-weight:600;">Professional tools,<br>testing & more upto.</h1>
+              {% endif %}
+              <!--1 row -->
+              <div class="box d-flex">
+              <div class="  square   square-lg " style="width:155px;height:150px;">
+                {% if browsing_object1 %}
+                <a href="{% url 'productpage' %}?head={{browsing_object1.content_object.head}}&id={{browsing_object1.object_id}}">
+                <img src="{{browsing_object1.img}}" class="w-h-100 ms-3" 
+                style="max-width: 100%;max-height: 100%;"
+                alt="...">
+              </a>
+                {% else %}
+                <img src="{% static '/card-2/Tools2x._SY232_CB424026090_.jpg' %}" class="w-h-100 ms-3" 
+                style="width:120px;"
+                alt="...">
+                <p class="ms-4">Professional tools</p>
+              
+                {% endif %}
+                <a href="#" class="stretched-link"></a>
+ 
+              </div>
+              <div class="  square   square-lg"  style="width:135px;height:150px;">
+                {% if browsing_object1 %}
+                <img src="{{value1.image}}"  style="max-width: 100%;max-height: 100%;" 
+                 class="w-h-100 ms-3" 
+                style="width:120px;"
+                alt="...">
+                
+                
+                {% else %}
+                <img src="{% static '/card-2/372X2321._SY232_CB643952553_.jpg' %}"  style="width:120px;" 
+                class="w-h-100 ms-3" 
+                style="width:120px;"
+                alt="...">
+                <p class="ms-4">Cleaning Supplies</p>
+             
+                {% endif %}
+              </div>
+              
+             </div>
+             <!--4nd row-->
+            
+        
+             <div class="box d-flex">
+              <div class="  square   square-lg mt-3"  style="width:135px;height:150px;">
+                {% if browsing_object1 %}
+                <img src="{{value2.image}}" class="w-h-100 ms-3" 
+                style="max-width: 100%;max-height: 100%;"
+               alt="...">
+               
+                {% else %}
+                <img src="{% static '/card-2/372X2322._SY232_CB643952553_.jpg' %}" class="w-h-100 ms-3" 
+                 style="width:120px;"
+                alt="...">
+                <p class="ms-3">measuring instruments</p>
+             
+                {% endif %}
+                <a href="#" class="stretched-link"></a>
+ 
+              </div>
+              <div class="  square   square-lg mt-3"  style="width:135px;height:150px;">
+                 {% if browsing_object1 %}
+                 <img src="{{value3.image}}"  style="max-width: 100%;max-height: 100%;" 
+                class="w-h-100 ms-4" 
+                alt="...">
+                
+                 {% else %}
+                <img src="{% static '/card-2/med1x._SY116_CB424026091_.jpg' %}"  style="width:120px;" 
+                class="w-h-100 ms-1" 
+                alt="...">
+                <p class="ms-4">Medical supplies</p>
+                <p class="text-primary ms-3">See more</a>
+             
+                {% endif %}
+              </div>
+              
+             </div>
+          </div>
+          <!--2nd card end-->
+
+
+           <!--card-3-->
+           <div class="card card-3 d-flex  " style="width: 19rem; height:390px;" >
+            <h3 class="p-3 fw-bolder fs-4" style="font-weight:600;">Exclusive offers on travel tickets</h1>
+              <!--1 row -->
+              <div class="box d-flex">
+              <div class="  square   square-lg" >
+                <img src="{% static '/card-3/Flight_1_372x232._SY232_CB618818079_.jpg' %}" class="w-h-100" 
+                style="width:120px;"
+                alt="...">
+                <a href="#" class="stretched-link"></a>
+ 
+                <p class="ms-3">Get up to $500 off <br>on flights</p>
+              </div>
+              <div class="  square   square-lg">
+                <img src="{% static '/card-3/Train_1_372x232._SY232_CB618818079_.jpg' %}"  style="width:120px;" 
+                class="w-h-100" 
+                alt="...">
+                <p class="ms-3">Zero convenience <br>
+                fees on train tickets</p>
+              </div>
+              
+             </div>
+             <!--6nd row-->
+            
+        
+             <div class="box d-flex">
+              <div class="  square   square-lg" >
+                <img src="{% static '/card-3/Bus_1_372x232._SY232_CB618818079_.jpg' %}" class="w-h-100" 
+                style="width:120px;"
+                alt="...">
+                <a href="#" class="stretched-link"></a>
+ 
+                <p class="ms-3">Guaranteed rewards <br> on bus tickets</p>
+              </div>
+              <div class="  square   square-lg">
+                <img src="{% static '/card-3/Accessory372x232._SY232_CB618818079_.jpg' %}"  
+                style="width:120px;" 
+                class="w-h-100 " 
+                alt="...">
+                <a href="#" class="stretched-link"></a>
+ 
+ 
+                <p class="ms-3">Products for your <br> travel needs</p>
+              </div>
+              
+             </div>
+             <p class="text-primary ms-3">See all offers</a>
+          </div>
+          <!--3rd card end-->
+          <!--4rd card-->
+          <div class="card-4">
+            <!--card-1-->
+            <div class="card-5   square   square-lg pt-2" style="width:18rem; height:150px;">
+              {%  if not user.is_authenticated %}
+              <p class="fw-bold fs-5 ms-4 mt-2">Sign in for Your best <br>Experience</p>
+             <button type="button" class="ms-3 m-4 d-block p-1 " 
+              style="width:15rem;
+              background-color:#F7CA00;border:none;
+              border-radius: 5px;">sign in securely</button>
+              {% endif %}
+              <div class="d-flex">
+                <p class="fw-bold fs-5 ms-3 mt-2">Sell on Amazon  <br> with 50% off on <br>Selling Fees</p>
+            
+                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/amazonservices/landing/ATFimagery_nov22_230x230._CB620157277_.jpg" style="width:100px;" alt="">
+             
+              </div>
+               <a class="text-decoration-none ms-3" style="color:#007185;">Register now</a>  
+            </div>
+              <!--card-2-->
+              <div class="card-6   square   square-lg " style="width:18rem;height:10rem;">
+                 
+                <a href="{% url 'search' value='laptop'  %}" class="stretched-link">
+                  <img src="{% static '/card-3/Laptops-Sept2019._CB436595915_.jpg' %}" 
+                  style="width:18rem;"
+                  alt="">
+                  
+                  </a>
+              </div>         
+          </div>
+          </div>
+          </div>
+          <!--cards 1st row end-->
+ <!--cards 2nd row start-->
+ {% include  'app_1/home/topcard.html' %}
+<!--card-2 end-->
+             
+
+
+<!--first slide--> 
+       {% include 'app_1/home/slide.html' %}       
+       
+          <!-- 2nd slide-->
+        
+    <div class="background" style="background-color:#EAEDED;">
+     .
+    </div>
+   
+   
+
+      <!--entire bottom-->  
+         {% include 'app_1/home/cards.html' %}
+         <hr class="hr">
+      
+      {% include 'app_1/main/browsing.html' %}
+  
+       
+{% endblock %}

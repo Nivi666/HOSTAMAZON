@@ -1,0 +1,701 @@
+{% extends 'app_1/base/base.html' %}
+{% load static %}
+
+{% static "app_1/img" as baseUrl %}
+
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+{% include 'app_1/base/navbar.html' with count=counts %}
+
+<style>
+    td {
+        width: 250px;
+        border-top: 5px !important;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    hr {
+        display: none;
+    }
+
+    #hr {
+        display: block;
+    }
+
+    #oppohead p:hover {
+
+        text-decoration: underline;
+        color: #C45500 !important;
+    }
+
+    #most-head:hover {
+        text-decoration: underline;
+        color: #C45500 !important;
+
+    }
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  width: 15%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  margin-left: 1rem;
+}
+
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+
+</style>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            {% if mobile.type == 'mobile' %}
+            <div class="col p-5 ">
+                <img src="{{mobile.image.url}}" alt="mobile" id="mobile-img" style="width:250px;height:400px;">
+            </div>
+            {% else %}
+
+            <div class="col p-5 "><img src="{{mobile.image}}" alt="mobile" id="mobile-img" style="width:300px"></div>
+            {% endif %}
+            <div class="col pt-5" style="font-size:19px;">
+                <p class="" style="visibility: hidden;" id="mobile-id">{{mobile.id}}</p>
+
+                <h4 style="width:400px;  font-weight: 500;" id="mobile-head">{{mobile.head}}</h4>
+                <span style="color:#007185; font-size:15px;">Visit the {{mobile.brand}} store</span>
+                <div class="rating" style="position: relative;">
+                    <img src="{{mobile.rating_img.url}}" class="" style="width:100px;" alt="">
+                    <span class="" style="position: absolute; left:110px;">
+                        <i class="fa-solid fa-chevron-down " style="color:#007185;font-size: 8px;"></i>
+                        <span class="" style="color:#007185;font-size: 14px; font-weight:500;">{{mobile.users}} ratings
+                        </span>
+                    </span>
+
+                </div>
+                <hr id="hr">
+                <div class="2">
+                    <p style="color:#D40C39; font-size:23px;position: relative;">-{{mobile.discount}}% <span
+                            class="text-dark" style="font-size:13px;"><s style="position:absolute;top:5px;">₹</s>
+                            <span1 style="font-weight:600; font-size: 26px;" class="ms-2" id="mobile-price">
+                                {{mobile.discount_price}}</span1>
+                        </span>
+                        <span class="text-dark" style="position: absolute; left:10px;top:40px; font-size: 13px;">
+                            M.R.P: <strike>₹{{mobile.orginal_price}}</strike></span>
+
+                    </p>
+                    <c style="font-size: 14px;font-weight: 500;" class="ms-2">Inclusive of all taxes</c>
+                </div>
+                <hr id="hr">
+                <div class="3 d-flex">
+                    <div class="3-img">
+                        <img src="{% static '/img/trust_icon_free_shipping_81px._CB630870460_.png' %}"
+                            style="width:50px;" alt="">
+                        <p style="color:#007185;font-size: 11px; font-weight: 600; width:90px;;">Free Delivery</p>
+                    </div>
+                    <div class="3-img">
+                        <img src="{% static '/img/icon-cod._CB485937110_.png' %}" style="width:50px;" alt="">
+                        <p style="color:#007185;font-size: 11px; font-weight: 600; width:90px;;">Pay on Delivery</p>
+
+                    </div>
+                    <div class="3-img">
+                        <img src="{% static '/img/icon-returns._CB484059092_.png' %}" style="width:50px;" alt="">
+                        <p class=""
+                            style="color:#007185;font-size: 11px;  font-weight: 600; width:90px;text-align: center;">7
+                            days replacement</p>
+
+                    </div>
+                    <div class="3-img">
+                        <img src="{% static '/img/icon-amazon-delivered._CB485933725_.png' %}" style="width:50px;"
+                            alt="">
+                        <p style="color:#007185;font-size: 11px; text-align: center; font-weight: 600; width:90px;;">
+                            Amazon Delivered</p>
+
+                    </div>
+
+                </div>
+                <hr id="hr">
+                <div class="sub">
+                    <p style="font-size:14px;">Size:<span class="fw-bold">{{mobile.size}}</span></p>
+                    <div class="box   text-center w-25 fw-bold" style="font-size:14px; border:1px solid #E47911;"
+                        id="mobile-size">
+                        {{mobile.size}}</div>
+                    <div class="brand mt-2">
+                        <p class="fw-bold" style="font-size:14px;">Brand
+                            <span class="ms-5" style="font-weight: 400;">{{mobile.brand}}</span>
+                        </p>
+                        <p class="fw-bold" style="font-size:14px;">Model name
+                            <span class="ms-2" style="font-weight: 400;">{{mobile.model_name}}</span>
+                        </p>
+                        <p style="position: relative;"><span class="fw-bold"
+                                style="font-size:14px;width:35px;display: inline-block;">Network service Provider</span>
+                            <span class="ms-5" style="font-weight: 400;font-size:14px;position: absolute;">Unlock for
+                                all Carriers</span>
+                        </p>
+                        <p style="position: relative;"> <span style="font-size:14px;width:35px;display: inline-block;"
+                                class="fw-bold">Cellular technology</span>
+                            <span class="ms-5" style="font-weight: 400;font-size:14px;position:absolute;">4G</span>
+                        </p>
+
+                    </div>
+                </div>
+
+                <!--end of 2nd row-->
+            </div>
+            <div class="col pt-5 ">
+                <div class="card ">
+                    <div class="card-header">
+                        .
+                    </div>
+                    <div class="card-body">
+                        <p class="fw-bold">Without Exchange</p>
+                        <p style="color:#B12704 ;font-weight: 600;">₹ {{mobile.discount_price}} <strike
+                                class="text-dark">₹ {{mobile.orginal_price}}.00</strike></p>
+                        <p style="color:#007185;font-weight: 600;">FREE delivery <span
+                                class="text-dark fw-bold">{{mobile.mobile.day}},{{mobile.mobile.date}} February</span>
+                        <p style="font-size:13px;font-weight: 600;color:#007185;"><i
+                                class="fa-solid fa-location-dot"></i> Delivery to user - Address</p>
+                        <p class="text-success fw-bold">In Stock.</p>
+                        <p style="font-weight: 400;">Sold by <span style="color:#007185;">{{mobile.retailer}}</span> and
+                            <span style="color:#007185;">Fullfilled by Amazon</span></p>
+                        <!--dropdown-->
+                        Quantity:
+                        <select name="my_dropdown" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <!--dropdownend-->
+                        <div class="button ">
+                            <!--add to cart btn-->
+                            <button class="btn p-1 m-2 rounded-pill mt-3 fw-bold"
+                                style="background-color:#FFD814;width:220px;" id="cart" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight">Add to Cart</button>
+
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" style="width:700px;"
+                                aria-labelledby="offcanvasRightLabel">
+                                <div class="offcanvas-header p-3 ms-3" style="position: relative;">
+                                    <h5 class="offcanvas-title" id="offcanvasRightLabel">
+                                        <p><span id="status" class="fw-bold"><i class="fa-solid fa-circle-check"
+                                                    style="color:#067D62;"></i> Added to Cart</span></p>
+                                        {% if mobile.type == 'mobile' %}
+                                        <img src="{{mobile.image.url}}" style="width:70px;" class="ms-5"
+                                            alt="mobile-img">
+
+                                        {% else %}
+                                        <img src="{{mobile.image}}" style="width:70px;" class="ms-5" alt="mobile-img">
+                                        {% endif %}
+                                    </h5>
+                                    <div class="cart-row-2 p-3 ">
+                                        <p class=" fw-bold" style="margin-right:8rem;">Cart Subtotal (<span
+                                                id="total_items"> </span> items):
+                                            <span style="color:#B12704"> ₹</span><span id="total_price"
+                                                style="color:#B12704"></span>
+                                        </p>
+                                        <div class="2-btns">
+                                            <a href="#" class="btn shadow-sm  bg-body rounded border border-1 "
+                                                style="width:80px; border-radius: 5px;;">Cart</a>
+                                            <a href="#" class="btn  p-2 ms-3 rounded"
+                                                style="background-color:#FFD814; 
+                box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%); font-size: 14px;border-radius: 8px; font-weight: 500; width: 230px;">Procced to checkout<span
+                                                    id="total_items"></span></a>
+                                        </div>
+
+                                    </div>
+                                    <button type="button" class="btn-close "
+                                        style="position: absolute; top:20px; right:30px;" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body" id="cart-body" style="background-color:#E7E7E7;">
+                                    <div class="offcanvas-main container bg-light h-100">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--add to cart btn end-->
+
+                            <a href="{% url 'buynow' %}?type={{mobile.type}}&id={{mobile.id}}" class="btn p-1 m-2 rounded-pill mt-1 fw-bold"
+                                style="background-color:#FA8900;width:220px;">Buy now</a>
+
+                        </div>
+
+
+
+                        <i class="fa-solid fa-lock ms-2"></i> <span class="fw-bold" style="color:#007185">Secure
+                            transaction</span>
+                        <div class="ms-2 mt-1">
+                            <input type="checkbox"> <span style="font-weight: 500;">Add gift option</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--top end-->
+        <!--container end-->
+    </div>
+    <!--2 start-->
+    <div class="2" style="margin-top:5rem;">
+        <div class="2-img fw-bold" style="font-size: 20px;">
+            <img src="{% static 'img/11sUgaVRsYL.png' %}" style="width:100px;" alt="img">{{mobile.brand}}
+            <div>
+                <div style="font-size:15px;font-weight: 500;">
+                    <img src="{% static 'img/01S5bawZYgL.png' %}">
+                    90% positive ratings from 100k+ customers
+
+                </div>
+                <div style="font-size:15px;font-weight: 500;">
+                    <img src="{% static 'img/01S5bawZYgL.png' %}">
+                    100K+ recent orders from this brand
+
+                </div>
+                <div style="font-size:15px;font-weight: 500;">
+                    <img src="{% static 'img/01S5bawZYgL.png' %}">
+
+                    8+ years on Amazon
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!--2 end-->
+
+    <hr id="hr">
+    {% if type == 'mobile' or type == 'laptop' %}
+    <div class="box">
+        <h4 class="ms-3 fw-bold" style="font-size: 25px;">What is in the box?</h4>
+        <ul>
+            <li>{{mobile.brand}} {{mobile.model_name}}</li>
+            <li>Power Adaptor</li>
+            <li>USB Cable</li>
+            <li>Sim ejector Tool</li>
+            <li>Warranty card</li>
+            <li>User Guide</li>
+        </ul>
+        <hr id="hr" class="ms-4" style="width:1100px;">
+
+    </div>
+    {% endif %}
+    <!--most users col product col-->
+    <div class="most-users">
+        <h4 class="ms-3 fw-bold" style="font-size: 25px;">Most Users bought Products </h4>
+        <div class="container">
+            <div class="row">
+                {% for object in most_bought_products %}
+                <div class="col" style="margin-top:3rem;">
+                    <div class="img ms-3"">
+                        {% if object.type == 'mobile'  %}
+                        <img src=" {{object.url_image}}" style="height:150px;width:100px;"" alt="">
+                        
+                        {% else %}
+                        <img src=" {{object.image}}" style="height:150px;width:150px;"" alt="">
+                        {% endif %}
+                       </div>
+                     <a href=" {% url 'productpage' %}?head={{object.head}}&id={{object.id}}"
+                        class="text-decoration-none">
+                        <div class="product-head ms-3" style="font-size:14px; font-weight:500;color:#007185"
+                            id="most-head">
+                            {{object.head}}
+                        </div>
+
+                        </a>
+                        <div class="rating">
+                            <img src="{{object.rating_img.url}}" style="width:100px;" alt="">
+                            <span style="color:#007185;font-size: 12px;font-weight: 500;">{{object.users}}</span>
+                        </div>
+                        <div class="price ms-3 fw-bold" style="color:#B12704">
+                            ₹{{object.discount_price}}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <hr id="hr">
+        <!--end of most users-->
+        <!--related items-->
+
+        <!--compare-->
+        <div class="compare">
+            <h4 class="fw-bold p-1" style="color:#C45500;margin-left:2rem;">Compare with similar items</h4>
+            <hr id="hr" style="width:1100px;margin-left:1.5rem;">
+            <!--compare items-->
+            <div class="container">
+                <div class="row p-3" style="margin-left: 7rem;;">
+                    <div class="col">
+
+                        <div class="img">
+                            {% if mobile.type == 'mobile' %}
+                            <img src="{{mobile.url_image}}" style="width:200px;height:200px;" alt="">
+
+                            {% else %}
+                            <img src="{{mobile.image}}" style="width:200px;height:200px;" alt="">
+                            {% endif %}
+                        </div>
+                        <p class="text-dark ms-3" style="width:190px; font-size: 15px; font-weight: 700; ">You are
+                            Viewing:{{mobile.head}}</p>
+                        <!--price-->
+                        <h5 class="ms-3" style="color:#B12704;font-size: 25px;font-weight:700; ">
+                            ₹{{mobile.discount_price}}.00</h5>
+                        <!--priceend-->
+                        <div class="rating fw-bold mt-3 " style="color:#007185;">
+                            <img src="{{mobile.rating_img.url}}" style="width:100px;" alt="rating">({{mobile.users}})
+
+                        </div>
+                        <a class="btn p-1 m-2 rounded  mt-3 fw-bold" style="background-color:#F7CA00;width:180px;"
+                            href="#">Add to cart</a>
+
+                    </div>
+                    <!--colo-2-->
+
+                    {% for brand in brands %}
+                    <div class="col  ">
+                        <div class="img ">
+                            {% if brand.type == 'mobile' %}
+                            <img src="{{brand.image.url}}" style="width:150px; height:200px;" alt="">
+
+                            {% else %}
+                            <img src="{{brand.image}}" style="width:200px; height:200px;" alt="">
+                            {% endif %}
+                        </div>
+                        <a href="#" id="oppohead" class="text-decoration-none">
+                            <p style="width:190px; font-size: 15px; font-weight: 700; color:#007185;margin-left: 1rem;">
+                                {{brand.head}}</p>
+                        </a>
+                        <!--price-->
+                        <h5 style="color:#B12704;font-size: 25px;font-weight:700;margin-top:1rem;margin-left: 1rem;">
+                            ₹{{brand.discount_price}}.00</h5>
+                        <!--priceend-->
+                        <div class="rating fw-bold mt-3" style="color:#007185;">
+
+                            <img src="{{brand.rating_img.url}}" style="width:100px;" alt="rating">({{brand.users}})
+                        </div>
+                        <a class="btn p-1 m-2 rounded mt-3 fw-bold" style="background-color:#F7CA00;width:180px;"
+                            href="#">Add to cart</a>
+
+                    </div>
+                    {% endfor %}
+                    <!--table start-->
+
+                    <!--colo-2 end-->
+                </div>
+                <div class="" style="position: relative; top:-10px; right:26px;">
+
+                    <table class="table border " style="width:1140px;">
+                        <!--row-1-->
+                        {% if mobile.Camera_description %}
+                        <div class="row ">
+
+                            <tr class="">
+
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3" style="background-color:#F8F8F8;width:200px;">Camera Description
+                                    </td>
+
+                                </div>
+                                <div class="col">
+                                    <td class="p-3" style="background-color:#FCF9F8">{{mobile.Camera_description}}</td>
+                                </div>
+
+                                {% for i in brands %}
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3">{{i.Camera_description}}</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+
+                        </div>
+                        {% endif %}
+                        <!--row end-->
+
+                        <!--row-2-->
+                        {% if mobile.screen_size %}
+                        <div class="row ">
+                            <tr>
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3" style="background-color:#F8F8F8"> Screen Size</td>
+                                </div>
+                                <div class="col ">
+                                    <td class="p-3" style="background-color:#FCF9F8">{{mobile.screen_size}}</td>
+                                </div>
+                                {% for i in brands %}
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3">{{i.screen_size}}</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+                        </div>
+                        {% endif %}
+                        <!--row end-->
+                        {% if mobile.screen_type %}
+                        <!--row-3-->
+                        <div class="row ">
+                            <tr>
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3" style="background-color:#F8F8F8">Screen Type</td>
+                                </div>
+                                <div class="col ">
+                                    <td class="p-3" style="background-color:#FCF9F8">{{mobile.screen_type}}</td>
+                                </div>
+                                {% for i in brands %}
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3">{{i.screen_type}}</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+                        </div>
+                        {% endif %}
+                        <!--row end-->
+                        <!--row-4-->
+                        {% if mobile.Battery %}
+                        <div class="row ">
+                            <tr>
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3" style="background-color:#F8F8F8">Battery</td>
+
+                                </div>
+                                <div class="col">
+                                    <td class="p-3" style="background-color:#FCF9F8">{{mobile.Battery}}</td>
+
+                                </div>
+                                {% for i in brands %}
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3"> {{i.Battery}}</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+                        </div>
+                        {% endif %}
+                        <!--row end-->
+                        <!--row-5-->
+                        {% if mobile.Ram %}
+                        <div class="row ">
+                            <tr>
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3" style="background-color:#F8F8F8"> Ram</td>
+                                </div>
+                                <div class="col  ">
+                                    <td class="p-3" style="background-color:#FCF9F8">{{mobile.Ram}}</td>
+                                </div>
+                                {% for i in brands %}
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3">{{i.Ram}}</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+                        </div>
+                        {% endif %}
+                        <!--row end-->
+                        <!--row-6-->
+                        {% if mobile.storage %}
+                        <div class="row ">
+                            <tr>
+                                <div class="col" style="width:100px;padding:0.8rem 0rem;">
+                                    <td class="p-3" style="background-color:#F8F8F8">Inbuild Storage</td>
+                                </div>
+                                <div class="col " style="background-color:#FCF9F8;">
+                                    <td class="p-3" style="background-color:#FCF9F8">{{mobile.storage}}</td>
+                                </div>
+                                {% for i in brands %}
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3">{{i.storage}}</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+                        </div>
+                        {% endif %}
+                        <!--row end-->
+                        {% if mobile.os %}
+                        <!--row-7-->
+                        <div class="row ">
+                            <tr>
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3" style="background-color:#F8F8F8"> OS</td>
+                                </div>
+                                <div class="col ">
+                                    <td class="p-3" style="background-color:#FCF9F8">{{mobile.os}}</td>
+                                </div>
+                                {% for i in brands %}
+                                <div class="col" style=" width:100px;">
+                                    <td class="p-3">{{i.os}}</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+                        </div>
+                        {% endif %}
+                        <!--row end-->
+                        {% if mobile.type == 'mobile' or mobile.type == 'laptop' %}
+                        <!--row-8-->
+                        <div class="row ">
+                            <tr>
+                                <div class="col" style="width:100px;">
+                                    <td class=" p-3" style="background-color:#F8F8F8">Warranty Details</td>
+                                </div>
+                                <div class="col  ">
+                                    <td style="background-color:#FCF9F8">1 year manufacturer warranty</td>
+                                </div>
+                                {% for i in brands %}
+                                <div class="col" style="width:100px;">
+                                    <td class="p-3">1 year manufacturer warranty</td>
+                                </div>
+                                {% endfor %}
+                            </tr>
+                        </div>
+                        <!--row end-->
+
+                </div>
+                </table>
+                {% endif %}
+                <!--table end-->
+            </div>
+        </div>
+
+        <!--compare end-->
+    </div>
+   
+    <hr id="hr" style="width:1140px;margin-left:0.3rem;">
+
+    <!--main end-->
+    <!--rating-->
+    <p class="fw-bold" style="font-size: 20px;; margin-left: 1rem;">Rate this Product</p>
+    <p style="margin-left:1rem;;">Share your thoughts with other customers</p>
+    <a href="{% url 'checkrating' %}?id={{mobile.id}}&type={{mobile.type}}" id="review-btn" class="accordion shadow-sm   bg-body rounded fw-bold  text-center border border-2 text-decoration-none "  style="background-color: white;width:250px;">Write the Product Review</a>
+  
+ <div class="panel mt-3">
+  <form action="{% url 'submit_review' product_id=mobile.id type=mobile.type %}" method="POST">
+    {% csrf_token %}
+    <div class="rate">
+      <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+      <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" title="4.5" class="half"></label>
+      <input type="radio" name="rating" id="rating8" value="4" required><label for="rating8" title="4"></label>
+      <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" title="3.5" class="half"></label>
+      <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+      <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" title="2.5" class="half"></label>
+      <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+      <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" title="1.5" class="half"></label>
+      <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+      <input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" title="0.5" class="half"></label>
+    </div>
+    <textarea rows="4" style="width:400px;" name="review" class="form-control" placeholder="Enter Your Review" ></textarea>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+  </form>
+</div>
+</a>
+    <!--rating end-->
+    <hr id="hr" style="width:1140px;margin-left:1rem;">
+
+    <!--browsing history -->
+    <div class="browsing-history me-5" style="margin-top: 2rem;;margin-right: 2rem;;">
+        <a href="{% url 'browsing_history' %}" class="text-decoration-none">
+            <p class="ms-3" style="font-size:25px;font-weight:700;color:#666666">Your browsing history <span
+                    style="color:#007185;font-size: 13px;font-weight: 500;">View or edit your browsing history</span>
+            </p>
+        </a>
+        <div class="total d-flex p-4">
+            {% for i in browsing %}
+
+            <div class="img" class="ms-1 " style="width:100px;height:100px; ">
+                <a href="{% url 'browsing_redirect' i.id %}"><img src="{{i.img}}"
+                        style="max-width:100px;max-height:100%;" class="ms-4" alt=""> </a>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <!--browsing end -->
+    {% endblock %}
+    {% block javascript %}
+    <script>
+        $(document).ready(function () {
+            $('#cart').click(function () {
+                var mobile_image = $('#mobile-img').attr('src');
+                var mobile_head = $('#mobile-head').text();
+                var mobile_price = $('#mobile-price').text();
+                var mobile_size = $('#mobile-size').text();
+                var total = $('#quantity').val();
+                var mobile_id = $('#mobile-id').text()
+                $.ajax({
+                    type: 'POST',
+                    url: '/add_cart_product/',
+
+                    data: {
+
+                        'mobile_image': mobile_image,
+                        'mobile_head': mobile_head,
+                        'mobile_size': mobile_size,
+                        'mobile_price': mobile_price,
+                        'total': total,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+
+
+                    },
+                    success: function (data) {
+                        $('#total_price').text(data.total_price);
+                        $('#total_items').text(data.total_items);
+                        $('#status').text(data.status);
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+
+            });
+        });
+
+$(document).ready(function() {  
+    $('#review-btn').click(function (e) {
+          e.preventDefault()
+          var panel = document.getElementById("panel");
+        $.ajax({
+            url: "{% url 'checkrating' %}",
+            dataType: 'json',
+            data: {
+                id: '{{ mobile.id }}',
+                type: '{{mobile.type }}'
+                },
+            success: function(data) {
+                // Display data on the template
+               if(data.msg === "yess"){
+ 
+                $(".panel").show();
+               }
+               else
+               {
+                $('.panel').text('Sorry, you are not eligible to write a review for this product.Please bought the Product').css({'color':'red','font-weight':'600'}).show()
+               }
+            }
+        });           
+        });
+    
+    });
+    
+    </script>
+    {% endblock javascript %}

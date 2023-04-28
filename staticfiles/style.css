@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    width:100vw;
+    height:100vh;
+    overflow-x: hidden;
+}
+.navbar{
+    position:relative;
+    width:100%;
+
+}
+.navbar-1{
+    height:60px;
+}
+.navbar-1 div{
+    margin-top: 10px;;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top:0;
+ }
+
+.a-img{
+  position:absolute;
+  left:159px;
+  top:18px;
+ }
+ .btn-1{
+    position:absolute;
+    top:-10px;
+    height:40px;
+    border-radius:0px;
+    color:grey;
+    background-color: #DADADA;
+ }
+ .btn-2{
+
+    position:absolute;
+    top:5px;
+    height:41px;
+    border-radius:0px;
+    color:grey;
+    background-color:#F3A847;
+    left:767px;
+ }
+li{
+    margin:0rem 0.5rem;
+ }
+.navbar li a{
+    color:#fff;
+    font-weight: 700;
+}
+.navbar-2 .nav-link:hover{
+    border:1px solid  white;
+}
+/* main page*/
+body{
+    position: relative;
+    width:100vw;
+    height:100vh;
+}
+ img{
+  padding:0.3rem;
+  margin-left:0.5rem;
+}
+.card-1{
+    position: absolute;
+    top:400px;
+    left:15px;
+    border-radius:none;
+
+}
+.card-2{
+    position: absolute;
+    top:400px;
+    left:325px;
+    border-radius:none;
+
+}
+.card-3{
+    position: absolute;
+    top:400px;
+    left:650px;
+    border-radius:none;
+
+}
+.card-4{
+    position: absolute;
+    top:400px;
+    left:960px;
+    border-radius:none;
+
+}
+.card-5{
+    background-color: #fff;
+    margin-left: 0.6rem;
+}
+.box p{
+    font-size: 12px;;
+}
+.card-7,.card-8,.card-9{
+    margin:0.5rem;
+}
+.all-images{
+    margin-left:5rem;
+}
+.button{
+    margin-right: 1rem;
+}
+
+.row-1 p{
+    margin-top: 0.5rem;
+}
+
+.log-in{
+    padding:2rem;
+}
+.list-1,.list-2,.list-3,.list-4{
+    padding-left:2rem;
+    margin-left:1rem;
+    padding-left: 10rem;
+    
+}
+.list-1 h5,.list-2 h5,.list-3 h5,.list-4 h5{
+    font-size:15px;
+    font-weight: 700;
+}
+.list-1 li,.list-2 li,.list-3 li,.list-4 li{
+    font-size: 14px;
+    padding-top:5px;
+ 
+}
+.footer-main div{
+    padding-left: 4rem;
+    
+}
+.cities{
+    font-size: 12px;
+    font-weight: 600;
+}

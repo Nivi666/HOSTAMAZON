@@ -1,0 +1,303 @@
+{% extends 'app_1/base/base.html' %}
+{% load static %}
+{% block title %}
+{% if Type == 'today_deals' %}
+Today_Deals Page
+{% elif Type == 'fashion' %}
+Fashion Page
+{% elif Type == 'electronics' %}
+Electronics Page
+{% else %}
+Browsing History Page
+{% endif %}
+{% endblock %}
+{% block content %}
+{% include 'app_1/base/navbar.html' with count=counts %}
+ 
+<style>
+body{
+  box-sizing: border-box;
+}
+a.text-decoration-none:hover p.head {
+  color: red;
+}
+</style>
+{% if Type == 'today_deals' %}
+<div class="container">
+  <h1 class="fs-4 fw-bolder p-4">Today's deals 
+    </h1>
+  {% for obj in objects %}
+    {% if forloop.first or forloop.counter0|divisibleby:4 %}
+      <div class="row">
+    {% endif %}
+    <div class="col  text-center border">
+      <a href="{% url 'productpage' %}?head={{obj.head}}&id={{obj.object_id}}" class="text-decoration-none">
+        {% if obj.type == 'mobile' %} 
+        <img src="{{obj.content_object.url_image}}" style="width:190px;height:190px;" alt="">
+        {% else %} 
+        <img src="{{obj.content_object.image}}" style="width:190px;height:190px;" alt="">
+          {% endif %}
+         <p class="p-1 ms-5"style="font-size:12px;color:#CC0C39;font-weight: 700;">
+          {% if obj.type == 'mobile' %}
+      <span class="p-1"style="color:#fff;background-color:#CC0C39">Up to {{obj.content_object.discount}}% off</span> Deal off the day</p>
+      {% else %}
+      <span class="p-1"style="color:#fff;background-color:#CC0C39">Up to {{obj.content_object.discount}}</span> Deal off the day</p>
+     
+      {% endif %}
+    </a>
+    </div>
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:4 %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% endif %}
+
+
+    <!--container end and main end-->     
+    <!--container end-->
+
+<!--today deals page end -->
+
+
+<!--browsing history page-->
+{% if Type == 'browsing_history' %}
+<div class="container">
+  <h1 class="fs-4 fw-bolder p-4">Browsing History 
+    </h1>
+  {% for obj in objects %}
+    {% if forloop.first or forloop.counter0|divisibleby:4 %}
+      <div class="row">
+    {% endif %}
+    <div class="col  p-3 text-center border">
+      <a href="{% url 'productpage' %}?head={{obj.content_object.head}}&id={{obj.object_id}}" class="text-decoration-none">
+        {% if obj.type == 'mobile' %} 
+
+        <div class="image d-flex justify-content-center align-items-center">
+       
+          <img src="{{obj.img}}" style="max-width:150px;max-height:200px;" alt="">
+        </div>
+        {% else %}
+        <div class="image d-flex justify-content-center align-items-center">
+         
+        <img src="{{obj.img}}" style="max-width:150px;max-height:200px;" alt="">
+         
+        </div>
+        {% endif %}
+        
+        <p class="p-1 ms-3"style="font-size:12px;color:#007185;;font-weight: 700;">
+          {{obj.content_object.head|truncatewords:5}}
+         <p style="color:#007185;margin-right: 2rem;font-weight: 700;">
+          <img src="{{obj.content_object.rating_img.url}}" style="width:80px;" alt="">
+          {{obj.content_object.users}}
+          
+         </p>
+          <p style="color:#B32704;">₹ <span style="font-size: 15px; font-weight: 600;color:#B32704;">{{obj.content_object.discount_price}}</span></p> 
+         
+          
+      </p>
+    </a>
+    </div>
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:4 %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% endif %}
+
+
+
+
+<!--browsing history end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--fashion page-->
+    
+
+{% if Type == 'fashion' %}
+<div class="main-2">
+  <div class="container">
+    <h1 class="fs-4 fw-bolder p-4">Fashion</h1>
+    {% for obj in objects %}
+    {% if forloop.first or forloop.counter0|divisibleby:3 %}
+      <div class="row">
+    {% endif %}
+    <div class="col  ">
+        <div class="card ms-5 " style="width: 17rem;border: none;">
+          <div class="img d-flex justify-content-center align-item-center" style="width:17rem;">
+            <a class="text-decoration-none" href="{% url 'productpage' %}?head={{obj.head}}&id={{obj.object_id}}""></a><img src="{{obj.content_object.image}}"  style="height:250px;background: none;" class="card-img-top me-3 img-fluid" alt="..."></a>
+            
+          </div>
+            
+            <div class="card-body me-3 text-center">
+              <a class="text-decoration-none" href="{% url 'productpage' %}?head={{obj.head}}&id={{obj.object_id}}">
+                <h5 class="card-title fw-bolder text-dark">{{obj.content_object.fashion_model}}</h5>
+                <p class="card-text fw-bold text-dark head" style="color: black;" onmouseover="this.style.color='red';" onmouseout="this.style.color='black';">{{obj.content_object.head}}</p>
+              </a>
+              
+              <p style="color: #007185;"class="text-start fw-bold"><img src="{{obj.content_object.rating_img.url}}" style="width:100px;" alt="">({{obj.content_object.users}})</p>
+              <p  class="text-dark">
+                ₹<span style="font-size: 29px; font-weight: 600;">{{obj.content_object.discount_price}}</span> <strike style="font-size: 13px; font-weight: 500;">₹{{obj.content_object.orginal_price}}</strike>
+              <span style="font-size: 15px;font-weight: 600;">({{obj.content_object.discount}})</span>
+              </p>
+              <p class="fw-bold">Free delivery with Amazon</p>
+            </div>
+          </div>
+    </div>
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:3 %}
+      </div>
+    {% endif %}
+    {% endfor %}
+    
+  </div>
+</div>
+<!--page start-->
+   
+  
+<div class=" p-4 d-flex justify-content-center">
+  <style>
+    .page:hover{
+      background-color: #F5F6F6;
+    }
+  
+  </style>
+  <div class="sub border border-2 text-center p-2" style="width:550px;border-radius: 10px;">
+    {% if objects.has_previous %}
+  
+    <a href="?page={{ objects.previous_page_number }}" class="text-decoration-none text-dark p-2"><i class="fa-solid fa-angle-left"></i> previous</a>
+    {% else %}
+    <span class="text-dark p-2"><i class="fa-solid fa-angle-left"></i> Previous</span>
+  
+    {% endif %}
+ 
+   {% for page_number in objects.paginator.page_range %}
+   {% if objects.number == page_number %}
+           <span class="fw-bold  border border-dark " style="padding:10px 20px;">{{page_number}}</span>        
+   {% else %}
+     <a href="?page={{ page_number }}" class="text-decoration-none text-dark  page" style="padding:10px 20px;">{{ page_number }}</a>
+     
+   {% endif %}
+ {% endfor %}
+
+  </div>
+    
+
+</div>
+<!--paginator -end -->
+   
+{% endif %}
+
+
+
+
+
+<!--electronics page-->
+
+
+{% if Type == 'electronics' %}
+<div class="main-2">
+  <div class="container">
+    <h1 class="fs-4 fw-bolder p-4">Electronics</h1>
+    {% for obj in objects %}
+    {% if forloop.first or forloop.counter0|divisibleby:3 %}
+      <div class="row">
+    {% endif %}
+    <div class="col  ">
+        <div class="card ms-5" style="width: 17rem;border: none;">
+          <a class="text-decoration-none" href="{% url 'productpage' %}?head={{obj.head}}&id={{obj.object_id}}">
+          <div class="img d-flex justify-content-center align-item-center" style="width:17rem;">
+            {% if obj.content_object.type == 'mobile' %}
+            <img src="{{obj.content_object.image.url}}"  style="height:250px;background: none;" class="card-img-top me-3 img-fluid" alt="...">
+            {% else %}
+            <img src="{{obj.content_object.image}}"  style="height:250px;background: none;" class="card-img-top me-3 img-fluid" alt="...">
+           {% endif %} 
+           </a>
+          </div>
+            
+
+            <div class="card-body me-3 text-center">
+              <h5 class="card-title fw-bold">{{obj.content_object.brand}}</h5>
+              <a class="text-decoration-none text-dark" href="{% url 'productpage' %}?head={{obj.head}}&id={{obj.object_id}}"><p class="card-text fw-bold"
+               class="head">{{obj.content_object.head}}</p></a>
+              <p style="color: #007185;"class="text-start fw-bold"><img src="{{obj.content_object.rating_img.url}}" style="width:100px;" alt="">({{obj.content_object.users}})</p>
+              <p  class="text-dark">
+                ₹<span style="font-size: 29px; font-weight: 600;">{{obj.content_object.discount_price}}</span> <strike style="font-size: 13px; font-weight: 500;">₹{{obj.content_object.orginal_price}}</strike>
+              <span style="font-size: 15px;font-weight: 600;">({{obj.content_object.discount}})</span>
+              </p>
+              <p class="fw-bold">Free delivery with Amazon</p>
+            </div>
+          </div>
+    </div>
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:3 %}
+      </div>
+  
+    {% endif %}
+    {% endfor %}
+    
+  </div>
+</div>
+<!--page start-->
+   
+  
+<div class=" p-4 d-flex justify-content-center">
+  <style>
+    .page:hover{
+      background-color: #F5F6F6;
+    }
+  
+  </style>
+  <div class="sub border border-2 text-center p-2" style="width:550px;border-radius: 10px;">
+    {% if objects.has_previous %}
+  
+    <a href="?page={{ objects.previous_page_number }}" class="text-decoration-none text-dark p-2"><i class="fa-solid fa-angle-left"></i> previous</a>
+    {% else %}
+  
+    <span class="text-dark p-2"><i class="fa-solid fa-angle-left"></i> Previous</span>
+  
+    {% endif %}
+ 
+   {% for page_number in objects.paginator.page_range %}
+   {% if objects.number == page_number %}
+           <span class="fw-bold  border border-dark " style="padding:10px 20px;">{{page_number}}</span>        
+   {% else %}
+     <a href="?page={{ page_number }}" class="text-decoration-none text-dark  page" style="padding:10px 20px;">{{ page_number }}</a>
+     
+   {% endif %}
+ {% endfor %}
+
+  </div>
+    
+
+</div>
+<!--paginator -end -->
+
+
+
+<!--elctronics page end-->
+{% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'app_1/base/base.html' %}
+{% load static %}
+{% static "app_1/img" as baseUrl %}
+
+{% block title %}mobile page{% endblock %}
+{% block content %}
+{% include 'app_1/base/navbar.html' %}
+ 
+<style>
+*{
+  box-sizing: border-box;
+ } 
+#head:hover{
+  color:#C45500;
+}
+.mobile-img{
+ background-size: cover;
+
+ background-blend-mode: multiply;
+ }
+</style>
+
+<nav class="navbar navbar-light bg-light 
+shadow p-3 mb-5 bg-body rounded" style="height:37px;">
+<span class="navbar-brand  " style="font-size:13px; font-weight: 600;
+position:relative;top:-15px;">1-24 of over 50000 results for <span style="color:blue" 
+        >"{{type}}"</span></span>
+<div class="dropdown">
+  <button class="btn shadow dropdown-toggle"
+  style="height:25px;position:relative;top:-15px;border-radius:15px;
+  margin-right:6rem;background-color:#E3E6E6; font-size:11px; font-weight: 500;"
+  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  Sort:by feautured
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item text-dark" id="high-price-products" style="font-size:11px; font-weight: 500;" href="{% url 'sort_high' %}">Price:high to Low</a></li>
+    <li><a class="dropdown-item text-dark" id="low-price-products" style="font-size:11px; font-weight: 500;" href="{% url 'sort_low' %}">Price:Low to High</a></li>
+  </ul>
+  
+</div>
+</nav>
+<!--mixed datas-->
+<div class="container" style="margin-left:10rem;">
+  <h5 style="font-size:23px; font-weight: 400;">RESULTS</h5>
+           
+             <!--product-1-->
+             {% for object in objects %}
+             <div class="mobile-cards d-flex">
+              
+              <div class="mobile-card" 
+              
+              style="
+               position: relative;
+              
+              width:280px;height:320px;">
+               {% if  object.type == 'mobile' %}
+
+               <a href="{% url 'productpage' %}?head={{object.head}}&head={{object.object_id}}">
+                <div class="img"  >
+                  <img src="{{object.content_object.image.url}}" 
+                  style="width:200px;height:270px;"
+                  class="mobile-img"
+                  alt="mobile"  style="width:180px;height:280px; position:absolute;left:30px;">    
+                  </a>
+                </div>
+             {% else %}   
+            <a href="{% url 'productpage' %}?head={{object.head}}&id={{object.object_id}}">
+               <div class="img" > 
+                <img src="{{object.content_object.image}}" 
+                class="mobile-img"
+                style="width:200px;height:190px;;position:absolute;left:30px;"
+              > 
+                </div>
+               
+            </a>
+            {% endif %}
+          </div>
+               <div class="mobile-card-2" 
+               
+               style="
+               width:550px;height:250px;">
+              <a href="{% url 'productpage' %}?head={{object.head}}&id={{object.object_id}}" class="text-decoration-none text-dark">
+               <h5 class="ms-3 " id="head" >{{object.head}}</h5>
+              </a>
+             
+               <img 
+               src="{{object.content_object.rating_img.url}}" 
+               class="mobile-img-2"
+               alt="rating" style="width:100px;">
+               <i class="fa-solid fa-chevron-down"
+               style="color:#007185"></i>
+               <span style="color:#007185; font-weight:500;">{{object.content_object.users}}
+              </span>
+              {% if object.Advertise %}
+              <div><a href="#" class="btn btn-danger ms-3 p-1" style="width:150px; font-size: 14px;border-radius: 2px;background-color:#B12704;">Limited time deal</a></div>
+              {% endif %} 
+              <div class="price " style="position:relative;font-size:30px; margin-left: 1rem;">
+                <span class="" style="width:10px;margin-bottom: 3rem;position: absolute; font-size:15px">₹</span>
+                <span class="" style="margin-left:0.6rem;font-weight: 500;">{{object.content_object.discount_price}}</span>
+               <strike style="font-size: 16px;" >₹{{object.content_object.orginal_price}}</strike>
+               <span class="" style="width:10px; font-size:15px"></span>
+                <span style="font-size:15px; font-weight: 600;">({{object.content_object.discount}}% off)</span>
+                <p style="width:300px;font-size:15px;color:#3DA1CC; font-weight:700;">
+
+                  <span style="font-size:15px; color:#F5A356; width:50px;">✓
+                  </span>
+                  prime <span>
+                    <span class="text-dark">
+                    <span style="font-weight: 500;"> 
+                      Get it by</span> 
+                      {{object.content_object.day}},February {{object.content_object.date}} 
+                      <span class=" ms-2" style="font-weight: 500;">
+                        Free Delivery by Amazon</span>
+                    </span>
+
+                  </span>
+                </p>
+                  <a href="#"  style="font-size:13px;color:#007185">+2 color/patterns</a>
+                
+               
+            </div>                    
+          </div>
+                             
+             </div>
+     {% endfor %}
+   <!--container end-->
+  </div>
+
+ <!--endof mixdatas-->
+{% endblock %}

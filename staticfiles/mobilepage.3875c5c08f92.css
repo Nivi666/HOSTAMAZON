@@ -1,0 +1,12 @@
+hr{
+    display:none;
+}
+#hr{
+    display: block;
+}
+#head:hover{
+      color:#C45500;
+}
+#head{
+   padding:2rem;
+}

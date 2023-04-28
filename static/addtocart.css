@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    width:100vw;
+    height:100vh;
+    overflow-x: hidden;
+}
+/* main page*/
+body{
+    position: relative;
+    width:100vw;
+    height:100vh;
+}
+ img{
+  padding:0.3rem;
+  margin-left:0.5rem;
+}
+.cards-5{
+    position: absolute;
+    left:120px;
+    top:0px;
+   
+}
